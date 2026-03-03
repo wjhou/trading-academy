@@ -1,0 +1,16 @@
+# Trading Academy Requirements
+
+# Core dependencies
+# Note: Most dependencies come from stock-agent-system
+
+# For Jupyter notebooks (if using interactive format)
+jupyter>=1.0.0
+notebook>=7.0.0
+ipywidgets>=8.0.0
+
+# For progress tracking
+# (uses only Python standard library)
+
+# Optional: For enhanced markdown rendering
+markdown>=3.5.0
+pygments>=2.17.0
