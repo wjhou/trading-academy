@@ -209,6 +209,7 @@ See [LICENSE](LICENSE) for details.
 
 ## 🙏 Acknowledgments
 
+- **Content Creation**: All educational content, lessons, exercises, and resources were created with the assistance of [Claude Code](https://claude.ai/code) (Claude Opus 4.5) by Anthropic
 - Built with [mdBook](https://rust-lang.github.io/mdBook/)
 - Integrates with [stock-agent-system](https://github.com/wjhou/stock-agent-system)
 - Inspired by the open-source education community
