@@ -26,10 +26,10 @@ jobs:
           mdbook-version: 'latest'
 
       - name: Build English version
-        run: mdbook build --config-file book-en.toml
+        run: cd src/en && mdbook build -d ../../book/en
 
       - name: Build Chinese version
-        run: mdbook build --config-file book-zh.toml
+        run: cd src/zh && mdbook build -d ../../book/zh
 
       - name: Copy landing page
         run: cp index.html book/index.html
