@@ -1,0 +1,48 @@
+# .gitignore for Trading Academy
+
+# mdBook build output (not source)
+/book/html/
+/book/print.html
+docs/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+ENV/
+
+# Progress tracking
+progress.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Logs
+*.log
+
+# Exercise solutions (students should try first)
+# Uncomment if you want to hide solutions
+# solutions/
+
+# Personal notes
+notes/
+scratch/
