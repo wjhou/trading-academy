@@ -2,12 +2,11 @@
 title = "Trading Academy: From Beginner to Professional"
 authors = ["Trading Academy Contributors"]
 language = "en"
-multilingual = false
 src = "book"
 description = "A comprehensive guide to automated trading, from fundamentals to professional-level strategies"
 
 [build]
-build-dir = "docs"
+build-dir = "book"
 
 [output.html]
 default-theme = "light"
