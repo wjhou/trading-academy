@@ -1,0 +1,30 @@
+[book]
+title = "交易学院：从初学者到专业人士"
+authors = ["Trading Academy Contributors"]
+language = "zh"
+src = "src/zh"
+description = "从基础到专业级策略的自动化交易综合指南"
+
+[build]
+build-dir = "book/zh"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/wjhou/trading-academy"
+edit-url-template = "https://github.com/wjhou/trading-academy/edit/main/src/zh/{path}"
+site-url = "/trading-academy/zh/"
+additional-css = ["theme/language-switcher.css"]
+additional-js = ["theme/language-switcher.js"]
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.search]
+enable = true
+limit-results = 30
+use-boolean-and = true
+
+[output.html.print]
+enable = true

@@ -1,0 +1,29 @@
+.language-switcher {
+    position: fixed;
+    top: 10px;
+    right: 60px;
+    z-index: 1000;
+    display: flex;
+    gap: 5px;
+    background: var(--bg);
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--theme-hover);
+}
+
+.language-switcher a {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: var(--fg);
+    border-radius: 3px;
+    transition: background 0.2s;
+}
+
+.language-switcher a:hover {
+    background: var(--theme-hover);
+}
+
+.language-switcher a.active {
+    background: var(--theme-popup-bg);
+    font-weight: bold;
+}

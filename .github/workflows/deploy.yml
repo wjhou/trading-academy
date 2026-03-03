@@ -25,8 +25,14 @@ jobs:
         with:
           mdbook-version: 'latest'
 
-      - name: Build book
-        run: mdbook build
+      - name: Build English version
+        run: mdbook build --config-file book-en.toml
+
+      - name: Build Chinese version
+        run: mdbook build --config-file book-zh.toml
+
+      - name: Copy landing page
+        run: cp index.html book/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
