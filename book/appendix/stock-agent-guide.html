@@ -35,7 +35,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-15f3755a.js";
+            window.path_to_searchindex_js = "../searchindex-65769394.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-bd3756ef.js"></script>
@@ -181,6 +181,350 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="using-stock-agent-system"><a class="header" href="#using-stock-agent-system">Using stock-agent-system</a></h1>
+<p>Guide to using the stock-agent-system framework with this book.</p>
+<h2 id="what-is-stock-agent-system"><a class="header" href="#what-is-stock-agent-system">What is stock-agent-system?</a></h2>
+<p>stock-agent-system is a companion framework designed to work with this Trading Academy book. It provides:</p>
+<ul>
+<li>Pre-built trading infrastructure</li>
+<li>Data management utilities</li>
+<li>Strategy templates</li>
+<li>Backtesting framework</li>
+<li>Live trading capabilities</li>
+</ul>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<h3 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h3>
+<ul>
+<li>Python 3.8 or higher</li>
+<li>pip package manager</li>
+<li>Git</li>
+</ul>
+<h3 id="install-from-github"><a class="header" href="#install-from-github">Install from GitHub</a></h3>
+<pre><code class="language-bash"># Clone the repository
+git clone https://github.com/wjhou/stock-agent-system.git
+cd stock-agent-system
+
+# Install in development mode
+pip install -e .
+
+# Or install directly from GitHub
+pip install git+https://github.com/wjhou/stock-agent-system.git
+</code></pre>
+<h3 id="verify-installation"><a class="header" href="#verify-installation">Verify Installation</a></h3>
+<pre><code class="language-python">import stock_agent_system
+print(stock_agent_system.__version__)
+</code></pre>
+<h2 id="quick-start"><a class="header" href="#quick-start">Quick Start</a></h2>
+<h3 id="basic-usage"><a class="header" href="#basic-usage">Basic Usage</a></h3>
+<pre><code class="language-python">from stock_agent_system import DataManager, Strategy, Backtest
+
+# Initialize data manager
+dm = DataManager()
+
+# Download data
+data = dm.get_data('AAPL', start='2024-01-01', end='2024-12-31')
+
+# Create a simple strategy
+class MyStrategy(Strategy):
+    def generate_signals(self, data):
+        # Your strategy logic here
+        signals = data['Close'].rolling(20).mean()
+        return signals
+
+# Run backtest
+strategy = MyStrategy()
+backtest = Backtest(strategy, data)
+results = backtest.run()
+
+# View results
+print(results.summary())
+</code></pre>
+<h2 id="integration-with-book-lessons"><a class="header" href="#integration-with-book-lessons">Integration with Book Lessons</a></h2>
+<h3 id="module-1-2-getting-started"><a class="header" href="#module-1-2-getting-started">Module 1-2: Getting Started</a></h3>
+<p>The book’s early modules use basic Python and pandas. stock-agent-system is optional at this stage.</p>
+<h3 id="module-3-4-indicators-and-strategies"><a class="header" href="#module-3-4-indicators-and-strategies">Module 3-4: Indicators and Strategies</a></h3>
+<p>Use stock-agent-system’s indicator library:</p>
+<pre><code class="language-python">from stock_agent_system.indicators import RSI, MACD, BollingerBands
+
+# Calculate indicators
+rsi = RSI(data['Close'], period=14)
+macd = MACD(data['Close'])
+bb = BollingerBands(data['Close'], period=20)
+</code></pre>
+<h3 id="module-5-6-risk-management-and-backtesting"><a class="header" href="#module-5-6-risk-management-and-backtesting">Module 5-6: Risk Management and Backtesting</a></h3>
+<p>Leverage stock-agent-system’s backtesting framework:</p>
+<pre><code class="language-python">from stock_agent_system import Backtest, RiskManager
+
+# Set up risk management
+risk_mgr = RiskManager(
+    max_position_size=0.1,  # 10% per position
+    max_portfolio_risk=0.20  # 20% total risk
+)
+
+# Run backtest with risk management
+backtest = Backtest(strategy, data, risk_manager=risk_mgr)
+results = backtest.run()
+</code></pre>
+<h3 id="module-7-8-advanced-topics"><a class="header" href="#module-7-8-advanced-topics">Module 7-8: Advanced Topics</a></h3>
+<p>Use stock-agent-system for live trading:</p>
+<pre><code class="language-python">from stock_agent_system import LiveTrader
+
+# Initialize live trader
+trader = LiveTrader(
+    strategy=strategy,
+    broker='alpaca',
+    api_key='your_key',
+    secret_key='your_secret'
+)
+
+# Start trading
+trader.start()
+</code></pre>
+<h2 id="key-components"><a class="header" href="#key-components">Key Components</a></h2>
+<h3 id="datamanager"><a class="header" href="#datamanager">DataManager</a></h3>
+<p>Handles data downloading and management:</p>
+<pre><code class="language-python">from stock_agent_system import DataManager
+
+dm = DataManager()
+
+# Single symbol
+data = dm.get_data('AAPL', start='2024-01-01')
+
+# Multiple symbols
+data = dm.get_data(['AAPL', 'GOOGL', 'MSFT'], start='2024-01-01')
+
+# Save/load data
+dm.save_data(data, 'my_data.csv')
+data = dm.load_data('my_data.csv')
+</code></pre>
+<h3 id="strategy-base-class"><a class="header" href="#strategy-base-class">Strategy Base Class</a></h3>
+<p>Template for creating strategies:</p>
+<pre><code class="language-python">from stock_agent_system import Strategy
+
+class MyStrategy(Strategy):
+    def __init__(self, param1=10, param2=20):
+        super().__init__()
+        self.param1 = param1
+        self.param2 = param2
+
+    def generate_signals(self, data):
+        """Generate trading signals."""
+        # Your logic here
+        return signals
+
+    def calculate_position_size(self, signal, capital):
+        """Calculate position size."""
+        # Your sizing logic
+        return size
+</code></pre>
+<h3 id="backtest-engine"><a class="header" href="#backtest-engine">Backtest Engine</a></h3>
+<p>Comprehensive backtesting:</p>
+<pre><code class="language-python">from stock_agent_system import Backtest
+
+backtest = Backtest(
+    strategy=strategy,
+    data=data,
+    initial_capital=100000,
+    commission=0.001,  # 0.1%
+    slippage=0.0005    # 0.05%
+)
+
+results = backtest.run()
+
+# Access results
+print(f"Total Return: {results.total_return:.2%}")
+print(f"Sharpe Ratio: {results.sharpe_ratio:.2f}")
+print(f"Max Drawdown: {results.max_drawdown:.2%}")
+
+# Plot results
+results.plot()
+</code></pre>
+<h3 id="risk-manager"><a class="header" href="#risk-manager">Risk Manager</a></h3>
+<p>Built-in risk management:</p>
+<pre><code class="language-python">from stock_agent_system import RiskManager
+
+risk_mgr = RiskManager(
+    max_position_size=0.10,      # 10% per position
+    max_portfolio_risk=0.20,     # 20% total risk
+    max_correlation=0.70,        # Max correlation between positions
+    stop_loss_pct=0.05,          # 5% stop loss
+    take_profit_pct=0.15         # 15% take profit
+)
+
+# Check if trade is allowed
+if risk_mgr.check_trade(symbol, quantity, price):
+    # Execute trade
+    pass
+</code></pre>
+<h2 id="example-complete-strategy"><a class="header" href="#example-complete-strategy">Example: Complete Strategy</a></h2>
+<p>Here’s a complete example using stock-agent-system:</p>
+<pre><code class="language-python">from stock_agent_system import (
+    DataManager, Strategy, Backtest,
+    RiskManager, indicators
+)
+import pandas as pd
+
+class MovingAverageCrossover(Strategy):
+    """MA crossover strategy using stock-agent-system."""
+
+    def __init__(self, short_window=20, long_window=50):
+        super().__init__()
+        self.short_window = short_window
+        self.long_window = long_window
+
+    def generate_signals(self, data):
+        """Generate signals based on MA crossover."""
+        signals = pd.DataFrame(index=data.index)
+        signals['signal'] = 0.0
+
+        # Calculate moving averages
+        signals['short_ma'] = data['Close'].rolling(
+            window=self.short_window
+        ).mean()
+        signals['long_ma'] = data['Close'].rolling(
+            window=self.long_window
+        ).mean()
+
+        # Generate signals
+        signals['signal'][self.short_window:] = np.where(
+            signals['short_ma'][self.short_window:] &gt;
+            signals['long_ma'][self.short_window:],
+            1.0, 0.0
+        )
+
+        # Generate trading orders
+        signals['positions'] = signals['signal'].diff()
+
+        return signals
+
+# Run the strategy
+if __name__ == '__main__':
+    # Get data
+    dm = DataManager()
+    data = dm.get_data('AAPL', start='2020-01-01', end='2024-01-01')
+
+    # Create strategy
+    strategy = MovingAverageCrossover(short_window=20, long_window=50)
+
+    # Set up risk management
+    risk_mgr = RiskManager(max_position_size=0.10)
+
+    # Run backtest
+    backtest = Backtest(
+        strategy=strategy,
+        data=data,
+        initial_capital=100000,
+        risk_manager=risk_mgr
+    )
+
+    results = backtest.run()
+
+    # Print results
+    print(results.summary())
+    results.plot()
+</code></pre>
+<h2 id="configuration"><a class="header" href="#configuration">Configuration</a></h2>
+<h3 id="config-file"><a class="header" href="#config-file">Config File</a></h3>
+<p>Create a <code>config.yaml</code> file:</p>
+<pre><code class="language-yaml"># config.yaml
+data:
+  source: yfinance
+  cache_dir: ./data
+
+backtest:
+  initial_capital: 100000
+  commission: 0.001
+  slippage: 0.0005
+
+risk:
+  max_position_size: 0.10
+  max_portfolio_risk: 0.20
+  stop_loss_pct: 0.05
+
+live_trading:
+  broker: alpaca
+  paper_trading: true
+  update_frequency: 60  # seconds
+</code></pre>
+<p>Load configuration:</p>
+<pre><code class="language-python">from stock_agent_system import Config
+
+config = Config.from_file('config.yaml')
+</code></pre>
+<h2 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h2>
+<h3 id="1-use-version-control"><a class="header" href="#1-use-version-control">1. Use Version Control</a></h3>
+<pre><code class="language-bash"># Track your strategies
+git init
+git add .
+git commit -m "Initial strategy"
+</code></pre>
+<h3 id="2-separate-development-and-production"><a class="header" href="#2-separate-development-and-production">2. Separate Development and Production</a></h3>
+<pre><code class="language-python"># development.py
+config = Config(paper_trading=True)
+
+# production.py
+config = Config(paper_trading=False)
+</code></pre>
+<h3 id="3-log-everything"><a class="header" href="#3-log-everything">3. Log Everything</a></h3>
+<pre><code class="language-python">import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+logger.info("Strategy started")
+logger.warning("High volatility detected")
+logger.error("Trade execution failed")
+</code></pre>
+<h3 id="4-test-thoroughly"><a class="header" href="#4-test-thoroughly">4. Test Thoroughly</a></h3>
+<pre><code class="language-python"># test_strategy.py
+import unittest
+from my_strategy import MyStrategy
+
+class TestMyStrategy(unittest.TestCase):
+    def test_signal_generation(self):
+        strategy = MyStrategy()
+        signals = strategy.generate_signals(test_data)
+        self.assertIsNotNone(signals)
+
+if __name__ == '__main__':
+    unittest.main()
+</code></pre>
+<h2 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h2>
+<h3 id="issue-import-error"><a class="header" href="#issue-import-error">Issue: Import Error</a></h3>
+<pre><code class="language-python"># If you get: ModuleNotFoundError: No module named 'stock_agent_system'
+
+# Solution: Reinstall
+pip uninstall stock-agent-system
+pip install -e /path/to/stock-agent-system
+</code></pre>
+<h3 id="issue-data-download-fails"><a class="header" href="#issue-data-download-fails">Issue: Data Download Fails</a></h3>
+<pre><code class="language-python"># If data download fails, try:
+dm = DataManager(cache=True)  # Use cached data
+data = dm.get_data('AAPL', start='2024-01-01', retry=3)
+</code></pre>
+<h3 id="issue-backtest-runs-slowly"><a class="header" href="#issue-backtest-runs-slowly">Issue: Backtest Runs Slowly</a></h3>
+<pre><code class="language-python"># Optimize by:
+# 1. Use smaller date ranges for testing
+# 2. Reduce data frequency (daily instead of minute)
+# 3. Vectorize calculations
+# 4. Use multiprocessing for multiple symbols
+</code></pre>
+<h2 id="getting-help"><a class="header" href="#getting-help">Getting Help</a></h2>
+<ul>
+<li><strong>Documentation</strong>: Check the stock-agent-system docs</li>
+<li><strong>GitHub Issues</strong>: Report bugs or request features</li>
+<li><strong>Examples</strong>: See the <code>examples/</code> directory</li>
+<li><strong>Community</strong>: Join discussions on GitHub</li>
+</ul>
+<h2 id="next-steps"><a class="header" href="#next-steps">Next Steps</a></h2>
+<ol>
+<li>Install stock-agent-system</li>
+<li>Run the example strategies</li>
+<li>Modify examples for your needs</li>
+<li>Build your own strategies</li>
+<li>Backtest thoroughly before live trading</li>
+</ol>
+<hr>
+<p><strong>Note</strong>: stock-agent-system is optional. All concepts in this book can be implemented with standard Python libraries (pandas, numpy, etc.). Use stock-agent-system if you want a structured framework.</p>
 
                     </main>
 
