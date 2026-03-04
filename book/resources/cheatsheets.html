@@ -35,7 +35,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-61525dfe.js";
+            window.path_to_searchindex_js = "../searchindex-15f3755a.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-bd3756ef.js"></script>
@@ -180,7 +180,103 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="cheat-sheets"><a class="header" href="#cheat-sheets">Cheat Sheets</a></h1>
+                        <h1 id="trading-cheat-sheets"><a class="header" href="#trading-cheat-sheets">Trading Cheat Sheets</a></h1>
+<p>Quick reference guides for common trading concepts and formulas.</p>
+<h2 id="technical-indicators-quick-reference"><a class="header" href="#technical-indicators-quick-reference">Technical Indicators Quick Reference</a></h2>
+<h3 id="momentum-indicators"><a class="header" href="#momentum-indicators">Momentum Indicators</a></h3>
+<p><strong>RSI (Relative Strength Index)</strong></p>
+<pre><code>RS = Average Gain / Average Loss
+RSI = 100 - (100 / (1 + RS))
+
+Interpretation:
+- RSI &gt; 70: Overbought
+- RSI &lt; 30: Oversold
+- RSI = 50: Neutral
+</code></pre>
+<p><strong>MACD (Moving Average Convergence Divergence)</strong></p>
+<pre><code>MACD Line = EMA(12) - EMA(26)
+Signal Line = EMA(9) of MACD
+Histogram = MACD - Signal
+
+Signals:
+- MACD crosses above Signal: Bullish
+- MACD crosses below Signal: Bearish
+</code></pre>
+<h3 id="trend-indicators"><a class="header" href="#trend-indicators">Trend Indicators</a></h3>
+<p><strong>Moving Averages</strong></p>
+<pre><code>SMA = Sum of prices / N
+EMA = Price × (2/(N+1)) + EMA_prev × (1 - 2/(N+1))
+
+Common periods: 10, 20, 50, 100, 200
+</code></pre>
+<h3 id="volatility-indicators"><a class="header" href="#volatility-indicators">Volatility Indicators</a></h3>
+<p><strong>Bollinger Bands</strong></p>
+<pre><code>Middle Band = SMA(20)
+Upper Band = SMA(20) + 2 × StdDev
+Lower Band = SMA(20) - 2 × StdDev
+</code></pre>
+<p><strong>ATR (Average True Range)</strong></p>
+<pre><code>TR = max(High - Low, |High - Close_prev|, |Low - Close_prev|)
+ATR = EMA(TR, 14)
+</code></pre>
+<h2 id="risk-management-formulas"><a class="header" href="#risk-management-formulas">Risk Management Formulas</a></h2>
+<h3 id="position-sizing"><a class="header" href="#position-sizing">Position Sizing</a></h3>
+<p><strong>Fixed Fractional</strong></p>
+<pre><code>Position Size = (Account × Risk%) / (Entry - Stop Loss)
+</code></pre>
+<p><strong>Kelly Criterion</strong></p>
+<pre><code>f = (p × b - q) / b
+Where: p = win probability, b = win/loss ratio, q = 1-p
+</code></pre>
+<h3 id="risk-metrics"><a class="header" href="#risk-metrics">Risk Metrics</a></h3>
+<p><strong>Sharpe Ratio</strong></p>
+<pre><code>Sharpe = (Return - Risk-Free Rate) / Standard Deviation
+</code></pre>
+<p><strong>Maximum Drawdown</strong></p>
+<pre><code>MDD = (Trough - Peak) / Peak
+</code></pre>
+<p><strong>Expectancy</strong></p>
+<pre><code>Expectancy = (Win Rate × Avg Win) - (Loss Rate × Avg Loss)
+</code></pre>
+<h2 id="common-chart-patterns"><a class="header" href="#common-chart-patterns">Common Chart Patterns</a></h2>
+<h3 id="reversal-patterns"><a class="header" href="#reversal-patterns">Reversal Patterns</a></h3>
+<ul>
+<li>Head and Shoulders</li>
+<li>Double Top/Bottom</li>
+<li>Triple Top/Bottom</li>
+</ul>
+<h3 id="continuation-patterns"><a class="header" href="#continuation-patterns">Continuation Patterns</a></h3>
+<ul>
+<li>Flags and Pennants</li>
+<li>Triangles (Ascending, Descending, Symmetrical)</li>
+<li>Rectangles</li>
+</ul>
+<h2 id="candlestick-patterns"><a class="header" href="#candlestick-patterns">Candlestick Patterns</a></h2>
+<h3 id="bullish"><a class="header" href="#bullish">Bullish</a></h3>
+<ul>
+<li>Hammer</li>
+<li>Bullish Engulfing</li>
+<li>Morning Star</li>
+<li>Piercing Pattern</li>
+</ul>
+<h3 id="bearish"><a class="header" href="#bearish">Bearish</a></h3>
+<ul>
+<li>Shooting Star</li>
+<li>Bearish Engulfing</li>
+<li>Evening Star</li>
+<li>Dark Cloud Cover</li>
+</ul>
+<h2 id="pre-trade-checklist"><a class="header" href="#pre-trade-checklist">Pre-Trade Checklist</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> Strategy signal confirmed</li>
+<li><input disabled="" type="checkbox"> Position size calculated</li>
+<li><input disabled="" type="checkbox"> Stop-loss level set</li>
+<li><input disabled="" type="checkbox"> Risk-reward ratio &gt; 2:1</li>
+<li><input disabled="" type="checkbox"> Total portfolio risk within limits</li>
+<li><input disabled="" type="checkbox"> Market conditions suitable</li>
+</ul>
+<hr>
+<p><strong>Tip</strong>: Keep this cheat sheet handy while trading for quick reference.</p>
 
                     </main>
 
