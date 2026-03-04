@@ -7,7 +7,7 @@
 
 ## 📖 Read the Book
 
-**Online**: [https://wjhou.github.io/trading-academy](https://wjhou.github.io/trading-academy) *(coming soon)*
+**Online**: [https://wjhou.github.io/trading-academy](https://wjhou.github.io/trading-academy)
 
 **Locally**:
 ```bash
@@ -216,6 +216,6 @@ See [LICENSE](LICENSE) for details.
 
 ---
 
-**Ready to start?** → [Read the Introduction](book/introduction.md) or [Jump to Module 1](book/module-01/lesson-01-what-is-trading.md)
+**Ready to start?** → [Read the Introduction](https://wjhou.github.io/trading-academy) or [Jump to Module 1](https://wjhou.github.io/trading-academy/module-01/lesson-01-what-is-trading.html)
 
 **Happy learning, and trade responsibly!** 🚀📈
