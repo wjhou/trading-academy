@@ -35,7 +35,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-6775557f.js";
+            window.path_to_searchindex_js = "../searchindex-61525dfe.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-bd3756ef.js"></script>
@@ -180,7 +180,444 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="capstone-project-professional-trading-system"><a class="header" href="#capstone-project-professional-trading-system">Capstone Project: Professional Trading System</a></h1>
+                        <h1 id="module-8-capstone-project-professional-trading-system"><a class="header" href="#module-8-capstone-project-professional-trading-system">Module 8 Capstone Project: Professional Trading System</a></h1>
+<h2 id="project-overview"><a class="header" href="#project-overview">Project Overview</a></h2>
+<p>In this capstone project, you will build a comprehensive professional trading system that integrates all the advanced concepts from Module 8. This system will include:</p>
+<ol>
+<li>Machine learning-based strategy</li>
+<li>Sentiment analysis integration</li>
+<li>Multi-asset portfolio management</li>
+<li>High-frequency execution capabilities</li>
+<li>Options hedging strategies</li>
+<li>Business infrastructure and compliance</li>
+</ol>
+<h2 id="project-requirements"><a class="header" href="#project-requirements">Project Requirements</a></h2>
+<h3 id="system-architecture"><a class="header" href="#system-architecture">System Architecture</a></h3>
+<p>Your trading system should include the following components:</p>
+<ol>
+<li>
+<p><strong>Data Layer</strong></p>
+<ul>
+<li>Real-time and historical market data</li>
+<li>News and sentiment data</li>
+<li>Alternative data sources</li>
+</ul>
+</li>
+<li>
+<p><strong>Strategy Layer</strong></p>
+<ul>
+<li>ML-based prediction models</li>
+<li>Sentiment-driven signals</li>
+<li>Multi-asset allocation</li>
+<li>Options strategies</li>
+</ul>
+</li>
+<li>
+<p><strong>Execution Layer</strong></p>
+<ul>
+<li>Order management system</li>
+<li>Latency-optimized execution</li>
+<li>Smart order routing</li>
+</ul>
+</li>
+<li>
+<p><strong>Risk Management Layer</strong></p>
+<ul>
+<li>Real-time risk monitoring</li>
+<li>Position limits and controls</li>
+<li>Portfolio Greeks tracking</li>
+</ul>
+</li>
+<li>
+<p><strong>Business Layer</strong></p>
+<ul>
+<li>Performance attribution</li>
+<li>Compliance reporting</li>
+<li>Infrastructure monitoring</li>
+</ul>
+</li>
+</ol>
+<h2 id="implementation-guide"><a class="header" href="#implementation-guide">Implementation Guide</a></h2>
+<h3 id="phase-1-data-infrastructure"><a class="header" href="#phase-1-data-infrastructure">Phase 1: Data Infrastructure</a></h3>
+<pre><code class="language-python">import pandas as pd
+import numpy as np
+import yfinance as yf
+from datetime import datetime, timedelta
+from typing import Dict, List
+import asyncio
+
+class DataManager:
+    """Centralized data management for the trading system."""
+
+    def __init__(self):
+        self.price_data = {}
+        self.sentiment_data = {}
+        self.options_data = {}
+
+    def fetch_market_data(self, symbols: List[str],
+                         start_date: str, end_date: str) -&gt; pd.DataFrame:
+        """Fetch historical market data."""
+        data = yf.download(symbols, start=start_date, end=end_date)
+        return data['Adj Close']
+
+    def fetch_options_chain(self, symbol: str) -&gt; Dict:
+        """Fetch options chain data."""
+        ticker = yf.Ticker(symbol)
+        expirations = ticker.options
+        return {
+            'symbol': symbol,
+            'expirations': expirations,
+            'chain': ticker.option_chain(expirations[0]) if expirations else None
+        }
+
+    def update_sentiment_data(self, symbol: str, sentiment_score: float,
+                             timestamp: datetime):
+        """Update sentiment data."""
+        if symbol not in self.sentiment_data:
+            self.sentiment_data[symbol] = []
+
+        self.sentiment_data[symbol].append({
+            'timestamp': timestamp,
+            'score': sentiment_score
+        })
+
+    def get_latest_data(self, symbol: str) -&gt; Dict:
+        """Get latest data for a symbol."""
+        return {
+            'price': self.price_data.get(symbol, {}).get('last', 0),
+            'sentiment': self.sentiment_data.get(symbol, [])[-1] if symbol in self.sentiment_data else None
+        }
+</code></pre>
+<h3 id="phase-2-integrated-strategy-engine"><a class="header" href="#phase-2-integrated-strategy-engine">Phase 2: Integrated Strategy Engine</a></h3>
+<pre><code class="language-python">class IntegratedStrategyEngine:
+    """Combine multiple strategies into unified system."""
+
+    def __init__(self, data_manager: DataManager):
+        self.data_manager = data_manager
+        self.strategies = {}
+        self.signals = {}
+
+    def add_strategy(self, name: str, strategy_obj, weight: float):
+        """Add strategy to the engine."""
+        self.strategies[name] = {
+            'strategy': strategy_obj,
+            'weight': weight,
+            'enabled': True
+        }
+
+    def generate_combined_signal(self, symbol: str) -&gt; Dict:
+        """Generate combined signal from all strategies."""
+        signals = []
+        weights = []
+
+        for name, strategy_info in self.strategies.items():
+            if not strategy_info['enabled']:
+                continue
+
+            strategy = strategy_info['strategy']
+            weight = strategy_info['weight']
+
+            # Get signal from strategy
+            signal = strategy.generate_signal(symbol)
+            signals.append(signal)
+            weights.append(weight)
+
+        # Weighted average of signals
+        if not signals:
+            return {'action': 'hold', 'confidence': 0}
+
+        weighted_signal = sum(s['value'] * w for s, w in zip(signals, weights)) / sum(weights)
+
+        return {
+            'action': 'buy' if weighted_signal &gt; 0.3 else 'sell' if weighted_signal &lt; -0.3 else 'hold',
+            'confidence': abs(weighted_signal),
+            'components': {name: s for name, s in zip(self.strategies.keys(), signals)}
+        }
+
+    def backtest_integrated_system(self, symbols: List[str],
+                                   start_date: str, end_date: str) -&gt; pd.DataFrame:
+        """Backtest the integrated strategy system."""
+        results = []
+
+        for symbol in symbols:
+            # Fetch data
+            prices = self.data_manager.fetch_market_data([symbol], start_date, end_date)
+
+            # Generate signals and simulate trading
+            portfolio_value = 100000
+            position = 0
+
+            for date in prices.index[60:]:  # Start after warmup period
+                signal = self.generate_combined_signal(symbol)
+                current_price = prices.loc[date, symbol]
+
+                # Execute trades based on signal
+                if signal['action'] == 'buy' and position == 0:
+                    position = portfolio_value / current_price
+                    portfolio_value = 0
+                elif signal['action'] == 'sell' and position &gt; 0:
+                    portfolio_value = position * current_price
+                    position = 0
+
+                # Calculate current value
+                current_value = portfolio_value + (position * current_price)
+
+                results.append({
+                    'date': date,
+                    'symbol': symbol,
+                    'value': current_value,
+                    'signal': signal['action'],
+                    'confidence': signal['confidence']
+                })
+
+        return pd.DataFrame(results)
+</code></pre>
+<h3 id="phase-3-risk-and-portfolio-management"><a class="header" href="#phase-3-risk-and-portfolio-management">Phase 3: Risk and Portfolio Management</a></h3>
+<pre><code class="language-python">class IntegratedRiskManager:
+    """Comprehensive risk management system."""
+
+    def __init__(self):
+        self.positions = {}
+        self.risk_limits = {
+            'max_position_size': 0.10,  # 10% of portfolio
+            'max_sector_exposure': 0.30,  # 30% per sector
+            'max_leverage': 2.0,
+            'max_var_95': 0.05  # 5% VaR
+        }
+
+    def check_trade_approval(self, symbol: str, quantity: float,
+                            portfolio_value: float) -&gt; Dict:
+        """Check if trade meets risk requirements."""
+        checks = []
+
+        # Position size check
+        position_value = quantity * self.get_current_price(symbol)
+        position_pct = position_value / portfolio_value
+
+        if position_pct &gt; self.risk_limits['max_position_size']:
+            checks.append({
+                'check': 'position_size',
+                'status': 'fail',
+                'message': f'Position size {position_pct:.1%} exceeds limit'
+            })
+        else:
+            checks.append({
+                'check': 'position_size',
+                'status': 'pass'
+            })
+
+        # Overall approval
+        approved = all(c['status'] == 'pass' for c in checks)
+
+        return {
+            'approved': approved,
+            'checks': checks
+        }
+
+    def get_current_price(self, symbol: str) -&gt; float:
+        """Get current price for symbol."""
+        # Placeholder - would fetch from data manager
+        return 100.0
+
+    def calculate_portfolio_risk(self, positions: Dict) -&gt; Dict:
+        """Calculate comprehensive portfolio risk metrics."""
+        # Simplified risk calculation
+        total_value = sum(p['value'] for p in positions.values())
+
+        return {
+            'total_value': total_value,
+            'num_positions': len(positions),
+            'concentration': max(p['value']/total_value for p in positions.values()) if positions else 0
+        }
+</code></pre>
+<h3 id="phase-4-execution-and-monitoring"><a class="header" href="#phase-4-execution-and-monitoring">Phase 4: Execution and Monitoring</a></h3>
+<pre><code class="language-python">class ProfessionalTradingSystem:
+    """Complete professional trading system."""
+
+    def __init__(self, initial_capital: float):
+        self.capital = initial_capital
+        self.data_manager = DataManager()
+        self.strategy_engine = IntegratedStrategyEngine(self.data_manager)
+        self.risk_manager = IntegratedRiskManager()
+        self.positions = {}
+        self.trade_history = []
+
+    def initialize_strategies(self):
+        """Initialize all trading strategies."""
+        # Add your strategies here
+        # Example: self.strategy_engine.add_strategy("ML", ml_strategy, 0.4)
+        pass
+
+    def run_trading_cycle(self, symbols: List[str]):
+        """Execute one complete trading cycle."""
+        for symbol in symbols:
+            # Generate signal
+            signal = self.strategy_engine.generate_combined_signal(symbol)
+
+            if signal['action'] == 'hold':
+                continue
+
+            # Calculate position size
+            position_size = self.calculate_position_size(symbol, signal['confidence'])
+
+            # Risk check
+            approval = self.risk_manager.check_trade_approval(
+                symbol, position_size, self.capital
+            )
+
+            if not approval['approved']:
+                print(f"Trade rejected for {symbol}: {approval['checks']}")
+                continue
+
+            # Execute trade
+            self.execute_trade(symbol, signal['action'], position_size)
+
+    def calculate_position_size(self, symbol: str, confidence: float) -&gt; float:
+        """Calculate appropriate position size."""
+        # Kelly Criterion-based sizing
+        base_size = self.capital * 0.02  # 2% base risk
+        adjusted_size = base_size * confidence
+        return adjusted_size
+
+    def execute_trade(self, symbol: str, action: str, size: float):
+        """Execute trade and record it."""
+        trade = {
+            'timestamp': datetime.now(),
+            'symbol': symbol,
+            'action': action,
+            'size': size,
+            'price': self.data_manager.get_latest_data(symbol)['price']
+        }
+
+        self.trade_history.append(trade)
+
+        # Update positions
+        if action == 'buy':
+            self.positions[symbol] = self.positions.get(symbol, 0) + size
+        elif action == 'sell':
+            self.positions[symbol] = self.positions.get(symbol, 0) - size
+
+    def generate_performance_report(self) -&gt; Dict:
+        """Generate comprehensive performance report."""
+        # Calculate metrics
+        total_trades = len(self.trade_history)
+        current_value = self.calculate_portfolio_value()
+
+        return {
+            'total_trades': total_trades,
+            'current_value': current_value,
+            'return': (current_value - self.capital) / self.capital,
+            'positions': len(self.positions)
+        }
+
+    def calculate_portfolio_value(self) -&gt; float:
+        """Calculate current portfolio value."""
+        value = self.capital
+        for symbol, quantity in self.positions.items():
+            price = self.data_manager.get_latest_data(symbol)['price']
+            value += quantity * price
+        return value
+</code></pre>
+<h2 id="project-deliverables"><a class="header" href="#project-deliverables">Project Deliverables</a></h2>
+<ol>
+<li>
+<p><strong>Complete System Implementation</strong></p>
+<ul>
+<li>All components integrated and working</li>
+<li>Clean, documented code</li>
+<li>Unit tests for critical functions</li>
+</ul>
+</li>
+<li>
+<p><strong>Backtest Results</strong></p>
+<ul>
+<li>Performance metrics (returns, Sharpe, drawdown)</li>
+<li>Strategy attribution analysis</li>
+<li>Risk metrics over time</li>
+</ul>
+</li>
+<li>
+<p><strong>Documentation</strong></p>
+<ul>
+<li>System architecture diagram</li>
+<li>Strategy descriptions</li>
+<li>Risk management framework</li>
+<li>User guide</li>
+</ul>
+</li>
+<li>
+<p><strong>Presentation</strong></p>
+<ul>
+<li>Executive summary</li>
+<li>Key findings and insights</li>
+<li>Future improvements</li>
+</ul>
+</li>
+</ol>
+<h2 id="evaluation-criteria"><a class="header" href="#evaluation-criteria">Evaluation Criteria</a></h2>
+<p>Your project will be evaluated on:</p>
+<ol>
+<li>
+<p><strong>Functionality</strong> (30%)</p>
+<ul>
+<li>System works as intended</li>
+<li>All components integrated</li>
+<li>Handles edge cases</li>
+</ul>
+</li>
+<li>
+<p><strong>Performance</strong> (25%)</p>
+<ul>
+<li>Backtest results</li>
+<li>Risk-adjusted returns</li>
+<li>Consistency</li>
+</ul>
+</li>
+<li>
+<p><strong>Code Quality</strong> (20%)</p>
+<ul>
+<li>Clean, readable code</li>
+<li>Proper documentation</li>
+<li>Good software practices</li>
+</ul>
+</li>
+<li>
+<p><strong>Risk Management</strong> (15%)</p>
+<ul>
+<li>Comprehensive risk controls</li>
+<li>Proper position sizing</li>
+<li>Drawdown management</li>
+</ul>
+</li>
+<li>
+<p><strong>Innovation</strong> (10%)</p>
+<ul>
+<li>Creative solutions</li>
+<li>Novel approaches</li>
+<li>Advanced techniques</li>
+</ul>
+</li>
+</ol>
+<h2 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h2>
+<ol>
+<li>Set up your development environment</li>
+<li>Implement the data infrastructure</li>
+<li>Build and test individual strategies</li>
+<li>Integrate strategies into unified system</li>
+<li>Add risk management and compliance</li>
+<li>Run comprehensive backtests</li>
+<li>Document and present your work</li>
+</ol>
+<h2 id="tips-for-success"><a class="header" href="#tips-for-success">Tips for Success</a></h2>
+<ul>
+<li>Start simple and add complexity gradually</li>
+<li>Test each component thoroughly before integration</li>
+<li>Use realistic assumptions (transaction costs, slippage)</li>
+<li>Focus on risk management as much as returns</li>
+<li>Document your decisions and rationale</li>
+<li>Be prepared to iterate and improve</li>
+</ul>
+<p>Good luck with your capstone project! This is your opportunity to demonstrate mastery of advanced trading concepts and build a system you can be proud of.</p>
 
                     </main>
 
@@ -217,22 +654,6 @@
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
         <script>
