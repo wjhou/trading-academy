@@ -1,0 +1,811 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>7.6 Performance Tracking - Trading Academy: From Beginner to Professional</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A comprehensive guide to automated trading, from fundamentals to professional-level strategies">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-6775557f.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-bd3756ef.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Trading Academy: From Beginner to Professional</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy/edit/main/src/en/module-07/lesson-06-tracking.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="lesson-76-performance-tracking"><a class="header" href="#lesson-76-performance-tracking">Lesson 7.6: Performance Tracking</a></h1>
+<h2 id="learning-objectives"><a class="header" href="#learning-objectives">Learning Objectives</a></h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Track trading system performance in real-time</li>
+<li>Calculate key performance metrics</li>
+<li>Compare live vs backtest performance</li>
+<li>Identify performance degradation</li>
+<li>Generate performance reports</li>
+</ul>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>Performance tracking is essential for understanding how your trading system performs in live markets. This lesson covers tracking, analyzing, and reporting on system performance.</p>
+<h2 id="real-time-performance-tracker"><a class="header" href="#real-time-performance-tracker">Real-Time Performance Tracker</a></h2>
+<pre><code class="language-python">import pandas as pd
+import numpy as np
+from datetime import datetime, timedelta
+from typing import Dict, List
+from dataclasses import dataclass
+
+@dataclass
+class PerformanceSnapshot:
+    """Snapshot of performance at a point in time."""
+    timestamp: datetime
+    total_value: float
+    cash: float
+    positions_value: float
+    daily_pnl: float
+    total_pnl: float
+    num_trades: int
+    win_rate: float
+    sharpe_ratio: float
+    max_drawdown: float
+
+class PerformanceTracker:
+    """
+    Tracks trading system performance in real-time.
+    """
+
+    def __init__(self, initial_capital: float):
+        """
+        Initialize performance tracker.
+
+        Parameters:
+        -----------
+        initial_capital : float
+            Starting capital
+        """
+        self.initial_capital = initial_capital
+        self.equity_curve = [initial_capital]
+        self.equity_dates = [datetime.now()]
+        self.trades = []
+        self.daily_returns = []
+
+    def update(self, portfolio_value: float, trades: List[Dict] = None):
+        """
+        Update performance metrics.
+
+        Parameters:
+        -----------
+        portfolio_value : float
+            Current portfolio value
+        trades : List[Dict], optional
+            New trades since last update
+        """
+        now = datetime.now()
+
+        # Update equity curve
+        self.equity_curve.append(portfolio_value)
+        self.equity_dates.append(now)
+
+        # Update trades
+        if trades:
+            self.trades.extend(trades)
+
+        # Calculate daily return
+        if len(self.equity_curve) &gt; 1:
+            daily_return = (portfolio_value - self.equity_curve[-2]) / self.equity_curve[-2]
+            self.daily_returns.append(daily_return)
+
+    def get_current_metrics(self) -&gt; Dict:
+        """
+        Get current performance metrics.
+
+        Returns:
+        --------
+        Dict : Performance metrics
+        """
+        if len(self.equity_curve) &lt; 2:
+            return {}
+
+        current_value = self.equity_curve[-1]
+
+        # Total return
+        total_return = (current_value - self.initial_capital) / self.initial_capital
+
+        # Calculate returns
+        returns = pd.Series(self.equity_curve).pct_change().dropna()
+
+        # Sharpe ratio
+        if len(returns) &gt; 0 and returns.std() &gt; 0:
+            sharpe = np.sqrt(252) * (returns.mean() / returns.std())
+        else:
+            sharpe = 0
+
+        # Max drawdown
+        equity_array = np.array(self.equity_curve)
+        running_max = np.maximum.accumulate(equity_array)
+        drawdowns = (running_max - equity_array) / running_max
+        max_dd = np.max(drawdowns)
+
+        # Trade statistics
+        if self.trades:
+            winning_trades = [t for t in self.trades if t.get('pnl', 0) &gt; 0]
+            win_rate = len(winning_trades) / len(self.trades)
+
+            total_pnl = sum(t.get('pnl', 0) for t in self.trades)
+        else:
+            win_rate = 0
+            total_pnl = 0
+
+        return {
+            'current_value': current_value,
+            'total_return': total_return,
+            'total_pnl': total_pnl,
+            'sharpe_ratio': sharpe,
+            'max_drawdown': max_dd,
+            'num_trades': len(self.trades),
+            'win_rate': win_rate,
+            'days_trading': len(self.equity_curve) - 1
+        }
+
+    def get_snapshot(self, cash: float, positions_value: float) -&gt; PerformanceSnapshot:
+        """
+        Get performance snapshot.
+
+        Parameters:
+        -----------
+        cash : float
+            Current cash
+        positions_value : float
+            Current positions value
+
+        Returns:
+        --------
+        PerformanceSnapshot : Current snapshot
+        """
+        metrics = self.get_current_metrics()
+        total_value = cash + positions_value
+
+        # Daily P&amp;L
+        if len(self.equity_curve) &gt; 1:
+            daily_pnl = total_value - self.equity_curve[-2]
+        else:
+            daily_pnl = 0
+
+        return PerformanceSnapshot(
+            timestamp=datetime.now(),
+            total_value=total_value,
+            cash=cash,
+            positions_value=positions_value,
+            daily_pnl=daily_pnl,
+            total_pnl=metrics.get('total_pnl', 0),
+            num_trades=metrics.get('num_trades', 0),
+            win_rate=metrics.get('win_rate', 0),
+            sharpe_ratio=metrics.get('sharpe_ratio', 0),
+            max_drawdown=metrics.get('max_drawdown', 0)
+        )
+</code></pre>
+<h2 id="live-vs-backtest-comparison"><a class="header" href="#live-vs-backtest-comparison">Live vs Backtest Comparison</a></h2>
+<pre><code class="language-python">class PerformanceComparator:
+    """
+    Compares live performance to backtest.
+    """
+
+    def __init__(self, backtest_results: Dict):
+        """
+        Initialize comparator.
+
+        Parameters:
+        -----------
+        backtest_results : Dict
+            Backtest performance metrics
+        """
+        self.backtest_results = backtest_results
+
+    def compare(self, live_metrics: Dict) -&gt; Dict:
+        """
+        Compare live to backtest performance.
+
+        Parameters:
+        -----------
+        live_metrics : Dict
+            Live performance metrics
+
+        Returns:
+        --------
+        Dict : Comparison results
+        """
+        comparison = {}
+
+        metrics_to_compare = [
+            'total_return',
+            'sharpe_ratio',
+            'max_drawdown',
+            'win_rate'
+        ]
+
+        for metric in metrics_to_compare:
+            backtest_value = self.backtest_results.get(metric, 0)
+            live_value = live_metrics.get(metric, 0)
+
+            if backtest_value != 0:
+                difference = live_value - backtest_value
+                pct_difference = (difference / abs(backtest_value)) * 100
+            else:
+                difference = live_value
+                pct_difference = 0
+
+            comparison[metric] = {
+                'backtest': backtest_value,
+                'live': live_value,
+                'difference': difference,
+                'pct_difference': pct_difference
+            }
+
+        return comparison
+
+    def print_comparison(self, comparison: Dict):
+        """Print comparison report."""
+        print("\n" + "=" * 70)
+        print("LIVE VS BACKTEST COMPARISON")
+        print("=" * 70)
+
+        for metric, values in comparison.items():
+            print(f"\n{metric.replace('_', ' ').title()}:")
+            print(f"  Backtest: {values['backtest']:.4f}")
+            print(f"  Live:     {values['live']:.4f}")
+            print(f"  Diff:     {values['difference']:+.4f} ({values['pct_difference']:+.1f}%)")
+
+            # Flag significant differences
+            if abs(values['pct_difference']) &gt; 20:
+                print(f"  ⚠ WARNING: Significant difference detected!")
+
+        print("\n" + "=" * 70)
+</code></pre>
+<h2 id="performance-degradation-detection"><a class="header" href="#performance-degradation-detection">Performance Degradation Detection</a></h2>
+<pre><code class="language-python">class DegradationDetector:
+    """
+    Detects performance degradation.
+    """
+
+    def __init__(self, baseline_sharpe: float,
+                 baseline_win_rate: float):
+        """
+        Initialize detector.
+
+        Parameters:
+        -----------
+        baseline_sharpe : float
+            Expected Sharpe ratio
+        baseline_win_rate : float
+            Expected win rate
+        """
+        self.baseline_sharpe = baseline_sharpe
+        self.baseline_win_rate = baseline_win_rate
+
+    def check_degradation(self, current_metrics: Dict) -&gt; List[str]:
+        """
+        Check for performance degradation.
+
+        Parameters:
+        -----------
+        current_metrics : Dict
+            Current performance metrics
+
+        Returns:
+        --------
+        List[str] : List of warnings
+        """
+        warnings = []
+
+        # Check Sharpe ratio
+        current_sharpe = current_metrics.get('sharpe_ratio', 0)
+        if current_sharpe &lt; self.baseline_sharpe * 0.7:
+            warnings.append(
+                f"Sharpe ratio degraded: {current_sharpe:.2f} "
+                f"(expected: {self.baseline_sharpe:.2f})"
+            )
+
+        # Check win rate
+        current_win_rate = current_metrics.get('win_rate', 0)
+        if current_win_rate &lt; self.baseline_win_rate * 0.8:
+            warnings.append(
+                f"Win rate degraded: {current_win_rate:.2%} "
+                f"(expected: {self.baseline_win_rate:.2%})"
+            )
+
+        # Check drawdown
+        max_dd = current_metrics.get('max_drawdown', 0)
+        if max_dd &gt; 0.20:
+            warnings.append(
+                f"High drawdown: {max_dd:.2%}"
+            )
+
+        return warnings
+</code></pre>
+<h2 id="performance-reports"><a class="header" href="#performance-reports">Performance Reports</a></h2>
+<pre><code class="language-python">class PerformanceReporter:
+    """
+    Generates performance reports.
+    """
+
+    def __init__(self, tracker: PerformanceTracker):
+        """
+        Initialize reporter.
+
+        Parameters:
+        -----------
+        tracker : PerformanceTracker
+            Performance tracker
+        """
+        self.tracker = tracker
+
+    def generate_daily_report(self) -&gt; str:
+        """
+        Generate daily performance report.
+
+        Returns:
+        --------
+        str : Report text
+        """
+        metrics = self.tracker.get_current_metrics()
+
+        report = []
+        report.append("=" * 70)
+        report.append("DAILY PERFORMANCE REPORT")
+        report.append("=" * 70)
+        report.append(f"Date: {datetime.now().strftime('%Y-%m-%d')}")
+        report.append("")
+
+        report.append("PORTFOLIO")
+        report.append("-" * 70)
+        report.append(f"Current Value:    ${metrics['current_value']:,.2f}")
+        report.append(f"Total Return:     {metrics['total_return']:+.2%}")
+        report.append(f"Total P&amp;L:        ${metrics['total_pnl']:+,.2f}")
+        report.append("")
+
+        report.append("PERFORMANCE METRICS")
+        report.append("-" * 70)
+        report.append(f"Sharpe Ratio:     {metrics['sharpe_ratio']:.2f}")
+        report.append(f"Max Drawdown:     {metrics['max_drawdown']:.2%}")
+        report.append(f"Days Trading:     {metrics['days_trading']}")
+        report.append("")
+
+        report.append("TRADING ACTIVITY")
+        report.append("-" * 70)
+        report.append(f"Total Trades:     {metrics['num_trades']}")
+        report.append(f"Win Rate:         {metrics['win_rate']:.2%}")
+        report.append("")
+
+        report.append("=" * 70)
+
+        return "\n".join(report)
+
+    def generate_monthly_report(self) -&gt; str:
+        """Generate monthly performance report."""
+        # Calculate monthly statistics
+        equity_series = pd.Series(
+            self.tracker.equity_curve,
+            index=self.tracker.equity_dates
+        )
+
+        monthly_returns = equity_series.resample('M').last().pct_change()
+
+        report = []
+        report.append("=" * 70)
+        report.append("MONTHLY PERFORMANCE REPORT")
+        report.append("=" * 70)
+        report.append("")
+
+        report.append("MONTHLY RETURNS")
+        report.append("-" * 70)
+        for date, ret in monthly_returns.items():
+            if not pd.isna(ret):
+                report.append(f"{date.strftime('%Y-%m')}: {ret:+.2%}")
+
+        report.append("")
+        report.append("=" * 70)
+
+        return "\n".join(report)
+
+    def save_report(self, report: str, filename: str):
+        """
+        Save report to file.
+
+        Parameters:
+        -----------
+        report : str
+            Report text
+        filename : str
+            Output filename
+        """
+        with open(filename, 'w') as f:
+            f.write(report)
+
+        print(f"Report saved to {filename}")
+</code></pre>
+<h2 id="trade-analysis"><a class="header" href="#trade-analysis">Trade Analysis</a></h2>
+<pre><code class="language-python">class TradeAnalyzer:
+    """
+    Analyzes individual trades.
+    """
+
+    def analyze_trades(self, trades: List[Dict]) -&gt; Dict:
+        """
+        Analyze trade performance.
+
+        Parameters:
+        -----------
+        trades : List[Dict]
+            List of trades
+
+        Returns:
+        --------
+        Dict : Trade analysis
+        """
+        if not trades:
+            return {}
+
+        # Separate wins and losses
+        wins = [t for t in trades if t.get('pnl', 0) &gt; 0]
+        losses = [t for t in trades if t.get('pnl', 0) &lt; 0]
+
+        # Calculate statistics
+        total_pnl = sum(t.get('pnl', 0) for t in trades)
+        avg_pnl = total_pnl / len(trades)
+
+        if wins:
+            avg_win = sum(t['pnl'] for t in wins) / len(wins)
+            max_win = max(t['pnl'] for t in wins)
+        else:
+            avg_win = 0
+            max_win = 0
+
+        if losses:
+            avg_loss = sum(t['pnl'] for t in losses) / len(losses)
+            max_loss = min(t['pnl'] for t in losses)
+        else:
+            avg_loss = 0
+            max_loss = 0
+
+        # Profit factor
+        gross_profit = sum(t['pnl'] for t in wins)
+        gross_loss = abs(sum(t['pnl'] for t in losses))
+
+        if gross_loss &gt; 0:
+            profit_factor = gross_profit / gross_loss
+        else:
+            profit_factor = float('inf') if gross_profit &gt; 0 else 0
+
+        return {
+            'total_trades': len(trades),
+            'winning_trades': len(wins),
+            'losing_trades': len(losses),
+            'win_rate': len(wins) / len(trades),
+            'total_pnl': total_pnl,
+            'avg_pnl': avg_pnl,
+            'avg_win': avg_win,
+            'avg_loss': avg_loss,
+            'max_win': max_win,
+            'max_loss': max_loss,
+            'profit_factor': profit_factor
+        }
+
+    def print_analysis(self, analysis: Dict):
+        """Print trade analysis."""
+        print("\n" + "=" * 70)
+        print("TRADE ANALYSIS")
+        print("=" * 70)
+
+        print(f"\nTotal Trades:      {analysis['total_trades']}")
+        print(f"Winning Trades:    {analysis['winning_trades']}")
+        print(f"Losing Trades:     {analysis['losing_trades']}")
+        print(f"Win Rate:          {analysis['win_rate']:.2%}")
+
+        print(f"\nTotal P&amp;L:         ${analysis['total_pnl']:,.2f}")
+        print(f"Average P&amp;L:       ${analysis['avg_pnl']:,.2f}")
+        print(f"Average Win:       ${analysis['avg_win']:,.2f}")
+        print(f"Average Loss:      ${analysis['avg_loss']:,.2f}")
+        print(f"Max Win:           ${analysis['max_win']:,.2f}")
+        print(f"Max Loss:          ${analysis['max_loss']:,.2f}")
+        print(f"Profit Factor:     {analysis['profit_factor']:.2f}")
+
+        print("\n" + "=" * 70)
+</code></pre>
+<h2 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h2>
+<ol>
+<li><strong>Track Everything</strong>: All trades, orders, metrics</li>
+<li><strong>Real-Time Updates</strong>: Update metrics continuously</li>
+<li><strong>Compare to Baseline</strong>: Monitor vs backtest/expectations</li>
+<li><strong>Detect Degradation</strong>: Alert on performance issues</li>
+<li><strong>Generate Reports</strong>: Daily, weekly, monthly</li>
+<li><strong>Analyze Trades</strong>: Understand what works</li>
+<li><strong>Store History</strong>: Keep long-term records</li>
+</ol>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<h3 id="exercise-1-performance-tracker"><a class="header" href="#exercise-1-performance-tracker">Exercise 1: Performance Tracker</a></h3>
+<p>Implement a performance tracker that:</p>
+<ul>
+<li>Updates in real-time</li>
+<li>Calculates key metrics</li>
+<li>Stores equity curve</li>
+<li>Tracks all trades</li>
+</ul>
+<h3 id="exercise-2-comparison-tool"><a class="header" href="#exercise-2-comparison-tool">Exercise 2: Comparison Tool</a></h3>
+<p>Create a tool that compares:</p>
+<ul>
+<li>Live vs backtest performance</li>
+<li>Current vs historical performance</li>
+<li>Multiple strategies</li>
+</ul>
+<h3 id="exercise-3-degradation-detector"><a class="header" href="#exercise-3-degradation-detector">Exercise 3: Degradation Detector</a></h3>
+<p>Build a detector that identifies:</p>
+<ul>
+<li>Declining Sharpe ratio</li>
+<li>Increasing drawdown</li>
+<li>Falling win rate</li>
+<li>Unusual patterns</li>
+</ul>
+<h3 id="exercise-4-reporting-system"><a class="header" href="#exercise-4-reporting-system">Exercise 4: Reporting System</a></h3>
+<p>Create an automated reporting system that:</p>
+<ul>
+<li>Generates daily reports</li>
+<li>Emails weekly summaries</li>
+<li>Creates monthly analysis</li>
+<li>Produces visualizations</li>
+</ul>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>Effective performance tracking requires:</p>
+<ul>
+<li><strong>Real-Time Metrics</strong>: Continuous calculation</li>
+<li><strong>Comparison</strong>: Live vs backtest</li>
+<li><strong>Degradation Detection</strong>: Early warning system</li>
+<li><strong>Comprehensive Reports</strong>: Regular analysis</li>
+<li><strong>Trade Analysis</strong>: Understand performance drivers</li>
+</ul>
+<p>Good tracking:</p>
+<ul>
+<li>Identifies issues early</li>
+<li>Validates strategy effectiveness</li>
+<li>Guides improvements</li>
+<li>Documents performance</li>
+</ul>
+<h2 id="next-steps"><a class="header" href="#next-steps">Next Steps</a></h2>
+<p>In the final project for this module, you’ll integrate all components into a complete automated trading system ready for deployment.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../module-07/lesson-05-errors.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../module-07/project-deploy.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../module-07/lesson-05-errors.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../module-07/project-deploy.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

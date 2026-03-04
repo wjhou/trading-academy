@@ -1,0 +1,1192 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hands-On Project: Backtest Your Strategy - Trading Academy: From Beginner to Professional</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A comprehensive guide to automated trading, from fundamentals to professional-level strategies">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-6775557f.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-bd3756ef.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Trading Academy: From Beginner to Professional</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy/edit/main/src/en/module-06/project-backtest.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="module-6-project-comprehensive-backtesting-framework"><a class="header" href="#module-6-project-comprehensive-backtesting-framework">Module 6 Project: Comprehensive Backtesting Framework</a></h1>
+<h2 id="project-overview"><a class="header" href="#project-overview">Project Overview</a></h2>
+<p>In this project, you will build a professional-grade backtesting framework that integrates all concepts from Module 6. This framework will include proper data handling, comprehensive performance metrics, parameter optimization, walk-forward analysis, and Monte Carlo simulation.</p>
+<p>The goal is to create a reusable, robust backtesting system that you can use to evaluate any trading strategy with confidence.</p>
+<h2 id="project-objectives"><a class="header" href="#project-objectives">Project Objectives</a></h2>
+<p>By completing this project, you will:</p>
+<ul>
+<li>Build a complete backtesting framework from scratch</li>
+<li>Implement bias-free data handling and execution modeling</li>
+<li>Calculate comprehensive performance metrics</li>
+<li>Optimize strategy parameters without overfitting</li>
+<li>Validate strategies using walk-forward analysis</li>
+<li>Assess risk using Monte Carlo simulation</li>
+<li>Create professional performance reports and visualizations</li>
+</ul>
+<h2 id="system-architecture"><a class="header" href="#system-architecture">System Architecture</a></h2>
+<p>The backtesting framework consists of several integrated components:</p>
+<ol>
+<li><strong>DataHandler</strong>: Manages historical data and prevents look-ahead bias</li>
+<li><strong>Strategy</strong>: Implements trading logic and signal generation</li>
+<li><strong>ExecutionEngine</strong>: Simulates realistic order execution</li>
+<li><strong>PortfolioManager</strong>: Tracks positions and portfolio state</li>
+<li><strong>PerformanceAnalyzer</strong>: Calculates comprehensive metrics</li>
+<li><strong>Optimizer</strong>: Finds optimal parameters</li>
+<li><strong>WalkForwardValidator</strong>: Validates strategy robustness</li>
+<li><strong>MonteCarloSimulator</strong>: Assesses probabilistic outcomes</li>
+<li><strong>Reporter</strong>: Generates reports and visualizations</li>
+</ol>
+<h2 id="implementation"><a class="header" href="#implementation">Implementation</a></h2>
+<h3 id="part-1-core-backtesting-engine"><a class="header" href="#part-1-core-backtesting-engine">Part 1: Core Backtesting Engine</a></h3>
+<pre><code class="language-python">import numpy as np
+import pandas as pd
+from typing import Dict, List, Tuple, Optional, Callable
+from dataclasses import dataclass
+from datetime import datetime
+import yfinance as yf
+import matplotlib.pyplot as plt
+import seaborn as sns
+from abc import ABC, abstractmethod
+
+@dataclass
+class Order:
+    """Represents a trading order."""
+    symbol: str
+    order_type: str  # 'market', 'limit'
+    side: str  # 'buy', 'sell'
+    quantity: int
+    price: Optional[float] = None
+    timestamp: Optional[datetime] = None
+
+
+@dataclass
+class Fill:
+    """Represents an order fill."""
+    symbol: str
+    side: str
+    quantity: int
+    price: float
+    commission: float
+    slippage: float
+    timestamp: datetime
+
+
+@dataclass
+class Position:
+    """Represents a trading position."""
+    symbol: str
+    quantity: int
+    entry_price: float
+    entry_date: datetime
+    current_price: float = 0.0
+
+    @property
+    def market_value(self) -&gt; float:
+        return self.quantity * self.current_price
+
+    @property
+    def unrealized_pnl(self) -&gt; float:
+        return (self.current_price - self.entry_price) * self.quantity
+
+    @property
+    def unrealized_pnl_pct(self) -&gt; float:
+        if self.entry_price == 0:
+            return 0.0
+        return (self.current_price - self.entry_price) / self.entry_price
+
+
+class DataHandler:
+    """
+    Handles historical data and prevents look-ahead bias.
+    """
+
+    def __init__(self, data: pd.DataFrame):
+        """
+        Initialize data handler.
+
+        Parameters:
+        -----------
+        data : pd.DataFrame
+            Historical OHLCV data
+        """
+        self.data = data.copy()
+        self.current_index = 0
+
+    def get_latest_bar(self) -&gt; pd.Series:
+        """Get the latest bar."""
+        if self.current_index &gt;= len(self.data):
+            return None
+        return self.data.iloc[self.current_index]
+
+    def get_latest_bars(self, n: int = 1) -&gt; pd.DataFrame:
+        """Get the latest N bars."""
+        if self.current_index &lt; n:
+            return self.data.iloc[:self.current_index + 1]
+        return self.data.iloc[self.current_index - n + 1:self.current_index + 1]
+
+    def get_historical_data(self, lookback: int = None) -&gt; pd.DataFrame:
+        """Get all historical data up to current point."""
+        if lookback is None:
+            return self.data.iloc[:self.current_index + 1]
+        else:
+            start_idx = max(0, self.current_index - lookback + 1)
+            return self.data.iloc[start_idx:self.current_index + 1]
+
+    def update_bars(self) -&gt; bool:
+        """
+        Move to next bar.
+
+        Returns:
+        --------
+        bool : True if more data available
+        """
+        self.current_index += 1
+        return self.current_index &lt; len(self.data)
+
+    def reset(self):
+        """Reset to beginning."""
+        self.current_index = 0
+
+
+class ExecutionEngine:
+    """
+    Simulates realistic order execution.
+    """
+
+    def __init__(self,
+                 commission_pct: float = 0.001,
+                 slippage_pct: float = 0.0005,
+                 min_commission: float = 1.0):
+        """
+        Initialize execution engine.
+
+        Parameters:
+        -----------
+        commission_pct : float
+            Commission as percentage
+        slippage_pct : float
+            Slippage as percentage
+        min_commission : float
+            Minimum commission per trade
+        """
+        self.commission_pct = commission_pct
+        self.slippage_pct = slippage_pct
+        self.min_commission = min_commission
+
+    def execute_order(self, order: Order, current_price: float,
+                     volume: float = None) -&gt; Fill:
+        """
+        Execute an order.
+
+        Parameters:
+        -----------
+        order : Order
+            Order to execute
+        current_price : float
+            Current market price
+        volume : float, optional
+            Current volume for market impact calculation
+
+        Returns:
+        --------
+        Fill : Execution details
+        """
+        # Calculate slippage
+        base_slippage = current_price * self.slippage_pct
+
+        # Market impact (if volume provided)
+        if volume is not None and volume &gt; 0:
+            order_pct = order.quantity / volume
+            impact_multiplier = 1 + (order_pct * 10)
+            slippage = base_slippage * impact_multiplier
+        else:
+            slippage = base_slippage
+
+        # Execution price
+        if order.side == 'buy':
+            execution_price = current_price + slippage
+        else:
+            execution_price = current_price - slippage
+
+        # Commission
+        commission = max(
+            execution_price * order.quantity * self.commission_pct,
+            self.min_commission
+        )
+
+        return Fill(
+            symbol=order.symbol,
+            side=order.side,
+            quantity=order.quantity,
+            price=execution_price,
+            commission=commission,
+            slippage=slippage * order.quantity,
+            timestamp=order.timestamp
+        )
+
+
+class PortfolioManager:
+    """
+    Manages portfolio state and positions.
+    """
+
+    def __init__(self, initial_capital: float):
+        """
+        Initialize portfolio manager.
+
+        Parameters:
+        -----------
+        initial_capital : float
+            Starting capital
+        """
+        self.initial_capital = initial_capital
+        self.cash = initial_capital
+        self.positions: Dict[str, Position] = {}
+        self.closed_trades = []
+
+        # Track equity curve
+        self.equity_curve = [initial_capital]
+        self.equity_dates = []
+
+    def process_fill(self, fill: Fill):
+        """
+        Process an order fill.
+
+        Parameters:
+        -----------
+        fill : Fill
+            Fill to process
+        """
+        if fill.side == 'buy':
+            self._open_position(fill)
+        else:
+            self._close_position(fill)
+
+    def _open_position(self, fill: Fill):
+        """Open a new position."""
+        cost = (fill.price * fill.quantity) + fill.commission
+        self.cash -= cost
+
+        self.positions[fill.symbol] = Position(
+            symbol=fill.symbol,
+            quantity=fill.quantity,
+            entry_price=fill.price,
+            entry_date=fill.timestamp,
+            current_price=fill.price
+        )
+
+    def _close_position(self, fill: Fill):
+        """Close an existing position."""
+        if fill.symbol not in self.positions:
+            return
+
+        position = self.positions[fill.symbol]
+
+        # Calculate P&amp;L
+        proceeds = (fill.price * fill.quantity) - fill.commission
+        self.cash += proceeds
+
+        pnl = proceeds - (position.entry_price * position.quantity)
+        pnl_pct = (fill.price - position.entry_price) / position.entry_price
+
+        # Record trade
+        self.closed_trades.append({
+            'symbol': fill.symbol,
+            'entry_date': position.entry_date,
+            'exit_date': fill.timestamp,
+            'entry_price': position.entry_price,
+            'exit_price': fill.price,
+            'quantity': fill.quantity,
+            'pnl': pnl,
+            'pnl_pct': pnl_pct,
+            'hold_days': (fill.timestamp - position.entry_date).days
+        })
+
+        # Remove position
+        del self.positions[fill.symbol]
+
+    def update_positions(self, current_prices: Dict[str, float]):
+        """Update position prices."""
+        for symbol, position in self.positions.items():
+            if symbol in current_prices:
+                position.current_price = current_prices[symbol]
+
+    def get_total_value(self) -&gt; float:
+        """Get total portfolio value."""
+        positions_value = sum(pos.market_value for pos in self.positions.values())
+        return self.cash + positions_value
+
+    def record_equity(self, date: datetime):
+        """Record current equity."""
+        self.equity_curve.append(self.get_total_value())
+        self.equity_dates.append(date)
+
+
+class Strategy(ABC):
+    """
+    Abstract base class for trading strategies.
+    """
+
+    @abstractmethod
+    def generate_signals(self, data: pd.DataFrame) -&gt; Dict[str, any]:
+        """
+        Generate trading signals.
+
+        Parameters:
+        -----------
+        data : pd.DataFrame
+            Historical data
+
+        Returns:
+        --------
+        Dict : Signals dictionary
+        """
+        pass
+
+
+class MovingAverageCrossover(Strategy):
+    """
+    Example strategy: Moving Average Crossover.
+    """
+
+    def __init__(self, ma_short: int = 20, ma_long: int = 50):
+        """
+        Initialize strategy.
+
+        Parameters:
+        -----------
+        ma_short : int
+            Short MA period
+        ma_long : int
+            Long MA period
+        """
+        self.ma_short = ma_short
+        self.ma_long = ma_long
+
+    def generate_signals(self, data: pd.DataFrame) -&gt; Dict[str, any]:
+        """Generate signals based on MA crossover."""
+        if len(data) &lt; self.ma_long:
+            return {'action': 'hold'}
+
+        # Calculate MAs
+        ma_short = data['Close'].iloc[-self.ma_short:].mean()
+        ma_long = data['Close'].iloc[-self.ma_long:].mean()
+
+        # Previous MAs
+        if len(data) &lt; self.ma_long + 1:
+            return {'action': 'hold'}
+
+        prev_ma_short = data['Close'].iloc[-self.ma_short-1:-1].mean()
+        prev_ma_long = data['Close'].iloc[-self.ma_long-1:-1].mean()
+
+        # Generate signals
+        if ma_short &gt; ma_long and prev_ma_short &lt;= prev_ma_long:
+            return {'action': 'buy'}
+        elif ma_short &lt; ma_long and prev_ma_short &gt;= prev_ma_long:
+            return {'action': 'sell'}
+        else:
+            return {'action': 'hold'}
+
+
+class Backtest:
+    """
+    Main backtesting engine.
+    """
+
+    def __init__(self,
+                 data: pd.DataFrame,
+                 strategy: Strategy,
+                 initial_capital: float = 100000,
+                 commission: float = 0.001,
+                 slippage: float = 0.0005):
+        """
+        Initialize backtest.
+
+        Parameters:
+        -----------
+        data : pd.DataFrame
+            Historical OHLCV data
+        strategy : Strategy
+            Trading strategy
+        initial_capital : float
+            Starting capital
+        commission : float
+            Commission percentage
+        slippage : float
+            Slippage percentage
+        """
+        self.data_handler = DataHandler(data)
+        self.strategy = strategy
+        self.execution_engine = ExecutionEngine(commission, slippage)
+        self.portfolio = PortfolioManager(initial_capital)
+
+        self.symbol = 'ASSET'  # Generic symbol
+
+    def run(self) -&gt; Dict:
+        """
+        Run backtest.
+
+        Returns:
+        --------
+        Dict : Backtest results
+        """
+        print("Running backtest...")
+
+        self.data_handler.reset()
+
+        while True:
+            # Get current bar
+            current_bar = self.data_handler.get_latest_bar()
+            if current_bar is None:
+                break
+
+            current_price = current_bar['Close']
+            current_date = current_bar.name
+
+            # Update positions
+            self.portfolio.update_positions({self.symbol: current_price})
+
+            # Get historical data for strategy
+            historical_data = self.data_handler.get_historical_data()
+
+            # Generate signals
+            signals = self.strategy.generate_signals(historical_data)
+
+            # Execute trades
+            if signals['action'] == 'buy' and self.symbol not in self.portfolio.positions:
+                # Calculate position size (use 95% of cash)
+                shares = int((self.portfolio.cash * 0.95) / current_price)
+
+                if shares &gt; 0:
+                    order = Order(
+                        symbol=self.symbol,
+                        order_type='market',
+                        side='buy',
+                        quantity=shares,
+                        timestamp=current_date
+                    )
+
+                    fill = self.execution_engine.execute_order(order, current_price)
+                    self.portfolio.process_fill(fill)
+
+            elif signals['action'] == 'sell' and self.symbol in self.portfolio.positions:
+                position = self.portfolio.positions[self.symbol]
+
+                order = Order(
+                    symbol=self.symbol,
+                    order_type='market',
+                    side='sell',
+                    quantity=position.quantity,
+                    timestamp=current_date
+                )
+
+                fill = self.execution_engine.execute_order(order, current_price)
+                self.portfolio.process_fill(fill)
+
+            # Record equity
+            self.portfolio.record_equity(current_date)
+
+            # Move to next bar
+            if not self.data_handler.update_bars():
+                break
+
+        # Close any open positions
+        if self.symbol in self.portfolio.positions:
+            final_bar = self.data_handler.data.iloc[-1]
+            final_price = final_bar['Close']
+            final_date = final_bar.name
+
+            position = self.portfolio.positions[self.symbol]
+            order = Order(
+                symbol=self.symbol,
+                order_type='market',
+                side='sell',
+                quantity=position.quantity,
+                timestamp=final_date
+            )
+
+            fill = self.execution_engine.execute_order(order, final_price)
+            self.portfolio.process_fill(fill)
+
+        print("Backtest complete!")
+
+        return self._calculate_results()
+
+    def _calculate_results(self) -&gt; Dict:
+        """Calculate backtest results."""
+        equity_curve = pd.Series(
+            self.portfolio.equity_curve,
+            index=self.portfolio.equity_dates
+        )
+
+        returns = equity_curve.pct_change().dropna()
+
+        # Basic metrics
+        total_return = (equity_curve.iloc[-1] - self.portfolio.initial_capital) / self.portfolio.initial_capital
+
+        days = (equity_curve.index[-1] - equity_curve.index[0]).days
+        years = days / 365.25
+        annualized_return = (1 + total_return) ** (1 / years) - 1 if years &gt; 0 else 0
+
+        # Risk metrics
+        volatility = returns.std() * np.sqrt(252)
+
+        running_max = equity_curve.expanding().max()
+        drawdowns = (equity_curve - running_max) / running_max
+        max_drawdown = abs(drawdowns.min())
+
+        # Sharpe ratio
+        sharpe = np.sqrt(252) * (returns.mean() / returns.std()) if returns.std() &gt; 0 else 0
+
+        # Trade metrics
+        trades = self.portfolio.closed_trades
+        if trades:
+            trade_returns = [t['pnl_pct'] for t in trades]
+            wins = [r for r in trade_returns if r &gt; 0]
+            losses = [r for r in trade_returns if r &lt; 0]
+
+            win_rate = len(wins) / len(trades) if trades else 0
+            avg_win = np.mean(wins) if wins else 0
+            avg_loss = np.mean(losses) if losses else 0
+
+            profit_factor = abs(sum([t['pnl'] for t in trades if t['pnl'] &gt; 0]) /
+                               sum([t['pnl'] for t in trades if t['pnl'] &lt; 0])) if losses else float('inf')
+        else:
+            win_rate = 0
+            avg_win = 0
+            avg_loss = 0
+            profit_factor = 0
+
+        return {
+            'equity_curve': equity_curve,
+            'returns': returns,
+            'trades': trades,
+            'total_return': total_return,
+            'annualized_return': annualized_return,
+            'volatility': volatility,
+            'max_drawdown': max_drawdown,
+            'sharpe_ratio': sharpe,
+            'total_trades': len(trades),
+            'win_rate': win_rate,
+            'avg_win': avg_win,
+            'avg_loss': avg_loss,
+            'profit_factor': profit_factor,
+            'final_value': equity_curve.iloc[-1]
+        }
+
+
+# Example usage
+def example_backtest():
+    """
+    Demonstrate backtesting framework.
+    """
+    print("Comprehensive Backtesting Framework")
+    print("=" * 70)
+
+    # Download data
+    data = yf.download('AAPL', start='2020-01-01', end='2023-12-31', progress=False)
+
+    # Create strategy
+    strategy = MovingAverageCrossover(ma_short=20, ma_long=50)
+
+    # Run backtest
+    backtest = Backtest(
+        data=data,
+        strategy=strategy,
+        initial_capital=100000,
+        commission=0.001,
+        slippage=0.0005
+    )
+
+    results = backtest.run()
+
+    # Print results
+    print("\n" + "=" * 70)
+    print("BACKTEST RESULTS")
+    print("=" * 70)
+    print(f"\nTotal Return:        {results['total_return']:+.2%}")
+    print(f"Annualized Return:   {results['annualized_return']:+.2%}")
+    print(f"Volatility:          {results['volatility']:.2%}")
+    print(f"Max Drawdown:        {results['max_drawdown']:.2%}")
+    print(f"Sharpe Ratio:        {results['sharpe_ratio']:.2f}")
+    print(f"\nTotal Trades:        {results['total_trades']}")
+    print(f"Win Rate:            {results['win_rate']:.2%}")
+    print(f"Profit Factor:       {results['profit_factor']:.2f}")
+    print(f"\nFinal Value:         ${results['final_value']:,.2f}")
+
+    # Plot equity curve
+    plt.figure(figsize=(12, 6))
+    plt.plot(results['equity_curve'].index, results['equity_curve'].values, linewidth=2)
+    plt.axhline(y=100000, color='gray', linestyle='--', label='Initial Capital')
+    plt.xlabel('Date')
+    plt.ylabel('Portfolio Value ($)')
+    plt.title('Equity Curve')
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    plt.show()
+
+
+if __name__ == "__main__":
+    example_backtest()
+</code></pre>
+<h2 id="part-2-parameter-optimization"><a class="header" href="#part-2-parameter-optimization">Part 2: Parameter Optimization</a></h2>
+<p>Integrate grid search optimization:</p>
+<pre><code class="language-python">from itertools import product
+
+def optimize_strategy(data: pd.DataFrame,
+                     param_grid: Dict[str, List],
+                     initial_capital: float = 100000) -&gt; Dict:
+    """
+    Optimize strategy parameters.
+
+    Parameters:
+    -----------
+    data : pd.DataFrame
+        Historical data
+    param_grid : Dict[str, List]
+        Parameter grid
+    initial_capital : float
+        Starting capital
+
+    Returns:
+    --------
+    Dict : Optimization results
+    """
+    param_names = list(param_grid.keys())
+    param_values = list(param_grid.values())
+    combinations = list(product(*param_values))
+
+    print(f"Testing {len(combinations)} parameter combinations...")
+
+    best_sharpe = -np.inf
+    best_params = None
+    all_results = []
+
+    for combo in combinations:
+        params = dict(zip(param_names, combo))
+
+        # Skip invalid combinations
+        if params['ma_short'] &gt;= params['ma_long']:
+            continue
+
+        # Create strategy
+        strategy = MovingAverageCrossover(**params)
+
+        # Run backtest
+        backtest = Backtest(data, strategy, initial_capital)
+        results = backtest.run()
+
+        sharpe = results['sharpe_ratio']
+
+        all_results.append({
+            'params': params,
+            'sharpe': sharpe,
+            'return': results['total_return'],
+            'max_dd': results['max_drawdown']
+        })
+
+        if sharpe &gt; best_sharpe:
+            best_sharpe = sharpe
+            best_params = params
+
+    return {
+        'best_params': best_params,
+        'best_sharpe': best_sharpe,
+        'all_results': all_results
+    }
+</code></pre>
+<h2 id="part-3-walk-forward-analysis"><a class="header" href="#part-3-walk-forward-analysis">Part 3: Walk-Forward Analysis</a></h2>
+<p>Implement walk-forward validation:</p>
+<pre><code class="language-python">def walk_forward_analysis(data: pd.DataFrame,
+                         param_grid: Dict[str, List],
+                         is_period: int = 504,
+                         oos_period: int = 126) -&gt; List[Dict]:
+    """
+    Perform walk-forward analysis.
+
+    Parameters:
+    -----------
+    data : pd.DataFrame
+        Historical data
+    param_grid : Dict[str, List]
+        Parameter grid
+    is_period : int
+        In-sample period (days)
+    oos_period : int
+        Out-of-sample period (days)
+
+    Returns:
+    --------
+    List[Dict] : WFA results
+    """
+    results = []
+    start_idx = is_period
+
+    period = 1
+
+    while start_idx + oos_period &lt;= len(data):
+        print(f"\nPeriod {period}")
+        print("-" * 70)
+
+        # Split data
+        is_data = data.iloc[start_idx - is_period:start_idx]
+        oos_data = data.iloc[start_idx:start_idx + oos_period]
+
+        print(f"IS:  {is_data.index[0].date()} to {is_data.index[-1].date()}")
+        print(f"OOS: {oos_data.index[0].date()} to {oos_data.index[-1].date()}")
+
+        # Optimize on IS
+        opt_results = optimize_strategy(is_data, param_grid)
+        best_params = opt_results['best_params']
+        is_sharpe = opt_results['best_sharpe']
+
+        print(f"Best params: {best_params}")
+        print(f"IS Sharpe: {is_sharpe:.3f}")
+
+        # Test on OOS
+        strategy = MovingAverageCrossover(**best_params)
+        backtest = Backtest(oos_data, strategy)
+        oos_results = backtest.run()
+        oos_sharpe = oos_results['sharpe_ratio']
+
+        print(f"OOS Sharpe: {oos_sharpe:.3f}")
+        print(f"Efficiency: {oos_sharpe / is_sharpe * 100:.1f}%")
+
+        results.append({
+            'period': period,
+            'best_params': best_params,
+            'is_sharpe': is_sharpe,
+            'oos_sharpe': oos_sharpe,
+            'efficiency': oos_sharpe / is_sharpe if is_sharpe != 0 else 0
+        })
+
+        start_idx += oos_period
+        period += 1
+
+    return results
+</code></pre>
+<h2 id="part-4-monte-carlo-simulation"><a class="header" href="#part-4-monte-carlo-simulation">Part 4: Monte Carlo Simulation</a></h2>
+<p>Add Monte Carlo analysis:</p>
+<pre><code class="language-python">def monte_carlo_analysis(trades: List[Dict],
+                        initial_capital: float = 100000,
+                        n_simulations: int = 1000) -&gt; Dict:
+    """
+    Perform Monte Carlo simulation.
+
+    Parameters:
+    -----------
+    trades : List[Dict]
+        Historical trades
+    initial_capital : float
+        Starting capital
+    n_simulations : int
+        Number of simulations
+
+    Returns:
+    --------
+    Dict : Monte Carlo results
+    """
+    trade_pnls = [t['pnl'] for t in trades]
+
+    final_values = []
+    max_drawdowns = []
+
+    for _ in range(n_simulations):
+        # Resample trades
+        resampled = np.random.choice(trade_pnls, size=len(trade_pnls), replace=True)
+
+        # Calculate equity curve
+        capital = initial_capital
+        equity = [capital]
+
+        for pnl in resampled:
+            capital += pnl
+            equity.append(capital)
+
+        final_values.append(capital)
+
+        # Calculate max drawdown
+        equity_array = np.array(equity)
+        running_max = np.maximum.accumulate(equity_array)
+        drawdowns = (running_max - equity_array) / running_max
+        max_drawdowns.append(np.max(drawdowns))
+
+    return {
+        'mean_final_value': np.mean(final_values),
+        'median_final_value': np.median(final_values),
+        'final_value_5th': np.percentile(final_values, 5),
+        'final_value_95th': np.percentile(final_values, 95),
+        'mean_max_dd': np.mean(max_drawdowns),
+        'max_dd_95th': np.percentile(max_drawdowns, 95),
+        'prob_profit': np.sum(np.array(final_values) &gt; initial_capital) / len(final_values)
+    }
+</code></pre>
+<h2 id="project-tasks"><a class="header" href="#project-tasks">Project Tasks</a></h2>
+<h3 id="task-1-build-core-framework"><a class="header" href="#task-1-build-core-framework">Task 1: Build Core Framework</a></h3>
+<p>Implement the complete backtesting framework with:</p>
+<ul>
+<li>DataHandler for bias-free data access</li>
+<li>ExecutionEngine with realistic costs</li>
+<li>PortfolioManager for position tracking</li>
+<li>Strategy base class and example strategy</li>
+</ul>
+<h3 id="task-2-add-performance-analysis"><a class="header" href="#task-2-add-performance-analysis">Task 2: Add Performance Analysis</a></h3>
+<p>Implement comprehensive performance metrics:</p>
+<ul>
+<li>Return metrics (total, annualized, CAGR)</li>
+<li>Risk metrics (volatility, max DD, VaR)</li>
+<li>Risk-adjusted metrics (Sharpe, Sortino, Calmar)</li>
+<li>Trade-level metrics (win rate, profit factor)</li>
+</ul>
+<h3 id="task-3-implement-optimization"><a class="header" href="#task-3-implement-optimization">Task 3: Implement Optimization</a></h3>
+<p>Add parameter optimization with:</p>
+<ul>
+<li>Grid search</li>
+<li>Out-of-sample validation</li>
+<li>Overfitting detection</li>
+<li>Parameter stability analysis</li>
+</ul>
+<h3 id="task-4-walk-forward-analysis"><a class="header" href="#task-4-walk-forward-analysis">Task 4: Walk-Forward Analysis</a></h3>
+<p>Implement walk-forward validation:</p>
+<ul>
+<li>Rolling or anchored windows</li>
+<li>Efficiency ratio calculation</li>
+<li>Parameter evolution tracking</li>
+<li>Visualization of results</li>
+</ul>
+<h3 id="task-5-monte-carlo-simulation"><a class="header" href="#task-5-monte-carlo-simulation">Task 5: Monte Carlo Simulation</a></h3>
+<p>Add Monte Carlo analysis:</p>
+<ul>
+<li>Trade resampling</li>
+<li>Confidence intervals</li>
+<li>Probability metrics</li>
+<li>Risk assessment</li>
+</ul>
+<h3 id="task-6-create-reports"><a class="header" href="#task-6-create-reports">Task 6: Create Reports</a></h3>
+<p>Generate comprehensive reports with:</p>
+<ul>
+<li>Performance summary</li>
+<li>Equity curve and drawdown plots</li>
+<li>Parameter optimization results</li>
+<li>Walk-forward analysis charts</li>
+<li>Monte Carlo distributions</li>
+</ul>
+<h2 id="evaluation-criteria"><a class="header" href="#evaluation-criteria">Evaluation Criteria</a></h2>
+<p>Your project will be evaluated on:</p>
+<ol>
+<li><strong>Correctness</strong> (25%): Framework produces accurate results</li>
+<li><strong>Completeness</strong> (20%): All components implemented</li>
+<li><strong>Bias Prevention</strong> (20%): Proper handling of look-ahead and other biases</li>
+<li><strong>Performance</strong> (15%): Efficient execution</li>
+<li><strong>Code Quality</strong> (10%): Clean, documented, maintainable code</li>
+<li><strong>Reporting</strong> (10%): Clear, professional visualizations and reports</li>
+</ol>
+<h2 id="submission-guidelines"><a class="header" href="#submission-guidelines">Submission Guidelines</a></h2>
+<p>Submit the following:</p>
+<ol>
+<li>Complete Python implementation of backtesting framework</li>
+<li>Example strategy with full analysis including:
+<ul>
+<li>Basic backtest results</li>
+<li>Parameter optimization</li>
+<li>Walk-forward analysis</li>
+<li>Monte Carlo simulation</li>
+</ul>
+</li>
+<li>Performance report with visualizations</li>
+<li>Documentation explaining:
+<ul>
+<li>Framework architecture</li>
+<li>How to add new strategies</li>
+<li>Interpretation of results</li>
+<li>Known limitations</li>
+</ul>
+</li>
+</ol>
+<h2 id="bonus-challenges"><a class="header" href="#bonus-challenges">Bonus Challenges</a></h2>
+<ol>
+<li>Add support for multiple assets and portfolio strategies</li>
+<li>Implement additional optimization methods (Bayesian, PSO)</li>
+<li>Add transaction cost analysis</li>
+<li>Create interactive dashboard using Plotly or Streamlit</li>
+<li>Implement regime detection and regime-specific analysis</li>
+<li>Add support for options and derivatives</li>
+<li>Create strategy comparison framework</li>
+<li>Implement live trading integration</li>
+</ol>
+<h2 id="testing-your-framework"><a class="header" href="#testing-your-framework">Testing Your Framework</a></h2>
+<p>Test your framework on multiple strategies and assets:</p>
+<ol>
+<li><strong>Moving Average Crossover</strong> on SPY, AAPL, MSFT</li>
+<li><strong>RSI Mean Reversion</strong> on QQQ</li>
+<li><strong>Bollinger Band Breakout</strong> on individual stocks</li>
+<li><strong>Multi-asset rotation</strong> strategy</li>
+</ol>
+<p>For each strategy:</p>
+<ul>
+<li>Run basic backtest</li>
+<li>Optimize parameters</li>
+<li>Validate with walk-forward</li>
+<li>Assess risk with Monte Carlo</li>
+<li>Compare results across assets</li>
+</ul>
+<h2 id="common-pitfalls-to-avoid"><a class="header" href="#common-pitfalls-to-avoid">Common Pitfalls to Avoid</a></h2>
+<ol>
+<li><strong>Look-Ahead Bias</strong>: Ensure indicators use only past data</li>
+<li><strong>Survivorship Bias</strong>: Acknowledge if using biased data</li>
+<li><strong>Overfitting</strong>: Use walk-forward to detect</li>
+<li><strong>Unrealistic Execution</strong>: Model slippage and commissions</li>
+<li><strong>Data Snooping</strong>: Reserve holdout data</li>
+<li><strong>Ignoring Costs</strong>: Include all transaction costs</li>
+<li><strong>Cherry-Picking</strong>: Report all results, not just best</li>
+</ol>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>This project brings together all backtesting concepts into a professional framework. By completing it, you’ll have a robust tool for evaluating trading strategies and the knowledge to interpret results correctly.</p>
+<p>The framework you build here will serve as the foundation for all future strategy development, helping you avoid common pitfalls and develop strategies that actually work in live trading.</p>
+<p>Remember: A good backtest doesn’t guarantee live trading success, but a bad backtest almost certainly predicts failure. Use this framework to build confidence in your strategies before risking real capital.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../module-06/lesson-06-monte-carlo.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../module-07/lesson-01-architecture.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../module-06/lesson-06-monte-carlo.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../module-07/lesson-01-architecture.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

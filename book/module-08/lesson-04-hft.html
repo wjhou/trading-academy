@@ -1,0 +1,877 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>8.4 High-Frequency Trading - Trading Academy: From Beginner to Professional</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A comprehensive guide to automated trading, from fundamentals to professional-level strategies">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-6775557f.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-bd3756ef.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Trading Academy: From Beginner to Professional</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy/edit/main/src/en/module-08/lesson-04-hft.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="lesson-84-high-frequency-trading-fundamentals"><a class="header" href="#lesson-84-high-frequency-trading-fundamentals">Lesson 8.4: High-Frequency Trading Fundamentals</a></h1>
+<h2 id="learning-objectives"><a class="header" href="#learning-objectives">Learning Objectives</a></h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Understand the principles and infrastructure of high-frequency trading</li>
+<li>Implement market microstructure analysis</li>
+<li>Build latency-optimized order execution systems</li>
+<li>Create market making and arbitrage strategies</li>
+<li>Measure and optimize execution performance</li>
+</ul>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>High-Frequency Trading (HFT) involves executing a large number of orders at extremely high speeds, often holding positions for seconds or milliseconds. HFT strategies rely on:</p>
+<ol>
+<li><strong>Speed</strong>: Microsecond-level execution latency</li>
+<li><strong>Technology</strong>: Optimized hardware and software infrastructure</li>
+<li><strong>Market Microstructure</strong>: Understanding order book dynamics</li>
+<li><strong>Statistical Edge</strong>: Small but consistent profit per trade</li>
+</ol>
+<p><strong>Important Note</strong>: True HFT requires specialized infrastructure (co-location, FPGA, direct market access). This lesson focuses on the concepts and strategies that can be implemented in Python for educational purposes.</p>
+<h2 id="market-microstructure-analysis"><a class="header" href="#market-microstructure-analysis">Market Microstructure Analysis</a></h2>
+<p>Understanding order book dynamics is fundamental to HFT:</p>
+<pre><code class="language-python">import pandas as pd
+import numpy as np
+from typing import Dict, List, Tuple
+from collections import deque
+import time
+
+class OrderBook:
+    """Simulate and analyze order book dynamics."""
+
+    def __init__(self, symbol: str):
+        self.symbol = symbol
+        self.bids = {}  # price -&gt; quantity
+        self.asks = {}  # price -&gt; quantity
+        self.trade_history = []
+        self.book_updates = []
+
+    def update_bid(self, price: float, quantity: float):
+        """Update bid side of order book."""
+        if quantity == 0:
+            self.bids.pop(price, None)
+        else:
+            self.bids[price] = quantity
+        self.book_updates.append(('bid', price, quantity, time.time()))
+
+    def update_ask(self, price: float, quantity: float):
+        """Update ask side of order book."""
+        if quantity == 0:
+            self.asks.pop(price, None)
+        else:
+            self.asks[price] = quantity
+        self.book_updates.append(('ask', price, quantity, time.time()))
+
+    def get_best_bid(self) -&gt; Tuple[float, float]:
+        """Get best bid price and quantity."""
+        if not self.bids:
+            return None, 0
+        best_price = max(self.bids.keys())
+        return best_price, self.bids[best_price]
+
+    def get_best_ask(self) -&gt; Tuple[float, float]:
+        """Get best ask price and quantity."""
+        if not self.asks:
+            return None, 0
+        best_price = min(self.asks.keys())
+        return best_price, self.asks[best_price]
+
+    def get_spread(self) -&gt; float:
+        """Calculate bid-ask spread."""
+        bid_price, _ = self.get_best_bid()
+        ask_price, _ = self.get_best_ask()
+        if bid_price and ask_price:
+            return ask_price - bid_price
+        return 0
+
+    def get_mid_price(self) -&gt; float:
+        """Calculate mid price."""
+        bid_price, _ = self.get_best_bid()
+        ask_price, _ = self.get_best_ask()
+        if bid_price and ask_price:
+            return (bid_price + ask_price) / 2
+        return 0
+
+    def get_depth(self, levels: int = 5) -&gt; Dict:
+        """Get order book depth."""
+        sorted_bids = sorted(self.bids.items(), reverse=True)[:levels]
+        sorted_asks = sorted(self.asks.items())[:levels]
+
+        return {
+            'bids': sorted_bids,
+            'asks': sorted_asks,
+            'bid_volume': sum(q for _, q in sorted_bids),
+            'ask_volume': sum(q for _, q in sorted_asks)
+        }
+
+    def calculate_imbalance(self, levels: int = 5) -&gt; float:
+        """Calculate order book imbalance."""
+        depth = self.get_depth(levels)
+        bid_vol = depth['bid_volume']
+        ask_vol = depth['ask_volume']
+
+        if bid_vol + ask_vol == 0:
+            return 0
+        return (bid_vol - ask_vol) / (bid_vol + ask_vol)
+
+
+class MicrostructureAnalyzer:
+    """Analyze market microstructure patterns."""
+
+    def __init__(self, order_book: OrderBook):
+        self.book = order_book
+        self.spread_history = deque(maxlen=1000)
+        self.imbalance_history = deque(maxlen=1000)
+
+    def update_metrics(self):
+        """Update microstructure metrics."""
+        spread = self.book.get_spread()
+        imbalance = self.book.calculate_imbalance()
+
+        self.spread_history.append(spread)
+        self.imbalance_history.append(imbalance)
+
+    def get_spread_statistics(self) -&gt; Dict:
+        """Calculate spread statistics."""
+        if not self.spread_history:
+            return {}
+
+        spreads = list(self.spread_history)
+        return {
+            'mean': np.mean(spreads),
+            'std': np.std(spreads),
+            'min': np.min(spreads),
+            'max': np.max(spreads),
+            'current': spreads[-1]
+        }
+
+    def detect_liquidity_event(self, threshold: float = 2.0) -&gt; bool:
+        """Detect unusual liquidity events."""
+        if len(self.spread_history) &lt; 100:
+            return False
+
+        current_spread = self.spread_history[-1]
+        mean_spread = np.mean(list(self.spread_history)[:-1])
+        std_spread = np.std(list(self.spread_history)[:-1])
+
+        # Detect if spread is unusually wide
+        z_score = (current_spread - mean_spread) / std_spread if std_spread &gt; 0 else 0
+        return abs(z_score) &gt; threshold
+
+    def predict_short_term_direction(self) -&gt; int:
+        """Predict short-term price direction based on order book."""
+        imbalance = self.book.calculate_imbalance()
+
+        # Strong buy pressure
+        if imbalance &gt; 0.3:
+            return 1
+        # Strong sell pressure
+        elif imbalance &lt; -0.3:
+            return -1
+        # Neutral
+        return 0
+</code></pre>
+<h2 id="market-making-strategy"><a class="header" href="#market-making-strategy">Market Making Strategy</a></h2>
+<p>Market making involves providing liquidity by placing both buy and sell orders:</p>
+<pre><code class="language-python">class MarketMaker:
+    """Simple market making strategy."""
+
+    def __init__(self, symbol: str, inventory_limit: int = 100):
+        self.symbol = symbol
+        self.inventory = 0
+        self.inventory_limit = inventory_limit
+        self.position_value = 0
+        self.pnl = 0
+
+    def calculate_quotes(self, mid_price: float, spread: float,
+                        inventory: int) -&gt; Tuple[float, float]:
+        """Calculate bid and ask quotes based on inventory."""
+        # Base spread
+        half_spread = spread / 2
+
+        # Inventory skew: adjust quotes to reduce inventory risk
+        inventory_ratio = inventory / self.inventory_limit
+        skew = inventory_ratio * (spread * 0.5)
+
+        bid_price = mid_price - half_spread - skew
+        ask_price = mid_price + half_spread - skew
+
+        return bid_price, ask_price
+
+    def should_quote(self, order_book: OrderBook) -&gt; bool:
+        """Determine if we should provide quotes."""
+        # Don't quote if inventory is at limit
+        if abs(self.inventory) &gt;= self.inventory_limit:
+            return False
+
+        # Don't quote if spread is too wide (illiquid market)
+        spread = order_book.get_spread()
+        mid_price = order_book.get_mid_price()
+        if spread / mid_price &gt; 0.01:  # 1% spread threshold
+            return False
+
+        return True
+
+    def generate_orders(self, order_book: OrderBook,
+                       quote_size: int = 10) -&gt; List[Dict]:
+        """Generate market making orders."""
+        if not self.should_quote(order_book):
+            return []
+
+        mid_price = order_book.get_mid_price()
+        spread = order_book.get_spread()
+
+        bid_price, ask_price = self.calculate_quotes(mid_price, spread, self.inventory)
+
+        orders = []
+
+        # Place bid if we can buy more
+        if self.inventory &lt; self.inventory_limit:
+            orders.append({
+                'side': 'buy',
+                'price': bid_price,
+                'quantity': quote_size,
+                'type': 'limit'
+            })
+
+        # Place ask if we can sell more
+        if self.inventory &gt; -self.inventory_limit:
+            orders.append({
+                'side': 'sell',
+                'price': ask_price,
+                'quantity': quote_size,
+                'type': 'limit'
+            })
+
+        return orders
+
+    def update_inventory(self, side: str, quantity: int, price: float):
+        """Update inventory after trade execution."""
+        if side == 'buy':
+            self.inventory += quantity
+            self.position_value -= quantity * price
+        else:  # sell
+            self.inventory -= quantity
+            self.position_value += quantity * price
+
+        self.pnl = self.position_value + (self.inventory * price)
+
+
+class StatisticalArbitrage:
+    """Statistical arbitrage strategy for HFT."""
+
+    def __init__(self, symbol1: str, symbol2: str):
+        self.symbol1 = symbol1
+        self.symbol2 = symbol2
+        self.spread_history = deque(maxlen=1000)
+        self.position1 = 0
+        self.position2 = 0
+
+    def calculate_spread(self, price1: float, price2: float) -&gt; float:
+        """Calculate normalized spread between two assets."""
+        return price1 - price2
+
+    def update_spread(self, price1: float, price2: float):
+        """Update spread history."""
+        spread = self.calculate_spread(price1, price2)
+        self.spread_history.append(spread)
+
+    def get_z_score(self) -&gt; float:
+        """Calculate z-score of current spread."""
+        if len(self.spread_history) &lt; 50:
+            return 0
+
+        spreads = list(self.spread_history)
+        current_spread = spreads[-1]
+        mean_spread = np.mean(spreads[:-1])
+        std_spread = np.std(spreads[:-1])
+
+        if std_spread == 0:
+            return 0
+
+        return (current_spread - mean_spread) / std_spread
+
+    def generate_signals(self, entry_threshold: float = 2.0,
+                        exit_threshold: float = 0.5) -&gt; Dict:
+        """Generate trading signals based on spread."""
+        z_score = self.get_z_score()
+
+        signal = {
+            'action': 'hold',
+            'symbol1_side': None,
+            'symbol2_side': None
+        }
+
+        # Entry signals
+        if abs(z_score) &gt; entry_threshold:
+            if z_score &gt; 0:  # Spread too high
+                signal['action'] = 'enter'
+                signal['symbol1_side'] = 'sell'  # Sell expensive
+                signal['symbol2_side'] = 'buy'   # Buy cheap
+            else:  # Spread too low
+                signal['action'] = 'enter'
+                signal['symbol1_side'] = 'buy'
+                signal['symbol2_side'] = 'sell'
+
+        # Exit signals
+        elif abs(z_score) &lt; exit_threshold and (self.position1 != 0 or self.position2 != 0):
+            signal['action'] = 'exit'
+            # Close positions
+            if self.position1 &gt; 0:
+                signal['symbol1_side'] = 'sell'
+            elif self.position1 &lt; 0:
+                signal['symbol1_side'] = 'buy'
+
+            if self.position2 &gt; 0:
+                signal['symbol2_side'] = 'sell'
+            elif self.position2 &lt; 0:
+                signal['symbol2_side'] = 'buy'
+
+        return signal
+</code></pre>
+<h2 id="latency-optimization"><a class="header" href="#latency-optimization">Latency Optimization</a></h2>
+<p>Minimizing execution latency is critical for HFT:</p>
+<pre><code class="language-python">class LatencyOptimizedExecutor:
+    """Optimized order execution with latency tracking."""
+
+    def __init__(self):
+        self.latency_history = []
+        self.order_queue = deque()
+
+    def measure_latency(self, start_time: float, end_time: float) -&gt; float:
+        """Measure execution latency in microseconds."""
+        latency = (end_time - start_time) * 1_000_000  # Convert to microseconds
+        self.latency_history.append(latency)
+        return latency
+
+    def execute_order(self, order: Dict) -&gt; Dict:
+        """Execute order with latency tracking."""
+        start_time = time.perf_counter()
+
+        # Simulate order execution
+        # In production, this would be actual broker API call
+        execution_result = {
+            'order_id': len(self.latency_history) + 1,
+            'status': 'filled',
+            'filled_price': order['price'],
+            'filled_quantity': order['quantity'],
+            'timestamp': time.time()
+        }
+
+        end_time = time.perf_counter()
+        latency = self.measure_latency(start_time, end_time)
+        execution_result['latency_us'] = latency
+
+        return execution_result
+
+    def get_latency_statistics(self) -&gt; Dict:
+        """Calculate latency statistics."""
+        if not self.latency_history:
+            return {}
+
+        return {
+            'mean_us': np.mean(self.latency_history),
+            'median_us': np.median(self.latency_history),
+            'p95_us': np.percentile(self.latency_history, 95),
+            'p99_us': np.percentile(self.latency_history, 99),
+            'max_us': np.max(self.latency_history)
+        }
+
+    def batch_execute(self, orders: List[Dict]) -&gt; List[Dict]:
+        """Execute multiple orders efficiently."""
+        results = []
+        start_time = time.perf_counter()
+
+        for order in orders:
+            result = self.execute_order(order)
+            results.append(result)
+
+        end_time = time.perf_counter()
+        batch_latency = (end_time - start_time) * 1_000_000
+
+        return results, batch_latency
+
+
+class PerformanceMonitor:
+    """Monitor HFT strategy performance."""
+
+    def __init__(self):
+        self.trades = []
+        self.pnl_history = []
+        self.fill_rates = []
+
+    def record_trade(self, trade: Dict):
+        """Record executed trade."""
+        self.trades.append(trade)
+
+    def calculate_metrics(self) -&gt; Dict:
+        """Calculate comprehensive performance metrics."""
+        if not self.trades:
+            return {}
+
+        # PnL calculation
+        total_pnl = sum(t.get('pnl', 0) for t in self.trades)
+        winning_trades = [t for t in self.trades if t.get('pnl', 0) &gt; 0]
+        losing_trades = [t for t in self.trades if t.get('pnl', 0) &lt; 0]
+
+        win_rate = len(winning_trades) / len(self.trades) if self.trades else 0
+
+        # Average profit/loss
+        avg_win = np.mean([t['pnl'] for t in winning_trades]) if winning_trades else 0
+        avg_loss = np.mean([t['pnl'] for t in losing_trades]) if losing_trades else 0
+
+        # Sharpe ratio (assuming trades are independent)
+        pnl_values = [t.get('pnl', 0) for t in self.trades]
+        sharpe = np.mean(pnl_values) / np.std(pnl_values) if np.std(pnl_values) &gt; 0 else 0
+
+        return {
+            'total_trades': len(self.trades),
+            'total_pnl': total_pnl,
+            'win_rate': win_rate,
+            'avg_win': avg_win,
+            'avg_loss': avg_loss,
+            'profit_factor': abs(avg_win / avg_loss) if avg_loss != 0 else 0,
+            'sharpe_ratio': sharpe * np.sqrt(len(self.trades))
+        }
+</code></pre>
+<h2 id="complete-hft-system"><a class="header" href="#complete-hft-system">Complete HFT System</a></h2>
+<pre><code class="language-python">class HFTSystem:
+    """Complete high-frequency trading system."""
+
+    def __init__(self, symbol: str, strategy_type: str = 'market_making'):
+        self.symbol = symbol
+        self.order_book = OrderBook(symbol)
+        self.executor = LatencyOptimizedExecutor()
+        self.monitor = PerformanceMonitor()
+
+        if strategy_type == 'market_making':
+            self.strategy = MarketMaker(symbol)
+        else:
+            raise ValueError(f"Unknown strategy type: {strategy_type}")
+
+    def process_market_data(self, bid_price: float, bid_qty: float,
+                           ask_price: float, ask_qty: float):
+        """Process incoming market data."""
+        # Update order book
+        self.order_book.update_bid(bid_price, bid_qty)
+        self.order_book.update_ask(ask_price, ask_qty)
+
+    def run_strategy_cycle(self):
+        """Execute one strategy cycle."""
+        # Generate orders based on strategy
+        orders = self.strategy.generate_orders(self.order_book)
+
+        # Execute orders
+        for order in orders:
+            result = self.executor.execute_order(order)
+
+            # Update strategy state
+            if result['status'] == 'filled':
+                self.strategy.update_inventory(
+                    order['side'],
+                    result['filled_quantity'],
+                    result['filled_price']
+                )
+
+                # Record trade
+                trade = {
+                    'timestamp': result['timestamp'],
+                    'side': order['side'],
+                    'price': result['filled_price'],
+                    'quantity': result['filled_quantity'],
+                    'pnl': self.strategy.pnl,
+                    'latency': result['latency_us']
+                }
+                self.monitor.record_trade(trade)
+
+    def get_performance_report(self) -&gt; Dict:
+        """Generate comprehensive performance report."""
+        strategy_metrics = self.monitor.calculate_metrics()
+        latency_metrics = self.executor.get_latency_statistics()
+
+        return {
+            'strategy_performance': strategy_metrics,
+            'execution_latency': latency_metrics,
+            'current_inventory': self.strategy.inventory,
+            'current_pnl': self.strategy.pnl
+        }
+</code></pre>
+<h2 id="practical-example"><a class="header" href="#practical-example">Practical Example</a></h2>
+<pre><code class="language-python"># Example: Running a simple market making strategy
+def main():
+    # Initialize HFT system
+    system = HFTSystem('AAPL', strategy_type='market_making')
+
+    # Simulate market data feed
+    np.random.seed(42)
+    base_price = 150.0
+
+    print("Starting HFT market making simulation...")
+    print("=" * 50)
+
+    for i in range(100):
+        # Simulate market data
+        mid_price = base_price + np.random.randn() * 0.1
+        spread = 0.02 + abs(np.random.randn() * 0.01)
+
+        bid_price = mid_price - spread / 2
+        ask_price = mid_price + spread / 2
+        bid_qty = np.random.randint(100, 1000)
+        ask_qty = np.random.randint(100, 1000)
+
+        # Process market data
+        system.process_market_data(bid_price, bid_qty, ask_price, ask_qty)
+
+        # Run strategy
+        system.run_strategy_cycle()
+
+        # Print status every 20 cycles
+        if (i + 1) % 20 == 0:
+            report = system.get_performance_report()
+            print(f"\nCycle {i + 1}:")
+            print(f"  Inventory: {report['current_inventory']}")
+            print(f"  PnL: ${report['current_pnl']:.2f}")
+            print(f"  Total Trades: {report['strategy_performance'].get('total_trades', 0)}")
+
+    # Final report
+    print("\n" + "=" * 50)
+    print("FINAL PERFORMANCE REPORT")
+    print("=" * 50)
+
+    final_report = system.get_performance_report()
+
+    print("\nStrategy Performance:")
+    for key, value in final_report['strategy_performance'].items():
+        if isinstance(value, float):
+            print(f"  {key}: {value:.4f}")
+        else:
+            print(f"  {key}: {value}")
+
+    print("\nExecution Latency:")
+    for key, value in final_report['execution_latency'].items():
+        print(f"  {key}: {value:.2f} μs")
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+<h2 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h2>
+<ol>
+<li>
+<p><strong>Infrastructure</strong></p>
+<ul>
+<li>Use co-location services for minimum latency</li>
+<li>Implement direct market access (DMA)</li>
+<li>Optimize network and hardware configuration</li>
+<li>Use compiled languages (C++, Rust) for critical paths</li>
+</ul>
+</li>
+<li>
+<p><strong>Risk Management</strong></p>
+<ul>
+<li>Implement strict position limits</li>
+<li>Use kill switches for emergency shutdown</li>
+<li>Monitor inventory risk continuously</li>
+<li>Set maximum loss limits per day</li>
+</ul>
+</li>
+<li>
+<p><strong>Order Management</strong></p>
+<ul>
+<li>Cancel stale orders immediately</li>
+<li>Avoid adverse selection</li>
+<li>Monitor fill rates and slippage</li>
+<li>Implement smart order routing</li>
+</ul>
+</li>
+<li>
+<p><strong>Strategy Development</strong></p>
+<ul>
+<li>Backtest with tick-level data</li>
+<li>Account for market impact</li>
+<li>Consider transaction costs accurately</li>
+<li>Test in simulation before live trading</li>
+</ul>
+</li>
+<li>
+<p><strong>Monitoring</strong></p>
+<ul>
+<li>Track latency metrics continuously</li>
+<li>Monitor market conditions</li>
+<li>Log all orders and executions</li>
+<li>Implement real-time alerting</li>
+</ul>
+</li>
+</ol>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<ol>
+<li>
+<p><strong>Order Book Analysis</strong>: Implement a system that analyzes order book imbalance and predicts short-term price movements. Test its accuracy on historical data.</p>
+</li>
+<li>
+<p><strong>Market Making Simulation</strong>: Build a market making strategy with inventory management. Simulate different market conditions and measure profitability.</p>
+</li>
+<li>
+<p><strong>Latency Measurement</strong>: Create a latency monitoring system that tracks execution times. Identify bottlenecks and optimize performance.</p>
+</li>
+<li>
+<p><strong>Statistical Arbitrage</strong>: Implement a pairs trading strategy for two correlated assets. Measure the strategy’s performance and Sharpe ratio.</p>
+</li>
+<li>
+<p><strong>Risk Controls</strong>: Add comprehensive risk controls to the HFT system including position limits, loss limits, and circuit breakers.</p>
+</li>
+</ol>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>High-frequency trading requires specialized infrastructure and careful attention to execution details. Key takeaways:</p>
+<ul>
+<li>Market microstructure understanding is essential for HFT strategies</li>
+<li>Latency optimization is critical for competitive advantage</li>
+<li>Market making provides liquidity while earning the spread</li>
+<li>Statistical arbitrage exploits temporary price discrepancies</li>
+<li>Robust risk management prevents catastrophic losses</li>
+</ul>
+<p>In the next lesson, we’ll explore options and derivatives trading strategies.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../module-08/lesson-03-multi-asset.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../module-08/lesson-05-options.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../module-08/lesson-03-multi-asset.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../module-08/lesson-05-options.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,780 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>7.5 Error Handling - Trading Academy: From Beginner to Professional</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A comprehensive guide to automated trading, from fundamentals to professional-level strategies">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-6775557f.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-bd3756ef.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Trading Academy: From Beginner to Professional</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy/edit/main/src/en/module-07/lesson-05-errors.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="lesson-75-error-handling"><a class="header" href="#lesson-75-error-handling">Lesson 7.5: Error Handling</a></h1>
+<h2 id="learning-objectives"><a class="header" href="#learning-objectives">Learning Objectives</a></h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Implement robust error handling strategies</li>
+<li>Handle network failures and API errors</li>
+<li>Implement retry logic with exponential backoff</li>
+<li>Create circuit breakers for failing services</li>
+<li>Build graceful degradation mechanisms</li>
+</ul>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>Errors are inevitable in automated trading systems. Network failures, API rate limits, invalid data, and unexpected market conditions all require proper handling. This lesson covers building resilient systems that handle errors gracefully.</p>
+<h2 id="error-categories"><a class="header" href="#error-categories">Error Categories</a></h2>
+<h3 id="1-transient-errors"><a class="header" href="#1-transient-errors">1. Transient Errors</a></h3>
+<p>Temporary failures that may succeed on retry:</p>
+<pre><code class="language-python">from enum import Enum
+from typing import Optional, Callable
+import time
+
+class ErrorType(Enum):
+    TRANSIENT = "transient"  # Retry possible
+    PERMANENT = "permanent"  # Retry won't help
+    RATE_LIMIT = "rate_limit"  # Need to back off
+    INVALID_INPUT = "invalid_input"  # Bad request
+
+class TradingError(Exception):
+    """Base exception for trading system errors."""
+
+    def __init__(self, message: str, error_type: ErrorType,
+                 details: dict = None):
+        super().__init__(message)
+        self.error_type = error_type
+        self.details = details or {}
+</code></pre>
+<h3 id="2-retry-logic"><a class="header" href="#2-retry-logic">2. Retry Logic</a></h3>
+<p>Implement exponential backoff:</p>
+<pre><code class="language-python">class RetryHandler:
+    """
+    Handles retries with exponential backoff.
+    """
+
+    def __init__(self, max_retries: int = 3,
+                 base_delay: float = 1.0,
+                 max_delay: float = 60.0):
+        """
+        Initialize retry handler.
+
+        Parameters:
+        -----------
+        max_retries : int
+            Maximum number of retries
+        base_delay : float
+            Base delay in seconds
+        max_delay : float
+            Maximum delay in seconds
+        """
+        self.max_retries = max_retries
+        self.base_delay = base_delay
+        self.max_delay = max_delay
+
+    def execute_with_retry(self, func: Callable, *args, **kwargs):
+        """
+        Execute function with retry logic.
+
+        Parameters:
+        -----------
+        func : Callable
+            Function to execute
+
+        Returns:
+        --------
+        Result of function or raises exception
+        """
+        last_exception = None
+
+        for attempt in range(self.max_retries + 1):
+            try:
+                return func(*args, **kwargs)
+
+            except TradingError as e:
+                last_exception = e
+
+                # Don't retry permanent errors
+                if e.error_type == ErrorType.PERMANENT:
+                    raise
+
+                # Don't retry invalid input
+                if e.error_type == ErrorType.INVALID_INPUT:
+                    raise
+
+                # Calculate delay
+                if attempt &lt; self.max_retries:
+                    delay = min(
+                        self.base_delay * (2 ** attempt),
+                        self.max_delay
+                    )
+
+                    print(f"Attempt {attempt + 1} failed: {e}")
+                    print(f"Retrying in {delay:.1f}s...")
+                    time.sleep(delay)
+
+            except Exception as e:
+                # Unexpected error
+                print(f"Unexpected error: {e}")
+                raise
+
+        # All retries exhausted
+        raise last_exception
+</code></pre>
+<h3 id="3-circuit-breaker"><a class="header" href="#3-circuit-breaker">3. Circuit Breaker</a></h3>
+<p>Prevent cascading failures:</p>
+<pre><code class="language-python">from datetime import datetime, timedelta
+
+class CircuitState(Enum):
+    CLOSED = "closed"  # Normal operation
+    OPEN = "open"  # Failing, reject requests
+    HALF_OPEN = "half_open"  # Testing recovery
+
+class CircuitBreaker:
+    """
+    Circuit breaker pattern implementation.
+    """
+
+    def __init__(self, failure_threshold: int = 5,
+                 timeout_seconds: int = 60,
+                 success_threshold: int = 2):
+        """
+        Initialize circuit breaker.
+
+        Parameters:
+        -----------
+        failure_threshold : int
+            Failures before opening circuit
+        timeout_seconds : int
+            Time before attempting recovery
+        success_threshold : int
+            Successes needed to close circuit
+        """
+        self.failure_threshold = failure_threshold
+        self.timeout_seconds = timeout_seconds
+        self.success_threshold = success_threshold
+
+        self.state = CircuitState.CLOSED
+        self.failure_count = 0
+        self.success_count = 0
+        self.last_failure_time = None
+
+    def call(self, func: Callable, *args, **kwargs):
+        """
+        Execute function through circuit breaker.
+
+        Parameters:
+        -----------
+        func : Callable
+            Function to execute
+
+        Returns:
+        --------
+        Result of function
+        """
+        # Check if circuit is open
+        if self.state == CircuitState.OPEN:
+            # Check if timeout has passed
+            if (datetime.now() - self.last_failure_time).seconds &gt;= self.timeout_seconds:
+                print("Circuit breaker: Attempting recovery (HALF_OPEN)")
+                self.state = CircuitState.HALF_OPEN
+                self.success_count = 0
+            else:
+                raise TradingError(
+                    "Circuit breaker is OPEN",
+                    ErrorType.TRANSIENT,
+                    {'state': self.state.value}
+                )
+
+        try:
+            # Execute function
+            result = func(*args, **kwargs)
+
+            # Success
+            self._on_success()
+            return result
+
+        except Exception as e:
+            # Failure
+            self._on_failure()
+            raise
+
+    def _on_success(self):
+        """Handle successful call."""
+        if self.state == CircuitState.HALF_OPEN:
+            self.success_count += 1
+
+            if self.success_count &gt;= self.success_threshold:
+                print("Circuit breaker: Recovery successful (CLOSED)")
+                self.state = CircuitState.CLOSED
+                self.failure_count = 0
+
+        elif self.state == CircuitState.CLOSED:
+            # Reset failure count on success
+            self.failure_count = 0
+
+    def _on_failure(self):
+        """Handle failed call."""
+        self.failure_count += 1
+        self.last_failure_time = datetime.now()
+
+        if self.state == CircuitState.HALF_OPEN:
+            # Failed during recovery
+            print("Circuit breaker: Recovery failed (OPEN)")
+            self.state = CircuitState.OPEN
+            self.success_count = 0
+
+        elif self.failure_count &gt;= self.failure_threshold:
+            # Too many failures
+            print(f"Circuit breaker: Too many failures (OPEN)")
+            self.state = CircuitState.OPEN
+</code></pre>
+<h2 id="specific-error-handlers"><a class="header" href="#specific-error-handlers">Specific Error Handlers</a></h2>
+<h3 id="network-errors"><a class="header" href="#network-errors">Network Errors</a></h3>
+<pre><code class="language-python">import requests
+
+class NetworkErrorHandler:
+    """
+    Handles network-related errors.
+    """
+
+    def __init__(self):
+        self.retry_handler = RetryHandler(max_retries=3)
+
+    def make_api_call(self, url: str, method: str = 'GET',
+                     **kwargs):
+        """
+        Make API call with error handling.
+
+        Parameters:
+        -----------
+        url : str
+            API endpoint
+        method : str
+            HTTP method
+
+        Returns:
+        --------
+        Response data
+        """
+        def _call():
+            try:
+                response = requests.request(method, url, **kwargs)
+
+                # Check status code
+                if response.status_code == 429:
+                    # Rate limit
+                    raise TradingError(
+                        "Rate limit exceeded",
+                        ErrorType.RATE_LIMIT,
+                        {'retry_after': response.headers.get('Retry-After')}
+                    )
+
+                elif response.status_code &gt;= 500:
+                    # Server error (transient)
+                    raise TradingError(
+                        f"Server error: {response.status_code}",
+                        ErrorType.TRANSIENT
+                    )
+
+                elif response.status_code &gt;= 400:
+                    # Client error (permanent)
+                    raise TradingError(
+                        f"Client error: {response.status_code}",
+                        ErrorType.PERMANENT,
+                        {'response': response.text}
+                    )
+
+                return response.json()
+
+            except requests.exceptions.ConnectionError as e:
+                raise TradingError(
+                    "Connection error",
+                    ErrorType.TRANSIENT,
+                    {'error': str(e)}
+                )
+
+            except requests.exceptions.Timeout as e:
+                raise TradingError(
+                    "Request timeout",
+                    ErrorType.TRANSIENT,
+                    {'error': str(e)}
+                )
+
+        return self.retry_handler.execute_with_retry(_call)
+</code></pre>
+<h3 id="data-validation-errors"><a class="header" href="#data-validation-errors">Data Validation Errors</a></h3>
+<pre><code class="language-python">class DataValidationHandler:
+    """
+    Handles data validation errors.
+    """
+
+    def validate_and_fix(self, data: dict) -&gt; dict:
+        """
+        Validate data and attempt to fix issues.
+
+        Parameters:
+        -----------
+        data : dict
+            Data to validate
+
+        Returns:
+        --------
+        dict : Validated/fixed data
+        """
+        fixed_data = data.copy()
+
+        # Check for missing fields
+        required_fields = ['symbol', 'price', 'quantity']
+        for field in required_fields:
+            if field not in fixed_data:
+                raise TradingError(
+                    f"Missing required field: {field}",
+                    ErrorType.INVALID_INPUT,
+                    {'data': data}
+                )
+
+        # Fix negative prices
+        if fixed_data['price'] &lt; 0:
+            print(f"Warning: Negative price detected, taking absolute value")
+            fixed_data['price'] = abs(fixed_data['price'])
+
+        # Fix zero prices
+        if fixed_data['price'] == 0:
+            raise TradingError(
+                "Invalid price: 0",
+                ErrorType.INVALID_INPUT,
+                {'data': data}
+            )
+
+        # Fix negative quantity
+        if fixed_data['quantity'] &lt; 0:
+            print(f"Warning: Negative quantity detected, taking absolute value")
+            fixed_data['quantity'] = abs(fixed_data['quantity'])
+
+        return fixed_data
+</code></pre>
+<h2 id="graceful-degradation"><a class="header" href="#graceful-degradation">Graceful Degradation</a></h2>
+<pre><code class="language-python">class GracefulDegradation:
+    """
+    Implements graceful degradation strategies.
+    """
+
+    def __init__(self):
+        self.fallback_data = {}
+        self.degraded_mode = False
+
+    def get_data_with_fallback(self, symbol: str,
+                               primary_source: Callable,
+                               fallback_source: Callable = None):
+        """
+        Get data with fallback to cached/alternative source.
+
+        Parameters:
+        -----------
+        symbol : str
+            Stock symbol
+        primary_source : Callable
+            Primary data source
+        fallback_source : Callable, optional
+            Fallback data source
+
+        Returns:
+        --------
+        Data from primary or fallback source
+        """
+        try:
+            # Try primary source
+            data = primary_source(symbol)
+
+            # Cache for fallback
+            self.fallback_data[symbol] = data
+            self.degraded_mode = False
+
+            return data
+
+        except Exception as e:
+            print(f"Primary source failed: {e}")
+
+            # Try fallback source
+            if fallback_source:
+                try:
+                    data = fallback_source(symbol)
+                    print("Using fallback data source")
+                    self.degraded_mode = True
+                    return data
+                except Exception as e2:
+                    print(f"Fallback source failed: {e2}")
+
+            # Use cached data
+            if symbol in self.fallback_data:
+                print("Using cached data (degraded mode)")
+                self.degraded_mode = True
+                return self.fallback_data[symbol]
+
+            # No fallback available
+            raise TradingError(
+                f"All data sources failed for {symbol}",
+                ErrorType.TRANSIENT
+            )
+</code></pre>
+<h2 id="error-recovery"><a class="header" href="#error-recovery">Error Recovery</a></h2>
+<pre><code class="language-python">class ErrorRecoveryManager:
+    """
+    Manages error recovery procedures.
+    """
+
+    def __init__(self):
+        self.recovery_procedures = {}
+
+    def register_recovery(self, error_type: str,
+                         recovery_func: Callable):
+        """
+        Register recovery procedure for error type.
+
+        Parameters:
+        -----------
+        error_type : str
+            Error type identifier
+        recovery_func : Callable
+            Recovery function
+        """
+        self.recovery_procedures[error_type] = recovery_func
+
+    def handle_error(self, error: Exception, context: dict = None):
+        """
+        Handle error with appropriate recovery.
+
+        Parameters:
+        -----------
+        error : Exception
+            Error to handle
+        context : dict, optional
+            Error context
+        """
+        error_type = type(error).__name__
+
+        print(f"Handling error: {error_type}")
+
+        # Try registered recovery procedure
+        if error_type in self.recovery_procedures:
+            try:
+                self.recovery_procedures[error_type](error, context)
+                print(f"Recovery successful for {error_type}")
+                return True
+            except Exception as e:
+                print(f"Recovery failed: {e}")
+
+        # Default recovery
+        self._default_recovery(error, context)
+        return False
+
+    def _default_recovery(self, error: Exception, context: dict):
+        """Default recovery procedure."""
+        print(f"Applying default recovery for: {error}")
+
+        # Log error
+        # Alert administrators
+        # Attempt safe shutdown if critical
+</code></pre>
+<h2 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h2>
+<ol>
+<li><strong>Classify Errors</strong>: Distinguish transient vs permanent</li>
+<li><strong>Retry Appropriately</strong>: Use exponential backoff</li>
+<li><strong>Implement Circuit Breakers</strong>: Prevent cascading failures</li>
+<li><strong>Provide Fallbacks</strong>: Graceful degradation</li>
+<li><strong>Log Everything</strong>: Comprehensive error logging</li>
+<li><strong>Alert on Critical Errors</strong>: Immediate notification</li>
+<li><strong>Test Error Paths</strong>: Simulate failures</li>
+<li><strong>Document Recovery</strong>: Clear recovery procedures</li>
+</ol>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<h3 id="exercise-1-retry-logic"><a class="header" href="#exercise-1-retry-logic">Exercise 1: Retry Logic</a></h3>
+<p>Implement retry logic with:</p>
+<ul>
+<li>Exponential backoff</li>
+<li>Maximum retry limit</li>
+<li>Jitter to prevent thundering herd</li>
+</ul>
+<h3 id="exercise-2-circuit-breaker"><a class="header" href="#exercise-2-circuit-breaker">Exercise 2: Circuit Breaker</a></h3>
+<p>Create a circuit breaker that:</p>
+<ul>
+<li>Opens after 5 failures</li>
+<li>Attempts recovery after 60s</li>
+<li>Requires 3 successes to close</li>
+</ul>
+<h3 id="exercise-3-error-recovery"><a class="header" href="#exercise-3-error-recovery">Exercise 3: Error Recovery</a></h3>
+<p>Build error recovery system for:</p>
+<ul>
+<li>Network failures</li>
+<li>API rate limits</li>
+<li>Invalid data</li>
+<li>Database errors</li>
+</ul>
+<h3 id="exercise-4-graceful-degradation"><a class="header" href="#exercise-4-graceful-degradation">Exercise 4: Graceful Degradation</a></h3>
+<p>Implement graceful degradation with:</p>
+<ul>
+<li>Multiple data sources</li>
+<li>Cached fallback data</li>
+<li>Degraded mode indicator</li>
+</ul>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>Robust error handling requires:</p>
+<ul>
+<li><strong>Error Classification</strong>: Transient vs permanent</li>
+<li><strong>Retry Logic</strong>: Exponential backoff</li>
+<li><strong>Circuit Breakers</strong>: Prevent cascading failures</li>
+<li><strong>Graceful Degradation</strong>: Fallback mechanisms</li>
+<li><strong>Recovery Procedures</strong>: Automated recovery</li>
+</ul>
+<p>Good error handling:</p>
+<ul>
+<li>Prevents system crashes</li>
+<li>Maintains service availability</li>
+<li>Provides clear diagnostics</li>
+<li>Enables quick recovery</li>
+</ul>
+<h2 id="next-steps"><a class="header" href="#next-steps">Next Steps</a></h2>
+<p>In the next lesson, we’ll explore performance tracking to measure and optimize trading system performance.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../module-07/lesson-04-monitoring.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../module-07/lesson-06-tracking.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../module-07/lesson-04-monitoring.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../module-07/lesson-06-tracking.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,1263 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hands-On Project: Risk System - Trading Academy: From Beginner to Professional</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A comprehensive guide to automated trading, from fundamentals to professional-level strategies">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-6775557f.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-bd3756ef.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Trading Academy: From Beginner to Professional</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy/edit/main/src/en/module-05/project-risk-system.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="module-5-project-comprehensive-risk-management-system"><a class="header" href="#module-5-project-comprehensive-risk-management-system">Module 5 Project: Comprehensive Risk Management System</a></h1>
+<h2 id="project-overview"><a class="header" href="#project-overview">Project Overview</a></h2>
+<p>In this project, you will build a complete risk management system that integrates all the concepts learned in Module 5. The system will handle position sizing, stop-loss management, risk-reward analysis, portfolio diversification, drawdown monitoring, and Kelly Criterion calculations.</p>
+<p>This project represents a professional-grade risk management framework that can be integrated into any trading system.</p>
+<h2 id="project-objectives"><a class="header" href="#project-objectives">Project Objectives</a></h2>
+<p>By completing this project, you will:</p>
+<ul>
+<li>Integrate multiple risk management techniques into a unified system</li>
+<li>Build a portfolio-level risk monitoring dashboard</li>
+<li>Implement adaptive position sizing based on market conditions</li>
+<li>Create comprehensive risk reporting and analytics</li>
+<li>Develop a reusable risk management framework</li>
+</ul>
+<h2 id="system-architecture"><a class="header" href="#system-architecture">System Architecture</a></h2>
+<p>The risk management system consists of several integrated components:</p>
+<ol>
+<li><strong>RiskManager</strong>: Central coordinator for all risk management functions</li>
+<li><strong>PositionSizer</strong>: Handles position sizing using multiple methods</li>
+<li><strong>StopLossManager</strong>: Manages stop-loss orders and trailing stops</li>
+<li><strong>RiskRewardAnalyzer</strong>: Calculates and tracks risk-reward metrics</li>
+<li><strong>PortfolioRiskMonitor</strong>: Monitors portfolio-level risk and correlations</li>
+<li><strong>DrawdownTracker</strong>: Tracks and manages drawdowns</li>
+<li><strong>KellyCalculator</strong>: Computes optimal position sizes using Kelly Criterion</li>
+<li><strong>RiskReporter</strong>: Generates risk reports and visualizations</li>
+</ol>
+<h2 id="implementation"><a class="header" href="#implementation">Implementation</a></h2>
+<h3 id="part-1-core-risk-manager"><a class="header" href="#part-1-core-risk-manager">Part 1: Core Risk Manager</a></h3>
+<pre><code class="language-python">import numpy as np
+import pandas as pd
+from typing import Dict, List, Tuple, Optional
+from dataclasses import dataclass
+from datetime import datetime
+import yfinance as yf
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+@dataclass
+class Position:
+    """Represents a trading position."""
+    symbol: str
+    entry_price: float
+    shares: int
+    entry_date: datetime
+    stop_loss: float
+    take_profit: Optional[float] = None
+    current_price: Optional[float] = None
+
+    @property
+    def position_value(self) -&gt; float:
+        """Current position value."""
+        price = self.current_price or self.entry_price
+        return self.shares * price
+
+    @property
+    def unrealized_pnl(self) -&gt; float:
+        """Unrealized profit/loss."""
+        if self.current_price is None:
+            return 0.0
+        return (self.current_price - self.entry_price) * self.shares
+
+    @property
+    def unrealized_pnl_pct(self) -&gt; float:
+        """Unrealized P&amp;L as percentage."""
+        if self.current_price is None:
+            return 0.0
+        return (self.current_price - self.entry_price) / self.entry_price
+
+
+@dataclass
+class Trade:
+    """Represents a completed trade."""
+    symbol: str
+    entry_price: float
+    exit_price: float
+    shares: int
+    entry_date: datetime
+    exit_date: datetime
+    pnl: float
+    pnl_pct: float
+    hold_days: int
+
+
+class RiskManager:
+    """
+    Comprehensive risk management system.
+    """
+
+    def __init__(self,
+                 initial_capital: float,
+                 max_position_size: float = 0.10,
+                 max_portfolio_risk: float = 0.06,
+                 max_correlation: float = 0.70,
+                 max_drawdown: float = 0.20,
+                 kelly_fraction: float = 0.5):
+        """
+        Initialize risk manager.
+
+        Parameters:
+        -----------
+        initial_capital : float
+            Starting capital
+        max_position_size : float
+            Maximum position size as fraction of capital
+        max_portfolio_risk : float
+            Maximum total portfolio risk
+        max_correlation : float
+            Maximum correlation between positions
+        max_drawdown : float
+            Maximum allowed drawdown
+        kelly_fraction : float
+            Fraction of Kelly to use
+        """
+        self.initial_capital = initial_capital
+        self.current_capital = initial_capital
+        self.max_position_size = max_position_size
+        self.max_portfolio_risk = max_portfolio_risk
+        self.max_correlation = max_correlation
+        self.max_drawdown = max_drawdown
+        self.kelly_fraction = kelly_fraction
+
+        # Track positions and trades
+        self.positions: Dict[str, Position] = {}
+        self.trade_history: List[Trade] = []
+
+        # Track equity curve
+        self.equity_curve = [initial_capital]
+        self.equity_dates = [datetime.now()]
+
+        # Peak tracking for drawdown
+        self.peak_capital = initial_capital
+        self.peak_date = datetime.now()
+
+    def calculate_position_size(self,
+                                symbol: str,
+                                entry_price: float,
+                                stop_loss: float,
+                                method: str = 'fixed_risk',
+                                risk_amount: float = None) -&gt; int:
+        """
+        Calculate position size using specified method.
+
+        Parameters:
+        -----------
+        symbol : str
+            Stock symbol
+        entry_price : float
+            Entry price
+        stop_loss : float
+            Stop loss price
+        method : str
+            Sizing method: 'fixed_risk', 'fixed_pct', 'atr', 'kelly'
+        risk_amount : float
+            Risk amount (for fixed_risk method)
+
+        Returns:
+        --------
+        int : Number of shares
+        """
+        # Default risk amount
+        if risk_amount is None:
+            risk_amount = self.current_capital * 0.01  # 1% risk
+
+        # Calculate risk per share
+        risk_per_share = abs(entry_price - stop_loss)
+
+        if risk_per_share == 0:
+            return 0
+
+        if method == 'fixed_risk':
+            # Risk-based sizing
+            shares = int(risk_amount / risk_per_share)
+
+        elif method == 'fixed_pct':
+            # Fixed percentage of capital
+            position_value = self.current_capital * 0.05  # 5% of capital
+            shares = int(position_value / entry_price)
+
+        elif method == 'kelly':
+            # Kelly Criterion sizing
+            if len(self.trade_history) &lt; 10:
+                # Not enough history, use conservative sizing
+                shares = int((self.current_capital * 0.02) / entry_price)
+            else:
+                # Calculate Kelly from trade history
+                returns = [t.pnl_pct for t in self.trade_history]
+                kelly_pct = self._calculate_kelly(returns)
+                position_value = self.current_capital * kelly_pct
+                shares = int(position_value / entry_price)
+
+        else:
+            shares = 0
+
+        # Apply maximum position size limit
+        max_shares = int((self.current_capital * self.max_position_size) / entry_price)
+        shares = min(shares, max_shares)
+
+        return shares
+
+    def _calculate_kelly(self, returns: List[float]) -&gt; float:
+        """Calculate Kelly percentage from returns."""
+        if not returns:
+            return 0.0
+
+        returns_array = np.array(returns)
+        wins = returns_array[returns_array &gt; 0]
+        losses = returns_array[returns_array &lt; 0]
+
+        if len(wins) == 0 or len(losses) == 0:
+            return 0.02  # Default 2%
+
+        win_rate = len(wins) / len(returns_array)
+        avg_win = np.mean(wins)
+        avg_loss = abs(np.mean(losses))
+
+        if avg_loss == 0:
+            return 0.02
+
+        win_loss_ratio = avg_win / avg_loss
+        kelly = win_rate - ((1 - win_rate) / win_loss_ratio)
+        kelly = kelly * self.kelly_fraction
+
+        return max(0.0, min(kelly, self.max_position_size))
+
+    def check_correlation(self, symbol: str) -&gt; bool:
+        """
+        Check if adding position would violate correlation limits.
+
+        Parameters:
+        -----------
+        symbol : str
+            Symbol to check
+
+        Returns:
+        --------
+        bool : True if correlation is acceptable
+        """
+        if not self.positions:
+            return True
+
+        # Download price data
+        try:
+            symbols = list(self.positions.keys()) + [symbol]
+            data = yf.download(symbols, period='3mo', progress=False)['Adj Close']
+
+            if len(symbols) == 2:
+                corr = data.corr().iloc[0, 1]
+            else:
+                corr = data[symbol].corr(data[list(self.positions.keys())[0]])
+
+            return abs(corr) &lt; self.max_correlation
+
+        except:
+            return True  # Allow if data unavailable
+
+    def check_portfolio_risk(self) -&gt; float:
+        """
+        Calculate current portfolio risk.
+
+        Returns:
+        --------
+        float : Total portfolio risk as fraction
+        """
+        if not self.positions:
+            return 0.0
+
+        total_risk = 0.0
+
+        for pos in self.positions.values():
+            # Risk per position
+            risk_per_share = abs(pos.entry_price - pos.stop_loss)
+            position_risk = (risk_per_share * pos.shares) / self.current_capital
+            total_risk += position_risk
+
+        return total_risk
+
+    def can_open_position(self, symbol: str, position_risk: float) -&gt; Tuple[bool, str]:
+        """
+        Check if new position can be opened.
+
+        Parameters:
+        -----------
+        symbol : str
+            Symbol to trade
+        position_risk : float
+            Risk of new position as fraction
+
+        Returns:
+        --------
+        Tuple[bool, str] : (can_open, reason)
+        """
+        # Check if already have position
+        if symbol in self.positions:
+            return False, "Position already exists"
+
+        # Check drawdown
+        current_dd = self.get_current_drawdown()
+        if current_dd &gt;= self.max_drawdown:
+            return False, f"Maximum drawdown reached: {current_dd:.2%}"
+
+        # Check portfolio risk
+        current_risk = self.check_portfolio_risk()
+        if current_risk + position_risk &gt; self.max_portfolio_risk:
+            return False, f"Portfolio risk limit exceeded: {current_risk + position_risk:.2%}"
+
+        # Check correlation
+        if not self.check_correlation(symbol):
+            return False, "Correlation limit exceeded"
+
+        return True, "OK"
+
+    def open_position(self,
+                     symbol: str,
+                     entry_price: float,
+                     shares: int,
+                     stop_loss: float,
+                     take_profit: Optional[float] = None) -&gt; bool:
+        """
+        Open a new position.
+
+        Parameters:
+        -----------
+        symbol : str
+            Stock symbol
+        entry_price : float
+            Entry price
+        shares : int
+            Number of shares
+        stop_loss : float
+            Stop loss price
+        take_profit : float, optional
+            Take profit price
+
+        Returns:
+        --------
+        bool : True if position opened successfully
+        """
+        # Calculate position risk
+        risk_per_share = abs(entry_price - stop_loss)
+        position_risk = (risk_per_share * shares) / self.current_capital
+
+        # Check if can open
+        can_open, reason = self.can_open_position(symbol, position_risk)
+
+        if not can_open:
+            print(f"Cannot open position: {reason}")
+            return False
+
+        # Create position
+        position = Position(
+            symbol=symbol,
+            entry_price=entry_price,
+            shares=shares,
+            entry_date=datetime.now(),
+            stop_loss=stop_loss,
+            take_profit=take_profit,
+            current_price=entry_price
+        )
+
+        self.positions[symbol] = position
+
+        # Update capital
+        self.current_capital -= entry_price * shares
+
+        print(f"Opened position: {symbol} - {shares} shares @ ${entry_price:.2f}")
+        print(f"Stop Loss: ${stop_loss:.2f}, Risk: {position_risk:.2%}")
+
+        return True
+
+    def close_position(self, symbol: str, exit_price: float, reason: str = "Manual") -&gt; bool:
+        """
+        Close an existing position.
+
+        Parameters:
+        -----------
+        symbol : str
+            Symbol to close
+        exit_price : float
+            Exit price
+        reason : str
+            Reason for closing
+
+        Returns:
+        --------
+        bool : True if closed successfully
+        """
+        if symbol not in self.positions:
+            print(f"No position found for {symbol}")
+            return False
+
+        pos = self.positions[symbol]
+
+        # Calculate P&amp;L
+        pnl = (exit_price - pos.entry_price) * pos.shares
+        pnl_pct = (exit_price - pos.entry_price) / pos.entry_price
+
+        # Update capital
+        self.current_capital += exit_price * pos.shares
+
+        # Create trade record
+        hold_days = (datetime.now() - pos.entry_date).days
+        trade = Trade(
+            symbol=symbol,
+            entry_price=pos.entry_price,
+            exit_price=exit_price,
+            shares=pos.shares,
+            entry_date=pos.entry_date,
+            exit_date=datetime.now(),
+            pnl=pnl,
+            pnl_pct=pnl_pct,
+            hold_days=hold_days
+        )
+
+        self.trade_history.append(trade)
+
+        # Remove position
+        del self.positions[symbol]
+
+        # Update equity curve
+        self.equity_curve.append(self.current_capital)
+        self.equity_dates.append(datetime.now())
+
+        # Update peak
+        if self.current_capital &gt; self.peak_capital:
+            self.peak_capital = self.current_capital
+            self.peak_date = datetime.now()
+
+        print(f"Closed position: {symbol} @ ${exit_price:.2f}")
+        print(f"P&amp;L: ${pnl:,.2f} ({pnl_pct:+.2%}) - Reason: {reason}")
+
+        return True
+
+    def update_positions(self):
+        """Update all positions with current prices."""
+        if not self.positions:
+            return
+
+        symbols = list(self.positions.keys())
+
+        try:
+            # Download current prices
+            data = yf.download(symbols, period='1d', progress=False)
+
+            if len(symbols) == 1:
+                current_price = data['Adj Close'].iloc[-1]
+                self.positions[symbols[0]].current_price = current_price
+            else:
+                for symbol in symbols:
+                    current_price = data['Adj Close'][symbol].iloc[-1]
+                    self.positions[symbol].current_price = current_price
+
+            print("Positions updated with current prices")
+
+        except Exception as e:
+            print(f"Error updating positions: {e}")
+
+    def check_stops(self) -&gt; List[str]:
+        """
+        Check if any positions hit stop loss.
+
+        Returns:
+        --------
+        List[str] : Symbols that hit stops
+        """
+        stopped_out = []
+
+        for symbol, pos in self.positions.items():
+            if pos.current_price is None:
+                continue
+
+            # Check stop loss
+            if pos.current_price &lt;= pos.stop_loss:
+                self.close_position(symbol, pos.stop_loss, "Stop Loss")
+                stopped_out.append(symbol)
+
+            # Check take profit
+            elif pos.take_profit and pos.current_price &gt;= pos.take_profit:
+                self.close_position(symbol, pos.take_profit, "Take Profit")
+                stopped_out.append(symbol)
+
+        return stopped_out
+
+    def update_trailing_stops(self, trail_pct: float = 0.10):
+        """
+        Update trailing stops for profitable positions.
+
+        Parameters:
+        -----------
+        trail_pct : float
+            Trailing stop percentage
+        """
+        for symbol, pos in self.positions.items():
+            if pos.current_price is None:
+                continue
+
+            # Only trail if profitable
+            if pos.current_price &gt; pos.entry_price:
+                new_stop = pos.current_price * (1 - trail_pct)
+
+                # Only raise stop, never lower
+                if new_stop &gt; pos.stop_loss:
+                    pos.stop_loss = new_stop
+                    print(f"Updated trailing stop for {symbol}: ${new_stop:.2f}")
+
+    def get_current_drawdown(self) -&gt; float:
+        """
+        Calculate current drawdown.
+
+        Returns:
+        --------
+        float : Current drawdown as fraction
+        """
+        total_value = self.get_total_value()
+
+        if self.peak_capital == 0:
+            return 0.0
+
+        drawdown = (self.peak_capital - total_value) / self.peak_capital
+        return max(0.0, drawdown)
+
+    def get_total_value(self) -&gt; float:
+        """
+        Get total portfolio value.
+
+        Returns:
+        --------
+        float : Total value (cash + positions)
+        """
+        position_value = sum(pos.position_value for pos in self.positions.values())
+        return self.current_capital + position_value
+
+    def get_performance_metrics(self) -&gt; Dict:
+        """
+        Calculate performance metrics.
+
+        Returns:
+        --------
+        Dict : Performance metrics
+        """
+        if not self.trade_history:
+            return {}
+
+        returns = [t.pnl_pct for t in self.trade_history]
+        pnls = [t.pnl for t in self.trade_history]
+
+        wins = [r for r in returns if r &gt; 0]
+        losses = [r for r in returns if r &lt; 0]
+
+        total_return = (self.get_total_value() - self.initial_capital) / self.initial_capital
+
+        metrics = {
+            'total_trades': len(self.trade_history),
+            'winning_trades': len(wins),
+            'losing_trades': len(losses),
+            'win_rate': len(wins) / len(returns) if returns else 0,
+            'avg_win': np.mean(wins) if wins else 0,
+            'avg_loss': np.mean(losses) if losses else 0,
+            'avg_win_loss_ratio': abs(np.mean(wins) / np.mean(losses)) if wins and losses else 0,
+            'total_pnl': sum(pnls),
+            'total_return': total_return,
+            'max_drawdown': self.get_max_drawdown(),
+            'current_drawdown': self.get_current_drawdown(),
+            'sharpe_ratio': self.calculate_sharpe_ratio(),
+            'expectancy': self.calculate_expectancy()
+        }
+
+        return metrics
+
+    def get_max_drawdown(self) -&gt; float:
+        """Calculate maximum drawdown from equity curve."""
+        if len(self.equity_curve) &lt; 2:
+            return 0.0
+
+        equity = np.array(self.equity_curve)
+        running_max = np.maximum.accumulate(equity)
+        drawdowns = (running_max - equity) / running_max
+
+        return np.max(drawdowns)
+
+    def calculate_sharpe_ratio(self, risk_free_rate: float = 0.02) -&gt; float:
+        """Calculate Sharpe ratio."""
+        if len(self.trade_history) &lt; 2:
+            return 0.0
+
+        returns = [t.pnl_pct for t in self.trade_history]
+        excess_returns = np.array(returns) - (risk_free_rate / 252)
+
+        if np.std(excess_returns) == 0:
+            return 0.0
+
+        return np.mean(excess_returns) / np.std(excess_returns) * np.sqrt(252)
+
+    def calculate_expectancy(self) -&gt; float:
+        """Calculate expectancy per trade."""
+        if not self.trade_history:
+            return 0.0
+
+        returns = [t.pnl_pct for t in self.trade_history]
+        wins = [r for r in returns if r &gt; 0]
+        losses = [r for r in returns if r &lt; 0]
+
+        if not wins or not losses:
+            return 0.0
+
+        win_rate = len(wins) / len(returns)
+        avg_win = np.mean(wins)
+        avg_loss = abs(np.mean(losses))
+
+        expectancy = (win_rate * avg_win) - ((1 - win_rate) * avg_loss)
+        return expectancy
+
+    def generate_report(self):
+        """Generate comprehensive risk report."""
+        print("\n" + "=" * 70)
+        print("RISK MANAGEMENT REPORT")
+        print("=" * 70)
+
+        # Portfolio summary
+        print("\nPORTFOLIO SUMMARY")
+        print("-" * 70)
+        print(f"Initial Capital:    ${self.initial_capital:,.2f}")
+        print(f"Current Cash:       ${self.current_capital:,.2f}")
+        print(f"Position Value:     ${sum(p.position_value for p in self.positions.values()):,.2f}")
+        print(f"Total Value:        ${self.get_total_value():,.2f}")
+        print(f"Total Return:       {(self.get_total_value() - self.initial_capital) / self.initial_capital:+.2%}")
+
+        # Current positions
+        print("\nCURRENT POSITIONS")
+        print("-" * 70)
+        if self.positions:
+            for symbol, pos in self.positions.items():
+                print(f"\n{symbol}:")
+                print(f"  Shares:           {pos.shares}")
+                print(f"  Entry Price:      ${pos.entry_price:.2f}")
+                print(f"  Current Price:    ${pos.current_price:.2f}" if pos.current_price else "  Current Price:    N/A")
+                print(f"  Stop Loss:        ${pos.stop_loss:.2f}")
+                print(f"  Position Value:   ${pos.position_value:,.2f}")
+                print(f"  Unrealized P&amp;L:   ${pos.unrealized_pnl:,.2f} ({pos.unrealized_pnl_pct:+.2%})")
+        else:
+            print("No open positions")
+
+        # Risk metrics
+        print("\nRISK METRICS")
+        print("-" * 70)
+        print(f"Portfolio Risk:     {self.check_portfolio_risk():.2%} / {self.max_portfolio_risk:.2%}")
+        print(f"Current Drawdown:   {self.get_current_drawdown():.2%}")
+        print(f"Max Drawdown:       {self.get_max_drawdown():.2%}")
+        print(f"Peak Capital:       ${self.peak_capital:,.2f}")
+
+        # Performance metrics
+        if self.trade_history:
+            print("\nPERFORMANCE METRICS")
+            print("-" * 70)
+            metrics = self.get_performance_metrics()
+            print(f"Total Trades:       {metrics['total_trades']}")
+            print(f"Win Rate:           {metrics['win_rate']:.2%}")
+            print(f"Avg Win:            {metrics['avg_win']:+.2%}")
+            print(f"Avg Loss:           {metrics['avg_loss']:+.2%}")
+            print(f"Win/Loss Ratio:     {metrics['avg_win_loss_ratio']:.2f}")
+            print(f"Expectancy:         {metrics['expectancy']:+.2%}")
+            print(f"Sharpe Ratio:       {metrics['sharpe_ratio']:.2f}")
+
+        print("\n" + "=" * 70)
+
+    def plot_equity_curve(self):
+        """Plot equity curve with drawdowns."""
+        if len(self.equity_curve) &lt; 2:
+            print("Not enough data to plot")
+            return
+
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8), sharex=True)
+
+        # Equity curve
+        ax1.plot(self.equity_dates, self.equity_curve, label='Portfolio Value', linewidth=2)
+        ax1.axhline(y=self.initial_capital, color='gray', linestyle='--', label='Initial Capital')
+        ax1.set_ylabel('Portfolio Value ($)')
+        ax1.set_title('Equity Curve')
+        ax1.legend()
+        ax1.grid(True, alpha=0.3)
+
+        # Drawdown
+        equity = np.array(self.equity_curve)
+        running_max = np.maximum.accumulate(equity)
+        drawdowns = (running_max - equity) / running_max
+
+        ax2.fill_between(self.equity_dates, 0, -drawdowns * 100, alpha=0.3, color='red')
+        ax2.plot(self.equity_dates, -drawdowns * 100, color='red', linewidth=2)
+        ax2.axhline(y=-self.max_drawdown * 100, color='orange', linestyle='--',
+                   label=f'Max DD Limit ({self.max_drawdown:.0%})')
+        ax2.set_ylabel('Drawdown (%)')
+        ax2.set_xlabel('Date')
+        ax2.set_title('Drawdown')
+        ax2.legend()
+        ax2.grid(True, alpha=0.3)
+
+        plt.tight_layout()
+        plt.show()
+
+
+# Example usage
+def example_risk_system():
+    """
+    Demonstrate comprehensive risk management system.
+    """
+    print("Comprehensive Risk Management System")
+    print("=" * 70)
+
+    # Initialize risk manager
+    risk_mgr = RiskManager(
+        initial_capital=100000,
+        max_position_size=0.10,
+        max_portfolio_risk=0.06,
+        max_correlation=0.70,
+        max_drawdown=0.20,
+        kelly_fraction=0.5
+    )
+
+    # Example 1: Open positions
+    print("\nExample 1: Opening Positions")
+    print("-" * 70)
+
+    # Calculate position size
+    symbol = "AAPL"
+    entry_price = 150.0
+    stop_loss = 145.0
+
+    shares = risk_mgr.calculate_position_size(
+        symbol, entry_price, stop_loss, method='fixed_risk', risk_amount=1000
+    )
+
+    print(f"Calculated position size: {shares} shares")
+
+    # Open position
+    risk_mgr.open_position(
+        symbol=symbol,
+        entry_price=entry_price,
+        shares=shares,
+        stop_loss=stop_loss,
+        take_profit=160.0
+    )
+
+    # Example 2: Update and monitor
+    print("\nExample 2: Position Monitoring")
+    print("-" * 70)
+
+    # Simulate price update
+    risk_mgr.positions[symbol].current_price = 155.0
+    risk_mgr.update_trailing_stops(trail_pct=0.05)
+
+    # Example 3: Close position
+    print("\nExample 3: Closing Position")
+    print("-" * 70)
+
+    risk_mgr.close_position(symbol, 155.0, "Take Profit")
+
+    # Generate report
+    risk_mgr.generate_report()
+
+
+if __name__ == "__main__":
+    example_risk_system()
+</code></pre>
+<h2 id="part-2-advanced-features"><a class="header" href="#part-2-advanced-features">Part 2: Advanced Features</a></h2>
+<h3 id="risk-alerts-system"><a class="header" href="#risk-alerts-system">Risk Alerts System</a></h3>
+<pre><code class="language-python">class RiskAlertSystem:
+    """
+    Alert system for risk violations.
+    """
+
+    def __init__(self, risk_manager: RiskManager):
+        self.risk_manager = risk_manager
+        self.alerts = []
+
+    def check_alerts(self) -&gt; List[str]:
+        """Check for risk violations."""
+        alerts = []
+
+        # Check drawdown
+        dd = self.risk_manager.get_current_drawdown()
+        if dd &gt; self.risk_manager.max_drawdown * 0.8:
+            alerts.append(f"WARNING: Drawdown at {dd:.2%}, approaching limit")
+
+        # Check portfolio risk
+        risk = self.risk_manager.check_portfolio_risk()
+        if risk &gt; self.risk_manager.max_portfolio_risk * 0.9:
+            alerts.append(f"WARNING: Portfolio risk at {risk:.2%}, near limit")
+
+        # Check position concentration
+        if self.risk_manager.positions:
+            total_value = self.risk_manager.get_total_value()
+            for symbol, pos in self.risk_manager.positions.items():
+                concentration = pos.position_value / total_value
+                if concentration &gt; 0.25:
+                    alerts.append(f"WARNING: {symbol} concentration at {concentration:.2%}")
+
+        self.alerts.extend(alerts)
+        return alerts
+
+    def get_alert_history(self) -&gt; List[str]:
+        """Get all historical alerts."""
+        return self.alerts
+</code></pre>
+<h3 id="performance-attribution"><a class="header" href="#performance-attribution">Performance Attribution</a></h3>
+<pre><code class="language-python">class PerformanceAttribution:
+    """
+    Analyze performance attribution.
+    """
+
+    def __init__(self, risk_manager: RiskManager):
+        self.risk_manager = risk_manager
+
+    def analyze_by_symbol(self) -&gt; pd.DataFrame:
+        """Analyze performance by symbol."""
+        if not self.risk_manager.trade_history:
+            return pd.DataFrame()
+
+        symbol_stats = {}
+
+        for trade in self.risk_manager.trade_history:
+            if trade.symbol not in symbol_stats:
+                symbol_stats[trade.symbol] = {
+                    'trades': 0,
+                    'wins': 0,
+                    'total_pnl': 0,
+                    'total_pnl_pct': 0
+                }
+
+            stats = symbol_stats[trade.symbol]
+            stats['trades'] += 1
+            if trade.pnl &gt; 0:
+                stats['wins'] += 1
+            stats['total_pnl'] += trade.pnl
+            stats['total_pnl_pct'] += trade.pnl_pct
+
+        # Convert to DataFrame
+        df = pd.DataFrame.from_dict(symbol_stats, orient='index')
+        df['win_rate'] = df['wins'] / df['trades']
+        df['avg_pnl_pct'] = df['total_pnl_pct'] / df['trades']
+
+        return df.sort_values('total_pnl', ascending=False)
+
+    def analyze_by_hold_period(self) -&gt; pd.DataFrame:
+        """Analyze performance by holding period."""
+        if not self.risk_manager.trade_history:
+            return pd.DataFrame()
+
+        periods = {'0-1d': [], '1-5d': [], '5-20d': [], '20+d': []}
+
+        for trade in self.risk_manager.trade_history:
+            if trade.hold_days &lt;= 1:
+                periods['0-1d'].append(trade.pnl_pct)
+            elif trade.hold_days &lt;= 5:
+                periods['1-5d'].append(trade.pnl_pct)
+            elif trade.hold_days &lt;= 20:
+                periods['5-20d'].append(trade.pnl_pct)
+            else:
+                periods['20+d'].append(trade.pnl_pct)
+
+        stats = {}
+        for period, returns in periods.items():
+            if returns:
+                stats[period] = {
+                    'trades': len(returns),
+                    'avg_return': np.mean(returns),
+                    'win_rate': len([r for r in returns if r &gt; 0]) / len(returns)
+                }
+
+        return pd.DataFrame.from_dict(stats, orient='index')
+</code></pre>
+<h2 id="part-3-backtesting-integration"><a class="header" href="#part-3-backtesting-integration">Part 3: Backtesting Integration</a></h2>
+<pre><code class="language-python">def backtest_risk_system(symbols: List[str],
+                        start_date: str,
+                        end_date: str,
+                        initial_capital: float = 100000):
+    """
+    Backtest the risk management system.
+
+    Parameters:
+    -----------
+    symbols : List[str]
+        List of symbols to trade
+    start_date : str
+        Start date
+    end_date : str
+        End date
+    initial_capital : float
+        Starting capital
+
+    Returns:
+    --------
+    RiskManager : Risk manager with backtest results
+    """
+    # Initialize risk manager
+    risk_mgr = RiskManager(initial_capital=initial_capital)
+
+    # Download data
+    data = yf.download(symbols, start=start_date, end=end_date)['Adj Close']
+
+    # Simple moving average crossover strategy
+    for symbol in symbols:
+        prices = data[symbol] if len(symbols) &gt; 1 else data
+
+        # Calculate moving averages
+        ma_short = prices.rolling(20).mean()
+        ma_long = prices.rolling(50).mean()
+
+        position_open = False
+
+        for i in range(50, len(prices)):
+            current_price = prices.iloc[i]
+
+            # Entry signal
+            if not position_open and ma_short.iloc[i] &gt; ma_long.iloc[i]:
+                # Calculate stop loss (2 ATR)
+                atr = prices.iloc[i-20:i].pct_change().std() * current_price
+                stop_loss = current_price - (2 * atr)
+
+                # Calculate position size
+                shares = risk_mgr.calculate_position_size(
+                    symbol, current_price, stop_loss, method='kelly'
+                )
+
+                if shares &gt; 0:
+                    success = risk_mgr.open_position(
+                        symbol, current_price, shares, stop_loss
+                    )
+                    if success:
+                        position_open = True
+
+            # Exit signal
+            elif position_open and ma_short.iloc[i] &lt; ma_long.iloc[i]:
+                risk_mgr.close_position(symbol, current_price, "Signal")
+                position_open = False
+
+            # Update positions
+            if symbol in risk_mgr.positions:
+                risk_mgr.positions[symbol].current_price = current_price
+
+            # Check stops
+            risk_mgr.check_stops()
+
+    return risk_mgr
+</code></pre>
+<h2 id="project-tasks"><a class="header" href="#project-tasks">Project Tasks</a></h2>
+<h3 id="task-1-system-implementation"><a class="header" href="#task-1-system-implementation">Task 1: System Implementation</a></h3>
+<p>Implement the complete risk management system with all components.</p>
+<h3 id="task-2-real-time-monitoring"><a class="header" href="#task-2-real-time-monitoring">Task 2: Real-Time Monitoring</a></h3>
+<p>Create a dashboard that displays:</p>
+<ul>
+<li>Current positions and P&amp;L</li>
+<li>Portfolio risk metrics</li>
+<li>Drawdown status</li>
+<li>Risk alerts</li>
+</ul>
+<h3 id="task-3-backtesting"><a class="header" href="#task-3-backtesting">Task 3: Backtesting</a></h3>
+<p>Backtest the system on historical data for multiple symbols and analyze:</p>
+<ul>
+<li>Performance metrics</li>
+<li>Risk-adjusted returns</li>
+<li>Drawdown characteristics</li>
+<li>Position sizing effectiveness</li>
+</ul>
+<h3 id="task-4-optimization"><a class="header" href="#task-4-optimization">Task 4: Optimization</a></h3>
+<p>Optimize risk parameters:</p>
+<ul>
+<li>Maximum position size</li>
+<li>Kelly fraction</li>
+<li>Drawdown limits</li>
+<li>Correlation thresholds</li>
+</ul>
+<p>Test different combinations and compare results.</p>
+<h3 id="task-5-reporting"><a class="header" href="#task-5-reporting">Task 5: Reporting</a></h3>
+<p>Create comprehensive reports including:</p>
+<ul>
+<li>Performance attribution by symbol</li>
+<li>Performance by holding period</li>
+<li>Risk metrics over time</li>
+<li>Equity curve with drawdowns</li>
+</ul>
+<h2 id="evaluation-criteria"><a class="header" href="#evaluation-criteria">Evaluation Criteria</a></h2>
+<p>Your project will be evaluated on:</p>
+<ol>
+<li><strong>Completeness</strong> (25%): All components implemented and integrated</li>
+<li><strong>Functionality</strong> (25%): System works correctly and handles edge cases</li>
+<li><strong>Risk Management</strong> (20%): Proper implementation of risk controls</li>
+<li><strong>Performance</strong> (15%): System achieves good risk-adjusted returns</li>
+<li><strong>Code Quality</strong> (15%): Clean, well-documented, maintainable code</li>
+</ol>
+<h2 id="submission-guidelines"><a class="header" href="#submission-guidelines">Submission Guidelines</a></h2>
+<p>Submit the following:</p>
+<ol>
+<li>Complete Python implementation</li>
+<li>Backtest results on at least 3 different symbols</li>
+<li>Performance report with metrics and visualizations</li>
+<li>Documentation explaining your approach and findings</li>
+<li>Analysis of risk parameter optimization</li>
+</ol>
+<h2 id="bonus-challenges"><a class="header" href="#bonus-challenges">Bonus Challenges</a></h2>
+<ol>
+<li>Implement Monte Carlo simulation for risk assessment</li>
+<li>Add machine learning for dynamic parameter adjustment</li>
+<li>Create real-time alert system with email/SMS notifications</li>
+<li>Implement portfolio optimization using Modern Portfolio Theory</li>
+<li>Add support for options and other derivatives</li>
+</ol>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>This project integrates all risk management concepts from Module 5 into a professional-grade system. By completing this project, you’ll have a reusable framework that can be applied to any trading strategy, significantly improving risk-adjusted returns and protecting capital during adverse market conditions.</p>
+<p>The skills developed here form the foundation for professional trading system development and are essential for anyone serious about systematic trading.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../module-05/lesson-06-kelly.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../module-06/lesson-01-intro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../module-05/lesson-06-kelly.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../module-06/lesson-01-intro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

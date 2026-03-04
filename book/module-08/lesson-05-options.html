@@ -1,0 +1,847 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>8.5 Options and Derivatives - Trading Academy: From Beginner to Professional</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A comprehensive guide to automated trading, from fundamentals to professional-level strategies">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-6775557f.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-bd3756ef.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Trading Academy: From Beginner to Professional</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy/edit/main/src/en/module-08/lesson-05-options.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="lesson-85-options-and-derivatives-trading"><a class="header" href="#lesson-85-options-and-derivatives-trading">Lesson 8.5: Options and Derivatives Trading</a></h1>
+<h2 id="learning-objectives"><a class="header" href="#learning-objectives">Learning Objectives</a></h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Understand options pricing and the Greeks</li>
+<li>Implement options trading strategies</li>
+<li>Build volatility trading systems</li>
+<li>Create hedging strategies using derivatives</li>
+<li>Analyze and manage options portfolio risk</li>
+</ul>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>Options and derivatives provide powerful tools for trading, hedging, and speculation. Unlike stocks, options have:</p>
+<ol>
+<li><strong>Non-linear Payoffs</strong>: Asymmetric risk/reward profiles</li>
+<li><strong>Time Decay</strong>: Value erodes as expiration approaches</li>
+<li><strong>Volatility Sensitivity</strong>: Profits from volatility changes</li>
+<li><strong>Leverage</strong>: Control large positions with small capital</li>
+</ol>
+<p>This lesson covers practical options trading strategies and risk management techniques.</p>
+<h2 id="options-pricing-and-greeks"><a class="header" href="#options-pricing-and-greeks">Options Pricing and Greeks</a></h2>
+<p>Understanding options pricing is fundamental to derivatives trading:</p>
+<pre><code class="language-python">import pandas as pd
+import numpy as np
+from scipy.stats import norm
+from typing import Dict, Tuple
+import yfinance as yf
+from datetime import datetime, timedelta
+
+class BlackScholesModel:
+    """Black-Scholes options pricing model."""
+
+    @staticmethod
+    def calculate_d1_d2(S: float, K: float, T: float, r: float, sigma: float) -&gt; Tuple[float, float]:
+        """Calculate d1 and d2 parameters."""
+        d1 = (np.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
+        d2 = d1 - sigma * np.sqrt(T)
+        return d1, d2
+
+    @classmethod
+    def call_price(cls, S: float, K: float, T: float, r: float, sigma: float) -&gt; float:
+        """Calculate call option price."""
+        if T &lt;= 0:
+            return max(S - K, 0)
+
+        d1, d2 = cls.calculate_d1_d2(S, K, T, r, sigma)
+        call = S * norm.cdf(d1) - K * np.exp(-r * T) * norm.cdf(d2)
+        return call
+
+    @classmethod
+    def put_price(cls, S: float, K: float, T: float, r: float, sigma: float) -&gt; float:
+        """Calculate put option price."""
+        if T &lt;= 0:
+            return max(K - S, 0)
+
+        d1, d2 = cls.calculate_d1_d2(S, K, T, r, sigma)
+        put = K * np.exp(-r * T) * norm.cdf(-d2) - S * norm.cdf(-d1)
+        return put
+
+
+class OptionsGreeks:
+    """Calculate options Greeks for risk management."""
+
+    @staticmethod
+    def delta(S: float, K: float, T: float, r: float, sigma: float,
+             option_type: str = 'call') -&gt; float:
+        """Calculate delta (price sensitivity)."""
+        if T &lt;= 0:
+            return 0
+
+        d1, _ = BlackScholesModel.calculate_d1_d2(S, K, T, r, sigma)
+
+        if option_type == 'call':
+            return norm.cdf(d1)
+        else:  # put
+            return norm.cdf(d1) - 1
+
+    @staticmethod
+    def gamma(S: float, K: float, T: float, r: float, sigma: float) -&gt; float:
+        """Calculate gamma (delta sensitivity)."""
+        if T &lt;= 0:
+            return 0
+
+        d1, _ = BlackScholesModel.calculate_d1_d2(S, K, T, r, sigma)
+        gamma = norm.pdf(d1) / (S * sigma * np.sqrt(T))
+        return gamma
+
+    @staticmethod
+    def vega(S: float, K: float, T: float, r: float, sigma: float) -&gt; float:
+        """Calculate vega (volatility sensitivity)."""
+        if T &lt;= 0:
+            return 0
+
+        d1, _ = BlackScholesModel.calculate_d1_d2(S, K, T, r, sigma)
+        vega = S * norm.pdf(d1) * np.sqrt(T) / 100  # Per 1% change in vol
+        return vega
+
+    @staticmethod
+    def theta(S: float, K: float, T: float, r: float, sigma: float,
+             option_type: str = 'call') -&gt; float:
+        """Calculate theta (time decay)."""
+        if T &lt;= 0:
+            return 0
+
+        d1, d2 = BlackScholesModel.calculate_d1_d2(S, K, T, r, sigma)
+
+        if option_type == 'call':
+            theta = (-S * norm.pdf(d1) * sigma / (2 * np.sqrt(T)) -
+                    r * K * np.exp(-r * T) * norm.cdf(d2)) / 365
+        else:  # put
+            theta = (-S * norm.pdf(d1) * sigma / (2 * np.sqrt(T)) +
+                    r * K * np.exp(-r * T) * norm.cdf(-d2)) / 365
+
+        return theta
+
+    @staticmethod
+    def rho(S: float, K: float, T: float, r: float, sigma: float,
+           option_type: str = 'call') -&gt; float:
+        """Calculate rho (interest rate sensitivity)."""
+        if T &lt;= 0:
+            return 0
+
+        _, d2 = BlackScholesModel.calculate_d1_d2(S, K, T, r, sigma)
+
+        if option_type == 'call':
+            rho = K * T * np.exp(-r * T) * norm.cdf(d2) / 100
+        else:  # put
+            rho = -K * T * np.exp(-r * T) * norm.cdf(-d2) / 100
+
+        return rho
+</code></pre>
+<h2 id="options-trading-strategies"><a class="header" href="#options-trading-strategies">Options Trading Strategies</a></h2>
+<p>Implementing common options strategies:</p>
+<pre><code class="language-python">class OptionsStrategy:
+    """Base class for options trading strategies."""
+
+    def __init__(self, underlying_price: float, risk_free_rate: float = 0.02):
+        self.S = underlying_price
+        self.r = risk_free_rate
+
+    def calculate_payoff(self, spot_price: float) -&gt; float:
+        """Calculate strategy payoff at expiration."""
+        raise NotImplementedError
+
+    def calculate_pnl(self, spot_price: float, initial_cost: float) -&gt; float:
+        """Calculate profit/loss."""
+        return self.calculate_payoff(spot_price) - initial_cost
+
+
+class CoveredCall(OptionsStrategy):
+    """Covered call strategy: Long stock + Short call."""
+
+    def __init__(self, underlying_price: float, strike: float,
+                 expiry: float, volatility: float):
+        super().__init__(underlying_price)
+        self.K = strike
+        self.T = expiry
+        self.sigma = volatility
+
+        # Calculate initial cost
+        self.stock_cost = underlying_price
+        self.call_premium = BlackScholesModel.call_price(
+            underlying_price, strike, expiry, self.r, volatility
+        )
+        self.initial_cost = self.stock_cost - self.call_premium
+
+    def calculate_payoff(self, spot_price: float) -&gt; float:
+        """Calculate payoff at expiration."""
+        stock_value = spot_price
+        call_payoff = -max(spot_price - self.K, 0)  # Short call
+        return stock_value + call_payoff
+
+
+class ProtectivePut(OptionsStrategy):
+    """Protective put strategy: Long stock + Long put."""
+
+    def __init__(self, underlying_price: float, strike: float,
+                 expiry: float, volatility: float):
+        super().__init__(underlying_price)
+        self.K = strike
+        self.T = expiry
+        self.sigma = volatility
+
+        # Calculate initial cost
+        self.stock_cost = underlying_price
+        self.put_premium = BlackScholesModel.put_price(
+            underlying_price, strike, expiry, self.r, volatility
+        )
+        self.initial_cost = self.stock_cost + self.put_premium
+
+    def calculate_payoff(self, spot_price: float) -&gt; float:
+        """Calculate payoff at expiration."""
+        stock_value = spot_price
+        put_payoff = max(self.K - spot_price, 0)  # Long put
+        return stock_value + put_payoff
+
+
+class IronCondor(OptionsStrategy):
+    """Iron condor: Sell OTM call spread + Sell OTM put spread."""
+
+    def __init__(self, underlying_price: float,
+                 put_strike_low: float, put_strike_high: float,
+                 call_strike_low: float, call_strike_high: float,
+                 expiry: float, volatility: float):
+        super().__init__(underlying_price)
+        self.K_pl = put_strike_low
+        self.K_ph = put_strike_high
+        self.K_cl = call_strike_low
+        self.K_ch = call_strike_high
+        self.T = expiry
+        self.sigma = volatility
+
+        # Calculate net premium received
+        put_spread_credit = (
+            BlackScholesModel.put_price(underlying_price, put_strike_high, expiry, self.r, volatility) -
+            BlackScholesModel.put_price(underlying_price, put_strike_low, expiry, self.r, volatility)
+        )
+        call_spread_credit = (
+            BlackScholesModel.call_price(underlying_price, call_strike_low, expiry, self.r, volatility) -
+            BlackScholesModel.call_price(underlying_price, call_strike_high, expiry, self.r, volatility)
+        )
+        self.initial_credit = put_spread_credit + call_spread_credit
+
+    def calculate_payoff(self, spot_price: float) -&gt; float:
+        """Calculate payoff at expiration."""
+        # Put spread payoff
+        put_spread = (max(self.K_ph - spot_price, 0) -
+                     max(self.K_pl - spot_price, 0))
+
+        # Call spread payoff
+        call_spread = (max(spot_price - self.K_cl, 0) -
+                      max(spot_price - self.K_ch, 0))
+
+        # We sold both spreads, so payoff is negative
+        return -(put_spread + call_spread)
+
+
+class Straddle(OptionsStrategy):
+    """Long straddle: Long call + Long put at same strike."""
+
+    def __init__(self, underlying_price: float, strike: float,
+                 expiry: float, volatility: float):
+        super().__init__(underlying_price)
+        self.K = strike
+        self.T = expiry
+        self.sigma = volatility
+
+        # Calculate initial cost
+        self.call_premium = BlackScholesModel.call_price(
+            underlying_price, strike, expiry, self.r, volatility
+        )
+        self.put_premium = BlackScholesModel.put_price(
+            underlying_price, strike, expiry, self.r, volatility
+        )
+        self.initial_cost = self.call_premium + self.put_premium
+
+    def calculate_payoff(self, spot_price: float) -&gt; float:
+        """Calculate payoff at expiration."""
+        call_payoff = max(spot_price - self.K, 0)
+        put_payoff = max(self.K - spot_price, 0)
+        return call_payoff + put_payoff
+</code></pre>
+<h2 id="volatility-trading"><a class="header" href="#volatility-trading">Volatility Trading</a></h2>
+<p>Trading volatility using options:</p>
+<pre><code class="language-python">class VolatilityTrader:
+    """Trade volatility using options strategies."""
+
+    def __init__(self, symbol: str):
+        self.symbol = symbol
+        self.historical_vol = None
+        self.implied_vol = None
+
+    def calculate_historical_volatility(self, prices: pd.Series,
+                                       window: int = 30) -&gt; float:
+        """Calculate historical volatility."""
+        returns = prices.pct_change().dropna()
+        vol = returns.rolling(window).std() * np.sqrt(252)
+        self.historical_vol = vol.iloc[-1]
+        return self.historical_vol
+
+    def estimate_implied_volatility(self, option_price: float, S: float,
+                                    K: float, T: float, r: float,
+                                    option_type: str = 'call') -&gt; float:
+        """Estimate implied volatility using Newton-Raphson method."""
+        sigma = 0.3  # Initial guess
+        max_iterations = 100
+        tolerance = 1e-5
+
+        for _ in range(max_iterations):
+            if option_type == 'call':
+                price = BlackScholesModel.call_price(S, K, T, r, sigma)
+            else:
+                price = BlackScholesModel.put_price(S, K, T, r, sigma)
+
+            diff = price - option_price
+
+            if abs(diff) &lt; tolerance:
+                self.implied_vol = sigma
+                return sigma
+
+            # Calculate vega for Newton-Raphson
+            vega = OptionsGreeks.vega(S, K, T, r, sigma) * 100
+
+            if vega &lt; 1e-10:
+                break
+
+            sigma = sigma - diff / vega
+
+            if sigma &lt;= 0:
+                sigma = 0.01
+
+        self.implied_vol = sigma
+        return sigma
+
+    def detect_vol_opportunity(self, historical_vol: float,
+                              implied_vol: float,
+                              threshold: float = 0.05) -&gt; str:
+        """Detect volatility trading opportunities."""
+        vol_diff = implied_vol - historical_vol
+
+        if vol_diff &gt; threshold:
+            return 'sell_vol'  # IV &gt; HV, sell options
+        elif vol_diff &lt; -threshold:
+            return 'buy_vol'  # IV &lt; HV, buy options
+        else:
+            return 'neutral'
+
+    def create_vol_trade(self, signal: str, S: float, K: float,
+                        T: float, sigma: float) -&gt; OptionsStrategy:
+        """Create appropriate volatility trade."""
+        if signal == 'buy_vol':
+            # Buy straddle to profit from volatility increase
+            return Straddle(S, K, T, sigma)
+        elif signal == 'sell_vol':
+            # Sell iron condor to profit from low volatility
+            width = S * 0.05  # 5% wings
+            return IronCondor(S, K - 2*width, K - width,
+                            K + width, K + 2*width, T, sigma)
+        return None
+
+
+class OptionsPortfolio:
+    """Manage a portfolio of options positions."""
+
+    def __init__(self):
+        self.positions = []
+
+    def add_position(self, strategy: OptionsStrategy, quantity: int):
+        """Add options position to portfolio."""
+        self.positions.append({
+            'strategy': strategy,
+            'quantity': quantity,
+            'entry_price': strategy.S
+        })
+
+    def calculate_portfolio_greeks(self, current_price: float) -&gt; Dict:
+        """Calculate aggregate Greeks for entire portfolio."""
+        total_delta = 0
+        total_gamma = 0
+        total_vega = 0
+        total_theta = 0
+
+        for pos in self.positions:
+            strategy = pos['strategy']
+            qty = pos['quantity']
+
+            # This is simplified - in practice, calculate Greeks for each leg
+            if hasattr(strategy, 'K') and hasattr(strategy, 'T'):
+                delta = OptionsGreeks.delta(current_price, strategy.K,
+                                           strategy.T, strategy.r, strategy.sigma)
+                gamma = OptionsGreeks.gamma(current_price, strategy.K,
+                                           strategy.T, strategy.r, strategy.sigma)
+                vega = OptionsGreeks.vega(current_price, strategy.K,
+                                         strategy.T, strategy.r, strategy.sigma)
+                theta = OptionsGreeks.theta(current_price, strategy.K,
+                                           strategy.T, strategy.r, strategy.sigma)
+
+                total_delta += delta * qty
+                total_gamma += gamma * qty
+                total_vega += vega * qty
+                total_theta += theta * qty
+
+        return {
+            'delta': total_delta,
+            'gamma': total_gamma,
+            'vega': total_vega,
+            'theta': total_theta
+        }
+
+    def calculate_portfolio_value(self, current_price: float) -&gt; float:
+        """Calculate current portfolio value."""
+        total_value = 0
+
+        for pos in self.positions:
+            strategy = pos['strategy']
+            qty = pos['quantity']
+            payoff = strategy.calculate_payoff(current_price)
+            total_value += payoff * qty
+
+        return total_value
+
+    def get_risk_report(self, current_price: float) -&gt; Dict:
+        """Generate comprehensive risk report."""
+        greeks = self.calculate_portfolio_greeks(current_price)
+        value = self.calculate_portfolio_value(current_price)
+
+        return {
+            'portfolio_value': value,
+            'greeks': greeks,
+            'num_positions': len(self.positions),
+            'delta_exposure': greeks['delta'] * current_price,
+            'gamma_risk': greeks['gamma'] * current_price ** 2,
+            'vega_risk': greeks['vega'],
+            'theta_decay': greeks['theta']
+        }
+</code></pre>
+<h2 id="practical-example"><a class="header" href="#practical-example">Practical Example</a></h2>
+<pre><code class="language-python"># Example: Options trading and portfolio management
+def main():
+    # Current market conditions
+    underlying_price = 100.0
+    risk_free_rate = 0.02
+    volatility = 0.25
+    time_to_expiry = 30 / 365  # 30 days
+
+    print("=== Options Pricing and Greeks ===\n")
+
+    # Price ATM call and put
+    atm_strike = 100.0
+    call_price = BlackScholesModel.call_price(
+        underlying_price, atm_strike, time_to_expiry, risk_free_rate, volatility
+    )
+    put_price = BlackScholesModel.put_price(
+        underlying_price, atm_strike, time_to_expiry, risk_free_rate, volatility
+    )
+
+    print(f"ATM Call Price: ${call_price:.2f}")
+    print(f"ATM Put Price: ${put_price:.2f}")
+
+    # Calculate Greeks
+    delta = OptionsGreeks.delta(underlying_price, atm_strike,
+                               time_to_expiry, risk_free_rate, volatility, 'call')
+    gamma = OptionsGreeks.gamma(underlying_price, atm_strike,
+                               time_to_expiry, risk_free_rate, volatility)
+    vega = OptionsGreeks.vega(underlying_price, atm_strike,
+                             time_to_expiry, risk_free_rate, volatility)
+    theta = OptionsGreeks.theta(underlying_price, atm_strike,
+                               time_to_expiry, risk_free_rate, volatility, 'call')
+
+    print(f"\nGreeks for ATM Call:")
+    print(f"  Delta: {delta:.4f}")
+    print(f"  Gamma: {gamma:.4f}")
+    print(f"  Vega: {vega:.4f}")
+    print(f"  Theta: {theta:.4f}")
+
+    # Test different strategies
+    print("\n=== Options Strategies ===\n")
+
+    # Covered Call
+    covered_call = CoveredCall(underlying_price, 105, time_to_expiry, volatility)
+    print(f"Covered Call (Strike 105):")
+    print(f"  Initial Cost: ${covered_call.initial_cost:.2f}")
+    print(f"  Max Profit: ${covered_call.calculate_payoff(105) - covered_call.initial_cost:.2f}")
+    print(f"  Breakeven: ${covered_call.initial_cost:.2f}")
+
+    # Protective Put
+    protective_put = ProtectivePut(underlying_price, 95, time_to_expiry, volatility)
+    print(f"\nProtective Put (Strike 95):")
+    print(f"  Initial Cost: ${protective_put.initial_cost:.2f}")
+    print(f"  Max Loss: ${protective_put.calculate_payoff(0) - protective_put.initial_cost:.2f}")
+
+    # Iron Condor
+    iron_condor = IronCondor(underlying_price, 90, 95, 105, 110,
+                            time_to_expiry, volatility)
+    print(f"\nIron Condor (90/95/105/110):")
+    print(f"  Initial Credit: ${iron_condor.initial_credit:.2f}")
+    print(f"  Max Profit: ${iron_condor.initial_credit:.2f}")
+    print(f"  Profit at 100: ${iron_condor.calculate_payoff(100) + iron_condor.initial_credit:.2f}")
+
+    # Straddle
+    straddle = Straddle(underlying_price, 100, time_to_expiry, volatility)
+    print(f"\nLong Straddle (Strike 100):")
+    print(f"  Initial Cost: ${straddle.initial_cost:.2f}")
+    print(f"  Breakeven Up: ${100 + straddle.initial_cost:.2f}")
+    print(f"  Breakeven Down: ${100 - straddle.initial_cost:.2f}")
+
+    # Portfolio management
+    print("\n=== Portfolio Management ===\n")
+
+    portfolio = OptionsPortfolio()
+    portfolio.add_position(covered_call, 10)
+    portfolio.add_position(protective_put, 5)
+
+    risk_report = portfolio.get_risk_report(underlying_price)
+    print("Portfolio Risk Report:")
+    print(f"  Portfolio Value: ${risk_report['portfolio_value']:.2f}")
+    print(f"  Delta: {risk_report['greeks']['delta']:.2f}")
+    print(f"  Gamma: {risk_report['greeks']['gamma']:.4f}")
+    print(f"  Vega: {risk_report['greeks']['vega']:.2f}")
+    print(f"  Theta: ${risk_report['greeks']['theta']:.2f}/day")
+
+    # Volatility trading
+    print("\n=== Volatility Trading ===\n")
+
+    vol_trader = VolatilityTrader('SPY')
+    historical_vol = 0.20
+    implied_vol = 0.28
+
+    signal = vol_trader.detect_vol_opportunity(historical_vol, implied_vol)
+    print(f"Historical Vol: {historical_vol:.1%}")
+    print(f"Implied Vol: {implied_vol:.1%}")
+    print(f"Signal: {signal}")
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+<h2 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h2>
+<ol>
+<li>
+<p><strong>Risk Management</strong></p>
+<ul>
+<li>Monitor Greeks continuously</li>
+<li>Set position limits per strategy</li>
+<li>Use stop-losses on options positions</li>
+<li>Hedge delta exposure when needed</li>
+</ul>
+</li>
+<li>
+<p><strong>Strategy Selection</strong></p>
+<ul>
+<li>Match strategy to market outlook</li>
+<li>Consider implied vs historical volatility</li>
+<li>Account for time decay (theta)</li>
+<li>Evaluate risk/reward ratios</li>
+</ul>
+</li>
+<li>
+<p><strong>Execution</strong></p>
+<ul>
+<li>Trade liquid options (tight spreads)</li>
+<li>Use limit orders, not market orders</li>
+<li>Consider bid-ask spread costs</li>
+<li>Time entries around volatility events</li>
+</ul>
+</li>
+<li>
+<p><strong>Portfolio Management</strong></p>
+<ul>
+<li>Diversify across strategies and underlyings</li>
+<li>Rebalance Greeks regularly</li>
+<li>Close positions before expiration</li>
+<li>Track realized vs expected P&amp;L</li>
+</ul>
+</li>
+<li>
+<p><strong>Volatility Analysis</strong></p>
+<ul>
+<li>Compare implied vs historical volatility</li>
+<li>Monitor volatility term structure</li>
+<li>Track volatility skew</li>
+<li>Use volatility forecasting models</li>
+</ul>
+</li>
+</ol>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<ol>
+<li>
+<p><strong>Options Pricing</strong>: Calculate prices and Greeks for calls and puts at different strikes and expirations. Analyze how Greeks change with spot price movements.</p>
+</li>
+<li>
+<p><strong>Strategy Comparison</strong>: Compare covered call, protective put, and collar strategies. Which performs best in different market scenarios?</p>
+</li>
+<li>
+<p><strong>Iron Condor Optimization</strong>: Find optimal strike selection for iron condors to maximize risk-adjusted returns. Test on historical data.</p>
+</li>
+<li>
+<p><strong>Volatility Trading</strong>: Build a system that trades volatility by comparing implied and historical volatility. Backtest the strategy.</p>
+</li>
+<li>
+<p><strong>Portfolio Hedging</strong>: Create a stock portfolio and hedge it using options. Minimize downside risk while preserving upside potential.</p>
+</li>
+</ol>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>Options and derivatives provide powerful tools for trading and risk management. Key takeaways:</p>
+<ul>
+<li>Black-Scholes model prices options based on underlying, strike, time, rate, and volatility</li>
+<li>Greeks measure sensitivity to various risk factors</li>
+<li>Different strategies suit different market outlooks and risk profiles</li>
+<li>Volatility trading exploits differences between implied and realized volatility</li>
+<li>Portfolio Greeks help manage aggregate risk exposure</li>
+</ul>
+<p>In the next lesson, we’ll explore building a professional trading business.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../module-08/lesson-04-hft.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../module-08/lesson-06-business.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../module-08/lesson-04-hft.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../module-08/lesson-06-business.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

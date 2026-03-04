@@ -1,0 +1,1063 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>7.1 System Architecture - Trading Academy: From Beginner to Professional</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A comprehensive guide to automated trading, from fundamentals to professional-level strategies">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-6775557f.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-bd3756ef.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Trading Academy: From Beginner to Professional</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy/edit/main/src/en/module-07/lesson-01-architecture.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="lesson-71-system-architecture"><a class="header" href="#lesson-71-system-architecture">Lesson 7.1: System Architecture</a></h1>
+<h2 id="learning-objectives"><a class="header" href="#learning-objectives">Learning Objectives</a></h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Understand the components of an automated trading system</li>
+<li>Design a robust system architecture</li>
+<li>Implement proper separation of concerns</li>
+<li>Handle system failures and edge cases</li>
+<li>Build scalable and maintainable trading systems</li>
+</ul>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>Automated trading systems execute trades without human intervention based on predefined rules. Unlike backtesting, live trading systems must handle real-time data, network issues, API failures, and unexpected market conditions.</p>
+<p>A well-designed architecture is critical for reliability, maintainability, and scalability. This lesson covers the essential components and design principles for building professional automated trading systems.</p>
+<h2 id="system-components"><a class="header" href="#system-components">System Components</a></h2>
+<h3 id="1-data-feed-handler"><a class="header" href="#1-data-feed-handler">1. Data Feed Handler</a></h3>
+<p>Manages real-time and historical market data:</p>
+<pre><code class="language-python">from abc import ABC, abstractmethod
+from typing import Dict, List, Callable
+from datetime import datetime
+import pandas as pd
+from queue import Queue
+import threading
+
+class DataFeed(ABC):
+    """
+    Abstract base class for data feeds.
+    """
+
+    def __init__(self):
+        self.subscribers: List[Callable] = []
+        self.is_running = False
+
+    def subscribe(self, callback: Callable):
+        """Subscribe to data updates."""
+        self.subscribers.append(callback)
+
+    def notify_subscribers(self, data: Dict):
+        """Notify all subscribers of new data."""
+        for callback in self.subscribers:
+            try:
+                callback(data)
+            except Exception as e:
+                print(f"Error notifying subscriber: {e}")
+
+    @abstractmethod
+    def start(self):
+        """Start data feed."""
+        pass
+
+    @abstractmethod
+    def stop(self):
+        """Stop data feed."""
+        pass
+
+
+class SimulatedDataFeed(DataFeed):
+    """
+    Simulated data feed for testing.
+    """
+
+    def __init__(self, historical_data: pd.DataFrame, speed: float = 1.0):
+        """
+        Initialize simulated feed.
+
+        Parameters:
+        -----------
+        historical_data : pd.DataFrame
+            Historical OHLCV data
+        speed : float
+            Playback speed multiplier
+        """
+        super().__init__()
+        self.data = historical_data
+        self.speed = speed
+        self.current_index = 0
+        self.thread = None
+
+    def start(self):
+        """Start simulated feed."""
+        self.is_running = True
+        self.thread = threading.Thread(target=self._run)
+        self.thread.start()
+        print("Simulated data feed started")
+
+    def stop(self):
+        """Stop simulated feed."""
+        self.is_running = False
+        if self.thread:
+            self.thread.join()
+        print("Simulated data feed stopped")
+
+    def _run(self):
+        """Run data feed loop."""
+        import time
+
+        while self.is_running and self.current_index &lt; len(self.data):
+            # Get current bar
+            bar = self.data.iloc[self.current_index]
+
+            # Create data packet
+            data_packet = {
+                'timestamp': bar.name,
+                'open': bar['Open'],
+                'high': bar['High'],
+                'low': bar['Low'],
+                'close': bar['Close'],
+                'volume': bar['Volume']
+            }
+
+            # Notify subscribers
+            self.notify_subscribers(data_packet)
+
+            self.current_index += 1
+
+            # Sleep to simulate real-time
+            time.sleep(1.0 / self.speed)
+
+
+class LiveDataFeed(DataFeed):
+    """
+    Live data feed using API (example structure).
+    """
+
+    def __init__(self, api_key: str, symbols: List[str]):
+        """
+        Initialize live feed.
+
+        Parameters:
+        -----------
+        api_key : str
+            API key for data provider
+        symbols : List[str]
+            Symbols to subscribe to
+        """
+        super().__init__()
+        self.api_key = api_key
+        self.symbols = symbols
+        self.thread = None
+
+    def start(self):
+        """Start live feed."""
+        self.is_running = True
+        self.thread = threading.Thread(target=self._run)
+        self.thread.start()
+        print(f"Live data feed started for {self.symbols}")
+
+    def stop(self):
+        """Stop live feed."""
+        self.is_running = False
+        if self.thread:
+            self.thread.join()
+        print("Live data feed stopped")
+
+    def _run(self):
+        """Run data feed loop."""
+        import time
+
+        while self.is_running:
+            try:
+                # Fetch latest data from API
+                # This is a placeholder - implement actual API calls
+                data_packet = self._fetch_latest_data()
+
+                if data_packet:
+                    self.notify_subscribers(data_packet)
+
+                time.sleep(1)  # Poll every second
+
+            except Exception as e:
+                print(f"Error in live feed: {e}")
+                time.sleep(5)  # Wait before retry
+
+    def _fetch_latest_data(self) -&gt; Dict:
+        """Fetch latest data from API."""
+        # Placeholder - implement actual API integration
+        pass
+</code></pre>
+<h3 id="2-strategy-engine"><a class="header" href="#2-strategy-engine">2. Strategy Engine</a></h3>
+<p>Generates trading signals:</p>
+<pre><code class="language-python">class StrategyEngine:
+    """
+    Manages trading strategies and signal generation.
+    """
+
+    def __init__(self):
+        self.strategies = []
+        self.signal_queue = Queue()
+
+    def add_strategy(self, strategy):
+        """Add a strategy to the engine."""
+        self.strategies.append(strategy)
+
+    def on_data(self, data: Dict):
+        """
+        Process new data and generate signals.
+
+        Parameters:
+        -----------
+        data : Dict
+            Market data packet
+        """
+        for strategy in self.strategies:
+            try:
+                signals = strategy.generate_signals(data)
+
+                if signals:
+                    self.signal_queue.put(signals)
+
+            except Exception as e:
+                print(f"Error in strategy {strategy.__class__.__name__}: {e}")
+
+    def get_signals(self) -&gt; List[Dict]:
+        """Get all pending signals."""
+        signals = []
+        while not self.signal_queue.empty():
+            signals.append(self.signal_queue.get())
+        return signals
+</code></pre>
+<h3 id="3-risk-manager"><a class="header" href="#3-risk-manager">3. Risk Manager</a></h3>
+<p>Validates trades and manages risk:</p>
+<pre><code class="language-python">class RiskManager:
+    """
+    Validates trades and enforces risk limits.
+    """
+
+    def __init__(self,
+                 max_position_size: float = 0.10,
+                 max_portfolio_risk: float = 0.06,
+                 max_drawdown: float = 0.20):
+        """
+        Initialize risk manager.
+
+        Parameters:
+        -----------
+        max_position_size : float
+            Maximum position size as fraction of capital
+        max_portfolio_risk : float
+            Maximum total portfolio risk
+        max_drawdown : float
+            Maximum allowed drawdown
+        """
+        self.max_position_size = max_position_size
+        self.max_portfolio_risk = max_portfolio_risk
+        self.max_drawdown = max_drawdown
+
+        self.current_positions = {}
+        self.peak_capital = 0
+        self.current_capital = 0
+
+    def validate_order(self, order: Dict, portfolio_state: Dict) -&gt; Tuple[bool, str]:
+        """
+        Validate an order against risk limits.
+
+        Parameters:
+        -----------
+        order : Dict
+            Order to validate
+        portfolio_state : Dict
+            Current portfolio state
+
+        Returns:
+        --------
+        Tuple[bool, str] : (is_valid, reason)
+        """
+        # Check drawdown
+        current_dd = self._calculate_drawdown(portfolio_state)
+        if current_dd &gt;= self.max_drawdown:
+            return False, f"Maximum drawdown exceeded: {current_dd:.2%}"
+
+        # Check position size
+        position_size = order['quantity'] * order['price'] / portfolio_state['total_value']
+        if position_size &gt; self.max_position_size:
+            return False, f"Position size too large: {position_size:.2%}"
+
+        # Check portfolio risk
+        total_risk = self._calculate_portfolio_risk(portfolio_state, order)
+        if total_risk &gt; self.max_portfolio_risk:
+            return False, f"Portfolio risk too high: {total_risk:.2%}"
+
+        return True, "OK"
+
+    def _calculate_drawdown(self, portfolio_state: Dict) -&gt; float:
+        """Calculate current drawdown."""
+        total_value = portfolio_state['total_value']
+
+        if total_value &gt; self.peak_capital:
+            self.peak_capital = total_value
+
+        if self.peak_capital == 0:
+            return 0.0
+
+        return (self.peak_capital - total_value) / self.peak_capital
+
+    def _calculate_portfolio_risk(self, portfolio_state: Dict, new_order: Dict) -&gt; float:
+        """Calculate total portfolio risk including new order."""
+        # Simplified risk calculation
+        # In practice, consider correlations, stop losses, etc.
+        current_risk = sum(pos.get('risk', 0) for pos in portfolio_state.get('positions', {}).values())
+
+        # Estimate new order risk (e.g., 2% stop loss)
+        new_risk = new_order['quantity'] * new_order['price'] * 0.02 / portfolio_state['total_value']
+
+        return current_risk + new_risk
+</code></pre>
+<h3 id="4-execution-handler"><a class="header" href="#4-execution-handler">4. Execution Handler</a></h3>
+<p>Manages order execution:</p>
+<pre><code class="language-python">class ExecutionHandler:
+    """
+    Handles order execution and broker communication.
+    """
+
+    def __init__(self, broker_api):
+        """
+        Initialize execution handler.
+
+        Parameters:
+        -----------
+        broker_api : object
+            Broker API client
+        """
+        self.broker_api = broker_api
+        self.pending_orders = {}
+        self.filled_orders = []
+
+    def submit_order(self, order: Dict) -&gt; str:
+        """
+        Submit an order to the broker.
+
+        Parameters:
+        -----------
+        order : Dict
+            Order details
+
+        Returns:
+        --------
+        str : Order ID
+        """
+        try:
+            # Submit to broker
+            order_id = self.broker_api.place_order(
+                symbol=order['symbol'],
+                side=order['side'],
+                quantity=order['quantity'],
+                order_type=order['type'],
+                price=order.get('price')
+            )
+
+            # Track order
+            self.pending_orders[order_id] = {
+                'order': order,
+                'status': 'pending',
+                'submitted_at': datetime.now()
+            }
+
+            print(f"Order submitted: {order_id}")
+            return order_id
+
+        except Exception as e:
+            print(f"Error submitting order: {e}")
+            return None
+
+    def check_order_status(self, order_id: str) -&gt; Dict:
+        """
+        Check status of an order.
+
+        Parameters:
+        -----------
+        order_id : str
+            Order ID
+
+        Returns:
+        --------
+        Dict : Order status
+        """
+        try:
+            status = self.broker_api.get_order_status(order_id)
+            return status
+
+        except Exception as e:
+            print(f"Error checking order status: {e}")
+            return None
+
+    def cancel_order(self, order_id: str) -&gt; bool:
+        """
+        Cancel a pending order.
+
+        Parameters:
+        -----------
+        order_id : str
+            Order ID
+
+        Returns:
+        --------
+        bool : True if cancelled successfully
+        """
+        try:
+            self.broker_api.cancel_order(order_id)
+
+            if order_id in self.pending_orders:
+                self.pending_orders[order_id]['status'] = 'cancelled'
+
+            print(f"Order cancelled: {order_id}")
+            return True
+
+        except Exception as e:
+            print(f"Error cancelling order: {e}")
+            return False
+
+    def update_orders(self):
+        """Update status of all pending orders."""
+        for order_id in list(self.pending_orders.keys()):
+            status = self.check_order_status(order_id)
+
+            if status and status['status'] == 'filled':
+                # Move to filled orders
+                self.filled_orders.append({
+                    'order_id': order_id,
+                    'order': self.pending_orders[order_id]['order'],
+                    'fill_price': status['fill_price'],
+                    'fill_time': status['fill_time']
+                })
+
+                del self.pending_orders[order_id]
+                print(f"Order filled: {order_id}")
+</code></pre>
+<h3 id="5-portfolio-manager"><a class="header" href="#5-portfolio-manager">5. Portfolio Manager</a></h3>
+<p>Tracks positions and portfolio state:</p>
+<pre><code class="language-python">class PortfolioManager:
+    """
+    Manages portfolio state and positions.
+    """
+
+    def __init__(self, initial_capital: float):
+        """
+        Initialize portfolio manager.
+
+        Parameters:
+        -----------
+        initial_capital : float
+            Starting capital
+        """
+        self.initial_capital = initial_capital
+        self.cash = initial_capital
+        self.positions = {}
+        self.trades = []
+
+    def update_position(self, fill: Dict):
+        """
+        Update positions based on fill.
+
+        Parameters:
+        -----------
+        fill : Dict
+            Fill details
+        """
+        symbol = fill['order']['symbol']
+        side = fill['order']['side']
+        quantity = fill['order']['quantity']
+        price = fill['fill_price']
+
+        if side == 'buy':
+            if symbol in self.positions:
+                # Add to existing position
+                pos = self.positions[symbol]
+                total_cost = (pos['quantity'] * pos['avg_price']) + (quantity * price)
+                pos['quantity'] += quantity
+                pos['avg_price'] = total_cost / pos['quantity']
+            else:
+                # New position
+                self.positions[symbol] = {
+                    'quantity': quantity,
+                    'avg_price': price,
+                    'current_price': price
+                }
+
+            self.cash -= quantity * price
+
+        elif side == 'sell':
+            if symbol in self.positions:
+                pos = self.positions[symbol]
+
+                # Calculate P&amp;L
+                pnl = (price - pos['avg_price']) * quantity
+
+                # Record trade
+                self.trades.append({
+                    'symbol': symbol,
+                    'quantity': quantity,
+                    'entry_price': pos['avg_price'],
+                    'exit_price': price,
+                    'pnl': pnl,
+                    'exit_time': fill['fill_time']
+                })
+
+                # Update position
+                pos['quantity'] -= quantity
+
+                if pos['quantity'] &lt;= 0:
+                    del self.positions[symbol]
+
+                self.cash += quantity * price
+
+    def update_prices(self, prices: Dict[str, float]):
+        """
+        Update current prices for positions.
+
+        Parameters:
+        -----------
+        prices : Dict[str, float]
+            Current prices by symbol
+        """
+        for symbol, pos in self.positions.items():
+            if symbol in prices:
+                pos['current_price'] = prices[symbol]
+
+    def get_portfolio_state(self) -&gt; Dict:
+        """Get current portfolio state."""
+        positions_value = sum(
+            pos['quantity'] * pos['current_price']
+            for pos in self.positions.values()
+        )
+
+        total_value = self.cash + positions_value
+
+        return {
+            'cash': self.cash,
+            'positions_value': positions_value,
+            'total_value': total_value,
+            'positions': self.positions,
+            'num_positions': len(self.positions)
+        }
+</code></pre>
+<h3 id="6-main-trading-system"><a class="header" href="#6-main-trading-system">6. Main Trading System</a></h3>
+<p>Orchestrates all components:</p>
+<pre><code class="language-python">class TradingSystem:
+    """
+    Main automated trading system.
+    """
+
+    def __init__(self,
+                 data_feed: DataFeed,
+                 strategy_engine: StrategyEngine,
+                 risk_manager: RiskManager,
+                 execution_handler: ExecutionHandler,
+                 portfolio_manager: PortfolioManager):
+        """
+        Initialize trading system.
+
+        Parameters:
+        -----------
+        data_feed : DataFeed
+            Data feed handler
+        strategy_engine : StrategyEngine
+            Strategy engine
+        risk_manager : RiskManager
+            Risk manager
+        execution_handler : ExecutionHandler
+            Execution handler
+        portfolio_manager : PortfolioManager
+            Portfolio manager
+        """
+        self.data_feed = data_feed
+        self.strategy_engine = strategy_engine
+        self.risk_manager = risk_manager
+        self.execution_handler = execution_handler
+        self.portfolio_manager = portfolio_manager
+
+        self.is_running = False
+
+        # Subscribe to data feed
+        self.data_feed.subscribe(self.on_data)
+
+    def start(self):
+        """Start the trading system."""
+        print("Starting trading system...")
+        self.is_running = True
+        self.data_feed.start()
+        print("Trading system started")
+
+    def stop(self):
+        """Stop the trading system."""
+        print("Stopping trading system...")
+        self.is_running = False
+        self.data_feed.stop()
+        print("Trading system stopped")
+
+    def on_data(self, data: Dict):
+        """
+        Handle new market data.
+
+        Parameters:
+        -----------
+        data : Dict
+            Market data packet
+        """
+        if not self.is_running:
+            return
+
+        try:
+            # Update portfolio prices
+            prices = {data.get('symbol', 'ASSET'): data['close']}
+            self.portfolio_manager.update_prices(prices)
+
+            # Generate signals
+            self.strategy_engine.on_data(data)
+
+            # Process signals
+            signals = self.strategy_engine.get_signals()
+
+            for signal in signals:
+                self.process_signal(signal)
+
+            # Update pending orders
+            self.execution_handler.update_orders()
+
+            # Update filled orders
+            for fill in self.execution_handler.filled_orders:
+                self.portfolio_manager.update_position(fill)
+
+            self.execution_handler.filled_orders.clear()
+
+        except Exception as e:
+            print(f"Error in trading loop: {e}")
+
+    def process_signal(self, signal: Dict):
+        """
+        Process a trading signal.
+
+        Parameters:
+        -----------
+        signal : Dict
+            Trading signal
+        """
+        # Create order from signal
+        order = {
+            'symbol': signal['symbol'],
+            'side': signal['side'],
+            'quantity': signal['quantity'],
+            'type': signal.get('type', 'market'),
+            'price': signal.get('price')
+        }
+
+        # Validate with risk manager
+        portfolio_state = self.portfolio_manager.get_portfolio_state()
+        is_valid, reason = self.risk_manager.validate_order(order, portfolio_state)
+
+        if is_valid:
+            # Submit order
+            self.execution_handler.submit_order(order)
+        else:
+            print(f"Order rejected: {reason}")
+
+
+# Example usage
+def example_trading_system():
+    """
+    Demonstrate trading system architecture.
+    """
+    import yfinance as yf
+
+    print("Automated Trading System Example")
+    print("=" * 70)
+
+    # Download historical data for simulation
+    data = yf.download('AAPL', start='2023-01-01', end='2023-12-31', progress=False)
+
+    # Create components
+    data_feed = SimulatedDataFeed(data, speed=10.0)
+    strategy_engine = StrategyEngine()
+    risk_manager = RiskManager()
+    execution_handler = ExecutionHandler(broker_api=None)  # Mock broker
+    portfolio_manager = PortfolioManager(initial_capital=100000)
+
+    # Create trading system
+    trading_system = TradingSystem(
+        data_feed=data_feed,
+        strategy_engine=strategy_engine,
+        risk_manager=risk_manager,
+        execution_handler=execution_handler,
+        portfolio_manager=portfolio_manager
+    )
+
+    # Start system
+    trading_system.start()
+
+    # Run for a while
+    import time
+    time.sleep(10)
+
+    # Stop system
+    trading_system.stop()
+
+    # Print results
+    portfolio_state = portfolio_manager.get_portfolio_state()
+    print(f"\nFinal Portfolio Value: ${portfolio_state['total_value']:,.2f}")
+    print(f"Total Trades: {len(portfolio_manager.trades)}")
+
+
+if __name__ == "__main__":
+    example_trading_system()
+</code></pre>
+<h2 id="design-principles"><a class="header" href="#design-principles">Design Principles</a></h2>
+<h3 id="1-separation-of-concerns"><a class="header" href="#1-separation-of-concerns">1. Separation of Concerns</a></h3>
+<p>Each component has a single responsibility:</p>
+<ul>
+<li>Data feed: Only handles data</li>
+<li>Strategy: Only generates signals</li>
+<li>Risk manager: Only validates trades</li>
+<li>Execution: Only handles orders</li>
+<li>Portfolio: Only tracks positions</li>
+</ul>
+<h3 id="2-loose-coupling"><a class="header" href="#2-loose-coupling">2. Loose Coupling</a></h3>
+<p>Components communicate through well-defined interfaces:</p>
+<ul>
+<li>Use callbacks and queues</li>
+<li>Avoid direct dependencies</li>
+<li>Easy to swap implementations</li>
+</ul>
+<h3 id="3-error-handling"><a class="header" href="#3-error-handling">3. Error Handling</a></h3>
+<p>Robust error handling at every level:</p>
+<ul>
+<li>Try-catch blocks around critical operations</li>
+<li>Graceful degradation</li>
+<li>Logging and alerting</li>
+<li>Automatic recovery where possible</li>
+</ul>
+<h3 id="4-state-management"><a class="header" href="#4-state-management">4. State Management</a></h3>
+<p>Clear state tracking:</p>
+<ul>
+<li>Portfolio state</li>
+<li>Order state</li>
+<li>System state</li>
+<li>Persistent storage for recovery</li>
+</ul>
+<h3 id="5-scalability"><a class="header" href="#5-scalability">5. Scalability</a></h3>
+<p>Design for growth:</p>
+<ul>
+<li>Support multiple strategies</li>
+<li>Support multiple assets</li>
+<li>Support multiple data feeds</li>
+<li>Horizontal scaling capability</li>
+</ul>
+<h2 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h2>
+<ol>
+<li><strong>Test Thoroughly</strong>: Test each component independently</li>
+<li><strong>Log Everything</strong>: Comprehensive logging for debugging</li>
+<li><strong>Monitor Continuously</strong>: Real-time monitoring and alerts</li>
+<li><strong>Handle Failures</strong>: Expect and handle all failure modes</li>
+<li><strong>Version Control</strong>: Track all code and configuration changes</li>
+<li><strong>Document Well</strong>: Clear documentation for maintenance</li>
+<li><strong>Start Simple</strong>: Begin with basic functionality, add complexity gradually</li>
+<li><strong>Paper Trade First</strong>: Test with paper trading before live</li>
+</ol>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<h3 id="exercise-1-component-implementation"><a class="header" href="#exercise-1-component-implementation">Exercise 1: Component Implementation</a></h3>
+<p>Implement a complete DataFeed class that:</p>
+<ul>
+<li>Connects to a real-time data source</li>
+<li>Handles connection failures</li>
+<li>Buffers data during outages</li>
+<li>Notifies subscribers</li>
+</ul>
+<h3 id="exercise-2-risk-manager"><a class="header" href="#exercise-2-risk-manager">Exercise 2: Risk Manager</a></h3>
+<p>Enhance the RiskManager with:</p>
+<ul>
+<li>Position correlation limits</li>
+<li>Sector exposure limits</li>
+<li>Daily loss limits</li>
+<li>Time-based restrictions</li>
+</ul>
+<h3 id="exercise-3-system-integration"><a class="header" href="#exercise-3-system-integration">Exercise 3: System Integration</a></h3>
+<p>Integrate all components into a working system:</p>
+<ul>
+<li>Add a simple strategy</li>
+<li>Run in simulation mode</li>
+<li>Track performance</li>
+<li>Generate reports</li>
+</ul>
+<h3 id="exercise-4-failure-handling"><a class="header" href="#exercise-4-failure-handling">Exercise 4: Failure Handling</a></h3>
+<p>Implement failure handling for:</p>
+<ul>
+<li>Network disconnections</li>
+<li>API rate limits</li>
+<li>Invalid data</li>
+<li>Order rejections</li>
+</ul>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>A well-architected automated trading system consists of:</p>
+<ul>
+<li><strong>Data Feed</strong>: Real-time market data</li>
+<li><strong>Strategy Engine</strong>: Signal generation</li>
+<li><strong>Risk Manager</strong>: Trade validation</li>
+<li><strong>Execution Handler</strong>: Order management</li>
+<li><strong>Portfolio Manager</strong>: Position tracking</li>
+<li><strong>Main System</strong>: Orchestration</li>
+</ul>
+<p>Key design principles:</p>
+<ul>
+<li>Separation of concerns</li>
+<li>Loose coupling</li>
+<li>Robust error handling</li>
+<li>Clear state management</li>
+<li>Scalability</li>
+</ul>
+<p>Start simple, test thoroughly, and add complexity gradually. Always paper trade before going live.</p>
+<h2 id="next-steps"><a class="header" href="#next-steps">Next Steps</a></h2>
+<p>In the next lesson, we’ll explore data management in detail, including data storage, cleaning, validation, and handling corporate actions.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../module-06/project-backtest.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../module-07/lesson-02-data.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../module-06/project-backtest.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../module-07/lesson-02-data.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

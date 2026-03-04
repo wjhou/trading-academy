@@ -1,0 +1,554 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>1.4 Understanding Volume and Liquidity - Trading Academy: From Beginner to Professional</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A comprehensive guide to automated trading, from fundamentals to professional-level strategies">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-6775557f.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-bd3756ef.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Trading Academy: From Beginner to Professional</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy/edit/main/src/en/module-01/lesson-04-volume-liquidity.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="lesson-14-understanding-volume-and-liquidity"><a class="header" href="#lesson-14-understanding-volume-and-liquidity">Lesson 1.4: Understanding Volume and Liquidity</a></h1>
+<p><strong>Module</strong>: 1 - Trading Fundamentals
+<strong>Estimated Time</strong>: 40 minutes
+<strong>Difficulty</strong>: Beginner
+<strong>Prerequisites</strong>: Lessons 1.1-1.3</p>
+<h2 id="-learning-objectives"><a class="header" href="#-learning-objectives">🎯 Learning Objectives</a></h2>
+<ul>
+<li>Understand what volume is and why it matters</li>
+<li>Learn to interpret volume patterns</li>
+<li>Understand liquidity and its importance</li>
+<li>Identify liquid vs illiquid stocks</li>
+<li>Use volume in trading decisions</li>
+</ul>
+<h2 id="-what-is-volume"><a class="header" href="#-what-is-volume">📊 What is Volume?</a></h2>
+<p><strong>Volume</strong> is the number of shares traded during a specific period.</p>
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<pre><code>AAPL on 2024-02-20:
+- 45,234,567 shares traded
+- Each share changed hands once
+- High volume = lots of trading activity
+</code></pre>
+<h3 id="why-volume-matters"><a class="header" href="#why-volume-matters">Why Volume Matters</a></h3>
+<p>Volume tells you:</p>
+<ol>
+<li><strong>Interest</strong>: How many people care about this stock</li>
+<li><strong>Liquidity</strong>: How easy it is to buy/sell</li>
+<li><strong>Conviction</strong>: How strong the price movement is</li>
+<li><strong>Validation</strong>: Whether a price move is real or fake</li>
+</ol>
+<h2 id="-volume-patterns"><a class="header" href="#-volume-patterns">🔍 Volume Patterns</a></h2>
+<h3 id="1-volume-confirms-price-moves"><a class="header" href="#1-volume-confirms-price-moves">1. Volume Confirms Price Moves</a></h3>
+<p><strong>Strong Move</strong> (Good):</p>
+<pre><code>Price: ↑↑↑
+Volume: ████████  (High)
+Meaning: Many buyers, strong conviction
+</code></pre>
+<p><strong>Weak Move</strong> (Suspicious):</p>
+<pre><code>Price: ↑
+Volume: ██  (Low)
+Meaning: Few buyers, may reverse
+</code></pre>
+<h3 id="2-volume-divergence-warning-sign"><a class="header" href="#2-volume-divergence-warning-sign">2. Volume Divergence (Warning Sign)</a></h3>
+<p><strong>Price up, Volume down</strong>:</p>
+<pre><code>Price:  ↑ ↑ ↑
+Volume: ████ ███ ██
+Meaning: Fewer buyers each day, trend weakening
+</code></pre>
+<p><strong>Price down, Volume down</strong>:</p>
+<pre><code>Price:  ↓ ↓ ↓
+Volume: ████ ███ ██
+Meaning: Fewer sellers, downtrend losing steam
+</code></pre>
+<h3 id="3-volume-spikes"><a class="header" href="#3-volume-spikes">3. Volume Spikes</a></h3>
+<p><strong>Breakout with Volume</strong>:</p>
+<pre><code>Price:  ─────────↑↑↑
+Volume: ██ ██ ██ ████████
+Meaning: Real breakout, likely to continue
+</code></pre>
+<p><strong>Breakout without Volume</strong>:</p>
+<pre><code>Price:  ─────────↑
+Volume: ██ ██ ██ ███
+Meaning: Fake breakout, likely to fail
+</code></pre>
+<h2 id="-what-is-liquidity"><a class="header" href="#-what-is-liquidity">💧 What is Liquidity?</a></h2>
+<p><strong>Liquidity</strong> = How easily you can buy or sell without affecting the price.</p>
+<h3 id="high-liquidity-good"><a class="header" href="#high-liquidity-good">High Liquidity (Good)</a></h3>
+<p><strong>Example: AAPL</strong></p>
+<ul>
+<li>Average volume: 50+ million shares/day</li>
+<li>Tight spread: $0.01 (bid $150.00, ask $150.01)</li>
+<li>Easy to trade: Buy/sell instantly at fair price</li>
+</ul>
+<h3 id="low-liquidity-risky"><a class="header" href="#low-liquidity-risky">Low Liquidity (Risky)</a></h3>
+<p><strong>Example: Small Cap Stock</strong></p>
+<ul>
+<li>Average volume: 10,000 shares/day</li>
+<li>Wide spread: $0.50 (bid $5.00, ask $5.50)</li>
+<li>Hard to trade: May not find buyer/seller</li>
+</ul>
+<h2 id="-dangers-of-illiquid-stocks"><a class="header" href="#-dangers-of-illiquid-stocks">⚠️ Dangers of Illiquid Stocks</a></h2>
+<h3 id="problem-1-wide-spreads"><a class="header" href="#problem-1-wide-spreads">Problem 1: Wide Spreads</a></h3>
+<pre><code>Liquid Stock (AAPL):
+Bid: $150.00
+Ask: $150.01
+Spread: $0.01 (0.007%)
+
+Illiquid Stock:
+Bid: $5.00
+Ask: $5.50
+Spread: $0.50 (10%)  &lt;- You lose 10% immediately!
+</code></pre>
+<h3 id="problem-2-slippage"><a class="header" href="#problem-2-slippage">Problem 2: Slippage</a></h3>
+<p><strong>Liquid Stock</strong>:</p>
+<ul>
+<li>You want to buy at $150</li>
+<li>Order fills at $150.01</li>
+<li>Slippage: $0.01 (0.007%)</li>
+</ul>
+<p><strong>Illiquid Stock</strong>:</p>
+<ul>
+<li>You want to buy at $5.00</li>
+<li>No sellers at $5.00</li>
+<li>Order fills at $5.50</li>
+<li>Slippage: $0.50 (10%)</li>
+</ul>
+<h3 id="problem-3-cant-exit"><a class="header" href="#problem-3-cant-exit">Problem 3: Can’t Exit</a></h3>
+<p><strong>Scenario</strong>: You own 10,000 shares of an illiquid stock</p>
+<ul>
+<li>Daily volume: 5,000 shares</li>
+<li>You need to sell all 10,000</li>
+<li>Problem: Takes 2+ days, price drops while you sell</li>
+</ul>
+<h2 id="-measuring-liquidity"><a class="header" href="#-measuring-liquidity">📏 Measuring Liquidity</a></h2>
+<h3 id="1-average-daily-volume"><a class="header" href="#1-average-daily-volume">1. Average Daily Volume</a></h3>
+<p><strong>Rule of Thumb</strong>:</p>
+<ul>
+<li><strong>High liquidity</strong>: 1M+ shares/day</li>
+<li><strong>Medium liquidity</strong>: 100K-1M shares/day</li>
+<li><strong>Low liquidity</strong>: &lt;100K shares/day</li>
+</ul>
+<h3 id="2-bid-ask-spread"><a class="header" href="#2-bid-ask-spread">2. Bid-Ask Spread</a></h3>
+<p><strong>Rule of Thumb</strong>:</p>
+<ul>
+<li><strong>Tight spread</strong>: &lt;0.1% (good)</li>
+<li><strong>Medium spread</strong>: 0.1-0.5% (okay)</li>
+<li><strong>Wide spread</strong>: &gt;0.5% (avoid)</li>
+</ul>
+<h3 id="3-market-cap"><a class="header" href="#3-market-cap">3. Market Cap</a></h3>
+<p><strong>Rule of Thumb</strong>:</p>
+<ul>
+<li><strong>Large cap</strong>: $10B+ (very liquid)</li>
+<li><strong>Mid cap</strong>: $2B-$10B (liquid)</li>
+<li><strong>Small cap</strong>: $300M-$2B (less liquid)</li>
+<li><strong>Micro cap</strong>: &lt;$300M (illiquid)</li>
+</ul>
+<h2 id="-hands-on-check-volume-and-liquidity"><a class="header" href="#-hands-on-check-volume-and-liquidity">💻 Hands-On: Check Volume and Liquidity</a></h2>
+<pre><code class="language-python">cd /Users/houwenjun/Desktop/Projects/stock-agent-system
+source .venv/bin/activate
+
+python3 &lt;&lt; 'EOF'
+import asyncio
+from datetime import datetime, timedelta
+from stock_agent.core.config import load_config
+from stock_agent.data.aggregator import DataAggregator
+from stock_agent.core.types import TimeFrame, Market
+
+async def analyze_liquidity(symbol):
+    config = load_config("configs/default.yaml")
+    aggregator = DataAggregator.from_config(config)
+
+    end = datetime.now()
+    start = end - timedelta(days=30)
+
+    bars = await aggregator.get_historical_bars(
+        symbol=symbol,
+        timeframe=TimeFrame.DAILY,
+        start=start,
+        end=end,
+        market=Market.US,
+    )
+
+    if not bars:
+        print(f"No data for {symbol}")
+        return
+
+    # Calculate average volume
+    avg_volume = sum(float(bar.volume) for bar in bars) / len(bars)
+
+    # Get latest price and volume
+    latest = bars[-1]
+    latest_price = float(latest.close)
+    latest_volume = float(latest.volume)
+
+    print(f"\n{symbol} Liquidity Analysis:")
+    print("-" * 50)
+    print(f"Latest Price: ${latest_price:.2f}")
+    print(f"Latest Volume: {latest_volume:,.0f} shares")
+    print(f"Average Volume (30d): {avg_volume:,.0f} shares")
+    print(f"Volume vs Average: {(latest_volume/avg_volume - 1)*100:+.1f}%")
+
+    # Liquidity rating
+    if avg_volume &gt; 1_000_000:
+        rating = "HIGH (Excellent for trading)"
+    elif avg_volume &gt; 100_000:
+        rating = "MEDIUM (Good for trading)"
+    else:
+        rating = "LOW (Risky for trading)"
+
+    print(f"Liquidity Rating: {rating}")
+
+    await aggregator.close()
+
+async def main():
+    # Analyze multiple stocks
+    for symbol in ["AAPL", "MSFT", "GOOGL"]:
+        await analyze_liquidity(symbol)
+
+asyncio.run(main())
+EOF
+</code></pre>
+<h2 id="-volume-indicators-in-stock-agent-system"><a class="header" href="#-volume-indicators-in-stock-agent-system">📊 Volume Indicators in stock-agent-system</a></h2>
+<p>The system tracks volume in several ways:</p>
+<pre><code class="language-python"># From: src/stock_agent/data/models.py
+class Bar:
+    symbol: str
+    timestamp: datetime
+    open: Decimal
+    high: Decimal
+    low: Decimal
+    close: Decimal
+    volume: Decimal  # &lt;- Volume is always included
+</code></pre>
+<h2 id="-using-volume-in-trading-decisions"><a class="header" href="#-using-volume-in-trading-decisions">🎯 Using Volume in Trading Decisions</a></h2>
+<h3 id="rule-1-confirm-breakouts-with-volume"><a class="header" href="#rule-1-confirm-breakouts-with-volume">Rule 1: Confirm Breakouts with Volume</a></h3>
+<pre><code>Good Breakout:
+Price breaks resistance + High volume = Real breakout
+
+Bad Breakout:
+Price breaks resistance + Low volume = Fake breakout
+</code></pre>
+<h3 id="rule-2-volume-precedes-price"><a class="header" href="#rule-2-volume-precedes-price">Rule 2: Volume Precedes Price</a></h3>
+<pre><code>Volume increases → Price follows
+Watch for volume spikes before big moves
+</code></pre>
+<h3 id="rule-3-avoid-low-volume-stocks"><a class="header" href="#rule-3-avoid-low-volume-stocks">Rule 3: Avoid Low Volume Stocks</a></h3>
+<pre><code>For automated trading:
+- Minimum 100K shares/day
+- Preferably 1M+ shares/day
+- Check spread &lt; 0.1%
+</code></pre>
+<h3 id="rule-4-volume-confirms-trends"><a class="header" href="#rule-4-volume-confirms-trends">Rule 4: Volume Confirms Trends</a></h3>
+<pre><code>Uptrend + Increasing volume = Strong trend
+Uptrend + Decreasing volume = Weakening trend
+</code></pre>
+<h2 id="-exercise-14-volume-analysis"><a class="header" href="#-exercise-14-volume-analysis">📝 Exercise 1.4: Volume Analysis</a></h2>
+<p>Create: <code>exercises/module-01/exercise-1.4-volume-analysis.md</code></p>
+<ol>
+<li>
+<p><strong>Run the liquidity analysis script</strong> for these stocks:</p>
+<ul>
+<li>AAPL (Apple)</li>
+<li>TSLA (Tesla)</li>
+<li>NVDA (NVIDIA)</li>
+</ul>
+</li>
+<li>
+<p><strong>Answer</strong>:</p>
+<ul>
+<li>Which has the highest average volume?</li>
+<li>Which is most liquid?</li>
+<li>Would you trade all three? Why or why not?</li>
+</ul>
+</li>
+<li>
+<p><strong>Volume Pattern Recognition</strong>:
+Look at a chart and identify:</p>
+<ul>
+<li>A price move with high volume (strong)</li>
+<li>A price move with low volume (weak)</li>
+<li>A volume spike (potential breakout)</li>
+</ul>
+</li>
+</ol>
+<h2 id="-key-takeaways"><a class="header" href="#-key-takeaways">🔑 Key Takeaways</a></h2>
+<ol>
+<li><strong>Volume</strong> = number of shares traded</li>
+<li><strong>High volume</strong> = strong conviction, validates price moves</li>
+<li><strong>Low volume</strong> = weak conviction, price moves may reverse</li>
+<li><strong>Liquidity</strong> = ease of buying/selling</li>
+<li><strong>High liquidity</strong> = tight spreads, low slippage, easy trading</li>
+<li><strong>Low liquidity</strong> = wide spreads, high slippage, risky</li>
+<li><strong>Always check volume</strong> before trading a stock</li>
+<li><strong>Volume confirms price</strong> - use together, not separately</li>
+</ol>
+<h2 id="-practical-tips"><a class="header" href="#-practical-tips">🧪 Practical Tips</a></h2>
+<h3 id="for-beginners"><a class="header" href="#for-beginners">For Beginners</a></h3>
+<ul>
+<li><strong>Stick to liquid stocks</strong>: AAPL, MSFT, GOOGL, AMZN, TSLA</li>
+<li><strong>Check average volume</strong>: Must be &gt;1M shares/day</li>
+<li><strong>Avoid penny stocks</strong>: Usually illiquid and manipulated</li>
+</ul>
+<h3 id="for-automated-trading"><a class="header" href="#for-automated-trading">For Automated Trading</a></h3>
+<ul>
+<li><strong>Filter by volume</strong>: Only trade stocks with sufficient liquidity</li>
+<li><strong>Monitor spreads</strong>: Wide spreads kill profits</li>
+<li><strong>Size positions appropriately</strong>: Don’t trade more than 1% of daily volume</li>
+</ul>
+<h2 id="-next-lesson"><a class="header" href="#-next-lesson">🚀 Next Lesson</a></h2>
+<p><a href="lesson-05-long-short.html">Lesson 1.5: Long vs Short, Bulls vs Bears</a></p>
+<p>You’ll learn:</p>
+<ul>
+<li>What it means to go long (buy) or short (sell)</li>
+<li>How short selling works</li>
+<li>Bull and bear markets</li>
+<li>Market sentiment and psychology</li>
+</ul>
+<hr>
+<p><strong>Completed?</strong> ✓ Mark done: <code>python track_progress.py lesson module-01 4</code></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../module-01/lesson-03-reading-charts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../module-01/lesson-05-long-short.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../module-01/lesson-03-reading-charts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../module-01/lesson-05-long-short.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

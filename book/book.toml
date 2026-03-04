@@ -1,0 +1,27 @@
+[book]
+title = "Trading Academy: From Beginner to Professional"
+authors = ["Trading Academy Contributors"]
+language = "en"
+src = "."
+description = "A comprehensive guide to automated trading, from fundamentals to professional-level strategies"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/wjhou/trading-academy"
+edit-url-template = "https://github.com/wjhou/trading-academy/edit/main/src/en/{path}"
+site-url = "/trading-academy/en/"
+additional-css = ["../../theme/language-switcher.css"]
+additional-js = ["../../theme/language-switcher.js"]
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.search]
+enable = true
+limit-results = 30
+use-boolean-and = true
+
+[output.html.print]
+enable = true

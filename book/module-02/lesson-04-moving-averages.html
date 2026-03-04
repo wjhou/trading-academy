@@ -1,0 +1,694 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>2.4 Moving Averages - Trading Academy: From Beginner to Professional</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A comprehensive guide to automated trading, from fundamentals to professional-level strategies">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-6775557f.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-bd3756ef.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Trading Academy: From Beginner to Professional</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy/edit/main/src/en/module-02/lesson-04-moving-averages.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="lesson-24-moving-averages---smoothing-price-action"><a class="header" href="#lesson-24-moving-averages---smoothing-price-action">Lesson 2.4: Moving Averages - Smoothing Price Action</a></h1>
+<p><strong>Module</strong>: 2 - Technical Analysis Basics
+<strong>Estimated Time</strong>: 50 minutes
+<strong>Difficulty</strong>: Beginner</p>
+<h2 id="-learning-objectives"><a class="header" href="#-learning-objectives">🎯 Learning Objectives</a></h2>
+<p>By the end of this lesson, you will:</p>
+<ul>
+<li>Understand what moving averages are and how they work</li>
+<li>Learn the difference between SMA and EMA</li>
+<li>Know which moving averages to use for different timeframes</li>
+<li>Apply MA crossovers for trading signals</li>
+<li>Use MAs as dynamic support and resistance</li>
+</ul>
+<h2 id="-what-is-a-moving-average"><a class="header" href="#-what-is-a-moving-average">📖 What is a Moving Average?</a></h2>
+<p>A <strong>Moving Average (MA)</strong> is the average price of a stock over a specific number of periods, recalculated as new data comes in.</p>
+<h3 id="purpose"><a class="header" href="#purpose">Purpose</a></h3>
+<ul>
+<li><strong>Smooth out noise</strong>: Filter out short-term price fluctuations</li>
+<li><strong>Identify trend</strong>: Show the overall direction</li>
+<li><strong>Support/Resistance</strong>: Act as dynamic price levels</li>
+<li><strong>Generate signals</strong>: Crossovers indicate potential trades</li>
+</ul>
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<pre><code>10-day MA of closing prices:
+Day 1-10 average: $150
+Day 2-11 average: $151 (drop day 1, add day 11)
+Day 3-12 average: $152 (drop day 2, add day 12)
+...and so on
+</code></pre>
+<h2 id="-types-of-moving-averages"><a class="header" href="#-types-of-moving-averages">📊 Types of Moving Averages</a></h2>
+<h3 id="1-simple-moving-average-sma"><a class="header" href="#1-simple-moving-average-sma">1. Simple Moving Average (SMA)</a></h3>
+<p><strong>Formula</strong>: Sum of prices / Number of periods</p>
+<pre><code>SMA = (P1 + P2 + P3 + ... + Pn) / n
+</code></pre>
+<p><strong>Example</strong> (5-day SMA):</p>
+<pre><code>Day 1: $100
+Day 2: $102
+Day 3: $101
+Day 4: $103
+Day 5: $104
+
+SMA = (100 + 102 + 101 + 103 + 104) / 5 = $102
+</code></pre>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>Equal weight to all periods</li>
+<li>Slower to react to price changes</li>
+<li>Smoother line</li>
+<li>Better for longer-term trends</li>
+</ul>
+<h3 id="2-exponential-moving-average-ema"><a class="header" href="#2-exponential-moving-average-ema">2. Exponential Moving Average (EMA)</a></h3>
+<p><strong>Formula</strong>: Weighted average giving more weight to recent prices</p>
+<pre><code>EMA = (Price_today × K) + (EMA_yesterday × (1 - K))
+where K = 2 / (n + 1)
+</code></pre>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>More weight to recent prices</li>
+<li>Faster to react to price changes</li>
+<li>More responsive to trends</li>
+<li>Better for shorter-term trading</li>
+</ul>
+<h3 id="sma-vs-ema-comparison"><a class="header" href="#sma-vs-ema-comparison">SMA vs EMA Comparison</a></h3>
+<pre><code>Price spikes up:
+
+SMA: ────────╱─────  (slower reaction)
+EMA: ───────╱──────  (faster reaction)
+Price: ────╱────────
+</code></pre>
+<p><strong>When to use</strong>:</p>
+<ul>
+<li><strong>SMA</strong>: Long-term trends, less noise, institutional levels</li>
+<li><strong>EMA</strong>: Short-term trading, quick reactions, day trading</li>
+</ul>
+<h2 id="-common-moving-average-periods"><a class="header" href="#-common-moving-average-periods">🔢 Common Moving Average Periods</a></h2>
+<h3 id="short-term-fast"><a class="header" href="#short-term-fast">Short-Term (Fast)</a></h3>
+<ul>
+<li><strong>10-day MA</strong>: Very responsive, day trading</li>
+<li><strong>20-day MA</strong>: Swing trading, short-term trends</li>
+<li><strong>21-day MA</strong>: Approximates one trading month</li>
+</ul>
+<h3 id="medium-term"><a class="header" href="#medium-term">Medium-Term</a></h3>
+<ul>
+<li><strong>50-day MA</strong>: Popular intermediate trend indicator</li>
+<li><strong>100-day MA</strong>: Medium-term trend</li>
+</ul>
+<h3 id="long-term-slow"><a class="header" href="#long-term-slow">Long-Term (Slow)</a></h3>
+<ul>
+<li><strong>200-day MA</strong>: Most important long-term indicator</li>
+<li><strong>Institutional level</strong>: Banks and funds watch this</li>
+</ul>
+<h3 id="multiple-ma-strategy"><a class="header" href="#multiple-ma-strategy">Multiple MA Strategy</a></h3>
+<p>Use 2-3 MAs together:</p>
+<ul>
+<li><strong>Fast</strong>: 10 or 20-day</li>
+<li><strong>Medium</strong>: 50-day</li>
+<li><strong>Slow</strong>: 200-day</li>
+</ul>
+<h2 id="-using-moving-averages"><a class="header" href="#-using-moving-averages">📈 Using Moving Averages</a></h2>
+<h3 id="1-trend-identification"><a class="header" href="#1-trend-identification">1. Trend Identification</a></h3>
+<p><strong>Price above MA = Uptrend</strong></p>
+<pre><code>Price: ─────────────╱─────
+MA:    ────────────╱──────
+</code></pre>
+<p><strong>Price below MA = Downtrend</strong></p>
+<pre><code>MA:    ────────────╲──────
+Price: ─────────────╲─────
+</code></pre>
+<p><strong>Price crossing MA = Potential trend change</strong></p>
+<h3 id="2-dynamic-support-and-resistance"><a class="header" href="#2-dynamic-support-and-resistance">2. Dynamic Support and Resistance</a></h3>
+<p>MAs act as support in uptrends:</p>
+<pre><code>Price bounces off MA:
+    ╱╲    ╱╲
+   ╱  ╲  ╱  ╲
+  ╱    ╲╱    ╲
+ ╱            ╲
+╱──────────────╲─── MA (support)
+</code></pre>
+<p>MAs act as resistance in downtrends:</p>
+<pre><code>MA (resistance) ────────────
+╲            ╱
+ ╲    ╱╲    ╱
+  ╲  ╱  ╲  ╱
+   ╲╱    ╲╱
+</code></pre>
+<p><strong>Trading Strategy</strong>:</p>
+<ul>
+<li><strong>Uptrend</strong>: Buy when price pulls back to MA</li>
+<li><strong>Downtrend</strong>: Sell when price rallies to MA</li>
+</ul>
+<h3 id="3-moving-average-crossovers"><a class="header" href="#3-moving-average-crossovers">3. Moving Average Crossovers</a></h3>
+<h4 id="golden-cross-bullish"><a class="header" href="#golden-cross-bullish">Golden Cross (Bullish)</a></h4>
+<p><strong>50-day MA crosses above 200-day MA</strong></p>
+<pre><code>50-day MA: ────────╱───────
+200-day MA: ──────────────
+                  ↑
+            Golden Cross
+</code></pre>
+<p><strong>Signal</strong>: Strong bullish signal, major uptrend starting</p>
+<h4 id="death-cross-bearish"><a class="header" href="#death-cross-bearish">Death Cross (Bearish)</a></h4>
+<p><strong>50-day MA crosses below 200-day MA</strong></p>
+<pre><code>200-day MA: ──────────────
+50-day MA: ────────╲───────
+                  ↓
+            Death Cross
+</code></pre>
+<p><strong>Signal</strong>: Strong bearish signal, major downtrend starting</p>
+<h4 id="fastslow-ma-crossovers"><a class="header" href="#fastslow-ma-crossovers">Fast/Slow MA Crossovers</a></h4>
+<p><strong>Example</strong>: 10-day and 50-day MA</p>
+<pre><code>Buy Signal:
+10-day crosses above 50-day
+
+Sell Signal:
+10-day crosses below 50-day
+</code></pre>
+<h3 id="4-ma-ribbon"><a class="header" href="#4-ma-ribbon">4. MA Ribbon</a></h3>
+<p><strong>Multiple MAs</strong> (e.g., 10, 20, 30, 40, 50-day) create a “ribbon”</p>
+<pre><code>Strong Uptrend:
+10-day ────────────────
+20-day ───────────────
+30-day ──────────────
+40-day ─────────────
+50-day ────────────
+(All separated, in order)
+
+Weak/Sideways:
+All MAs ≈≈≈≈≈≈≈≈≈≈≈≈≈
+(Tangled together)
+</code></pre>
+<p><strong>Interpretation</strong>:</p>
+<ul>
+<li><strong>Separated and ordered</strong>: Strong trend</li>
+<li><strong>Tangled</strong>: Weak trend or sideways</li>
+<li><strong>Expanding</strong>: Trend strengthening</li>
+<li><strong>Contracting</strong>: Trend weakening</li>
+</ul>
+<h2 id="-implementing-moving-averages"><a class="header" href="#-implementing-moving-averages">💻 Implementing Moving Averages</a></h2>
+<h3 id="basic-calculation"><a class="header" href="#basic-calculation">Basic Calculation</a></h3>
+<pre><code class="language-python">import yfinance as yf
+import pandas as pd
+
+# Get data
+df = yf.Ticker("AAPL").history(period="1y")
+
+# Calculate MAs
+df['SMA_20'] = df['Close'].rolling(window=20).mean()
+df['SMA_50'] = df['Close'].rolling(window=50).mean()
+df['SMA_200'] = df['Close'].rolling(window=200).mean()
+
+# Calculate EMAs
+df['EMA_20'] = df['Close'].ewm(span=20, adjust=False).mean()
+df['EMA_50'] = df['Close'].ewm(span=50, adjust=False).mean()
+
+print(df[['Close', 'SMA_20', 'SMA_50', 'EMA_20']].tail())
+</code></pre>
+<h3 id="detecting-crossovers"><a class="header" href="#detecting-crossovers">Detecting Crossovers</a></h3>
+<pre><code class="language-python">def detect_crossover(df, fast_col, slow_col):
+    """
+    Detect MA crossovers
+    Returns: 'golden' for bullish, 'death' for bearish, None otherwise
+    """
+    # Current and previous values
+    fast_curr = df[fast_col].iloc[-1]
+    fast_prev = df[fast_col].iloc[-2]
+    slow_curr = df[slow_col].iloc[-1]
+    slow_prev = df[slow_col].iloc[-2]
+
+    # Golden cross: fast crosses above slow
+    if fast_prev &lt;= slow_prev and fast_curr &gt; slow_curr:
+        return 'golden'
+
+    # Death cross: fast crosses below slow
+    elif fast_prev &gt;= slow_prev and fast_curr &lt; slow_curr:
+        return 'death'
+
+    return None
+
+# Example usage
+crossover = detect_crossover(df, 'SMA_50', 'SMA_200')
+if crossover == 'golden':
+    print("Golden Cross detected! Bullish signal")
+elif crossover == 'death':
+    print("Death Cross detected! Bearish signal")
+</code></pre>
+<h3 id="ma-based-trading-strategy"><a class="header" href="#ma-based-trading-strategy">MA-Based Trading Strategy</a></h3>
+<pre><code class="language-python">class MovingAverageStrategy:
+    def __init__(self, fast_period=20, slow_period=50):
+        self.fast_period = fast_period
+        self.slow_period = slow_period
+
+    def generate_signal(self, df):
+        # Calculate MAs
+        df['MA_fast'] = df['Close'].rolling(self.fast_period).mean()
+        df['MA_slow'] = df['Close'].rolling(self.slow_period).mean()
+
+        current_price = df['Close'].iloc[-1]
+        ma_fast = df['MA_fast'].iloc[-1]
+        ma_slow = df['MA_slow'].iloc[-1]
+
+        # Trend determination
+        if ma_fast &gt; ma_slow:
+            trend = "UPTREND"
+        else:
+            trend = "DOWNTREND"
+
+        # Signal generation
+        if trend == "UPTREND":
+            # Buy pullback to fast MA
+            if current_price &lt;= ma_fast * 1.01:  # Within 1% of MA
+                return "BUY"
+
+        elif trend == "DOWNTREND":
+            # Sell rally to fast MA
+            if current_price &gt;= ma_fast * 0.99:  # Within 1% of MA
+                return "SELL"
+
+        return "HOLD"
+
+    def backtest(self, df):
+        signals = []
+        for i in range(self.slow_period, len(df)):
+            signal = self.generate_signal(df.iloc[:i+1])
+            signals.append(signal)
+        return signals
+</code></pre>
+<h2 id="-ma-trading-strategies"><a class="header" href="#-ma-trading-strategies">🎯 MA Trading Strategies</a></h2>
+<h3 id="strategy-1-ma-bounce"><a class="header" href="#strategy-1-ma-bounce">Strategy 1: MA Bounce</a></h3>
+<p><strong>Setup</strong>: Buy when price bounces off MA in uptrend</p>
+<pre><code class="language-python">def ma_bounce_strategy(df, ma_period=50):
+    df['MA'] = df['Close'].rolling(ma_period).mean()
+
+    # Check if in uptrend
+    if df['Close'].iloc[-1] &gt; df['MA'].iloc[-1]:
+        # Check if price touched MA
+        if df['Low'].iloc[-1] &lt;= df['MA'].iloc[-1] * 1.005:
+            # Check if bouncing (closing above MA)
+            if df['Close'].iloc[-1] &gt; df['MA'].iloc[-1]:
+                return "BUY"
+
+    return "HOLD"
+</code></pre>
+<h3 id="strategy-2-ma-crossover"><a class="header" href="#strategy-2-ma-crossover">Strategy 2: MA Crossover</a></h3>
+<p><strong>Setup</strong>: Buy when fast MA crosses above slow MA</p>
+<pre><code class="language-python">def ma_crossover_strategy(df, fast=20, slow=50):
+    df['MA_fast'] = df['Close'].rolling(fast).mean()
+    df['MA_slow'] = df['Close'].rolling(slow).mean()
+
+    # Golden cross
+    if df['MA_fast'].iloc[-2] &lt;= df['MA_slow'].iloc[-2] and \
+       df['MA_fast'].iloc[-1] &gt; df['MA_slow'].iloc[-1]:
+        return "BUY"
+
+    # Death cross
+    elif df['MA_fast'].iloc[-2] &gt;= df['MA_slow'].iloc[-2] and \
+         df['MA_fast'].iloc[-1] &lt; df['MA_slow'].iloc[-1]:
+        return "SELL"
+
+    return "HOLD"
+</code></pre>
+<h3 id="strategy-3-triple-ma"><a class="header" href="#strategy-3-triple-ma">Strategy 3: Triple MA</a></h3>
+<p><strong>Setup</strong>: Use 3 MAs for trend confirmation</p>
+<pre><code class="language-python">def triple_ma_strategy(df):
+    df['MA_10'] = df['Close'].rolling(10).mean()
+    df['MA_50'] = df['Close'].rolling(50).mean()
+    df['MA_200'] = df['Close'].rolling(200).mean()
+
+    ma10 = df['MA_10'].iloc[-1]
+    ma50 = df['MA_50'].iloc[-1]
+    ma200 = df['MA_200'].iloc[-1]
+    price = df['Close'].iloc[-1]
+
+    # Strong uptrend: all aligned
+    if price &gt; ma10 &gt; ma50 &gt; ma200:
+        return "STRONG_BUY"
+
+    # Uptrend: price above all MAs
+    elif price &gt; ma10 and price &gt; ma50 and price &gt; ma200:
+        return "BUY"
+
+    # Strong downtrend: all aligned
+    elif price &lt; ma10 &lt; ma50 &lt; ma200:
+        return "STRONG_SELL"
+
+    # Downtrend: price below all MAs
+    elif price &lt; ma10 and price &lt; ma50 and price &lt; ma200:
+        return "SELL"
+
+    return "HOLD"
+</code></pre>
+<h2 id="-limitations-and-pitfalls"><a class="header" href="#-limitations-and-pitfalls">⚠️ Limitations and Pitfalls</a></h2>
+<h3 id="1-lagging-indicator"><a class="header" href="#1-lagging-indicator">1. Lagging Indicator</a></h3>
+<p>MAs are based on past prices, so they lag:</p>
+<ul>
+<li><strong>Problem</strong>: Late entries and exits</li>
+<li><strong>Solution</strong>: Use with leading indicators (RSI, MACD)</li>
+</ul>
+<h3 id="2-whipsaws-in-sideways-markets"><a class="header" href="#2-whipsaws-in-sideways-markets">2. Whipsaws in Sideways Markets</a></h3>
+<p>MAs generate false signals when price is ranging:</p>
+<pre><code>False signals in range:
+Resistance ─────────────
+    ╱╲  ╱╲  ╱╲  ╱╲
+   ╱  ╲╱  ╲╱  ╲╱  ╲
+  ╱              ╲
+Support ─────────────
+</code></pre>
+<p><strong>Solution</strong>: Avoid MA strategies in sideways markets</p>
+<h3 id="3-choosing-the-right-period"><a class="header" href="#3-choosing-the-right-period">3. Choosing the Right Period</a></h3>
+<ul>
+<li>Too short: Too many signals, whipsaws</li>
+<li>Too long: Too slow, miss opportunities</li>
+</ul>
+<p><strong>Solution</strong>: Test different periods for your timeframe</p>
+<h3 id="4-not-a-standalone-system"><a class="header" href="#4-not-a-standalone-system">4. Not a Standalone System</a></h3>
+<p>MAs work best combined with:</p>
+<ul>
+<li>Volume analysis</li>
+<li>Support/Resistance</li>
+<li>Candlestick patterns</li>
+<li>Other indicators</li>
+</ul>
+<h2 id="-check-your-understanding"><a class="header" href="#-check-your-understanding">🎓 Check Your Understanding</a></h2>
+<ol>
+<li>What’s the difference between SMA and EMA?</li>
+<li>What is a Golden Cross?</li>
+<li>How do MAs act as support and resistance?</li>
+<li>What are the limitations of MA crossover strategies?</li>
+<li>Which MA is most important for long-term trends?</li>
+</ol>
+<h2 id="-hands-on-exercise"><a class="header" href="#-hands-on-exercise">💻 Hands-On Exercise</a></h2>
+<p>Implement and test MA strategies:</p>
+<pre><code class="language-python">import yfinance as yf
+import matplotlib.pyplot as plt
+
+# Get data
+ticker = "MSFT"
+df = yf.Ticker(ticker).history(period="2y")
+
+# Calculate MAs
+df['SMA_50'] = df['Close'].rolling(50).mean()
+df['SMA_200'] = df['Close'].rolling(200).mean()
+
+# Plot
+plt.figure(figsize=(14, 7))
+plt.plot(df.index, df['Close'], label='Price', linewidth=2)
+plt.plot(df.index, df['SMA_50'], label='50-day SMA', linewidth=1.5)
+plt.plot(df.index, df['SMA_200'], label='200-day SMA', linewidth=1.5)
+
+# Mark crossovers
+# Your task: Add markers for golden and death crosses
+
+plt.title(f"{ticker} - Moving Averages")
+plt.legend()
+plt.grid(True)
+plt.show()
+</code></pre>
+<h2 id="-exercise-24-ma-analysis"><a class="header" href="#-exercise-24-ma-analysis">📝 Exercise 2.4: MA Analysis</a></h2>
+<p>Create: <code>exercises/module-02/exercise-2.4-moving-averages.md</code></p>
+<ol>
+<li>Choose 3 stocks from different sectors</li>
+<li>Calculate 20, 50, and 200-day SMAs</li>
+<li>Identify current trend based on MA alignment</li>
+<li>Find any recent crossovers</li>
+<li>Suggest entry points based on MA bounces</li>
+</ol>
+<h2 id="-next-steps"><a class="header" href="#-next-steps">🚀 Next Steps</a></h2>
+<p>In the next lesson, we’ll learn about <strong>Volume Analysis</strong> - understanding the force behind price movements.</p>
+<p><strong>Preview Questions</strong>:</p>
+<ul>
+<li>Why is volume important?</li>
+<li>What does high volume on a breakout mean?</li>
+<li>How do you spot volume divergence?</li>
+</ul>
+<h2 id="-additional-resources"><a class="header" href="#-additional-resources">📚 Additional Resources</a></h2>
+<ul>
+<li><a href="https://www.investopedia.com/terms/m/movingaverage.asp">Investopedia: Moving Averages</a></li>
+<li><a href="https://school.stockcharts.com/doku.php?id=technical_indicators:moving_averages">StockCharts: Moving Averages</a></li>
+<li><a href="https://www.tradingview.com/support/solutions/43000502017-moving-average-ma/">TradingView: MA Strategies</a></li>
+</ul>
+<h2 id="-solutions"><a class="header" href="#-solutions">✅ Solutions</a></h2>
+<ol>
+<li>
+<p><strong>SMA vs EMA</strong>: SMA gives equal weight to all periods, slower to react; EMA gives more weight to recent prices, faster to react to changes</p>
+</li>
+<li>
+<p><strong>Golden Cross</strong>: When 50-day MA crosses above 200-day MA; strong bullish signal indicating potential major uptrend</p>
+</li>
+<li>
+<p><strong>MAs as S/R</strong>: In uptrends, price tends to bounce off MA (support); in downtrends, price gets rejected at MA (resistance); traders watch these levels creating self-fulfilling prophecy</p>
+</li>
+<li>
+<p><strong>MA crossover limitations</strong>: Lagging indicator (late signals), generates false signals in sideways markets (whipsaws), works best in trending markets only</p>
+</li>
+<li>
+<p><strong>Most important long-term MA</strong>: 200-day MA; widely watched by institutions, defines bull/bear market, acts as major support/resistance</p>
+</li>
+</ol>
+<hr>
+<p><strong>Completed this lesson?</strong> ✓ Mark it done and move to <a href="lesson-05-volume-analysis.html">Lesson 2.5: Volume Analysis</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../module-02/lesson-03-trends.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../module-02/lesson-05-volume-analysis.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../module-02/lesson-03-trends.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../module-02/lesson-05-volume-analysis.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,575 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>5.3 Risk-Reward Ratios - Trading Academy: From Beginner to Professional</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A comprehensive guide to automated trading, from fundamentals to professional-level strategies">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-6775557f.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-bd3756ef.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Trading Academy: From Beginner to Professional</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy/edit/main/src/en/module-05/lesson-03-risk-reward.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="lesson-53-risk-reward-ratios---the-math-of-profitable-trading"><a class="header" href="#lesson-53-risk-reward-ratios---the-math-of-profitable-trading">Lesson 5.3: Risk-Reward Ratios - The Math of Profitable Trading</a></h1>
+<p><strong>Module</strong>: 5 - Risk Management
+<strong>Estimated Time</strong>: 45 minutes
+<strong>Difficulty</strong>: Intermediate</p>
+<h2 id="-learning-objectives"><a class="header" href="#-learning-objectives">🎯 Learning Objectives</a></h2>
+<ul>
+<li>Understand risk-reward ratios</li>
+<li>Calculate minimum win rates needed</li>
+<li>Set profit targets effectively</li>
+<li>Apply R-multiples to trading</li>
+<li>Build positive expectancy systems</li>
+</ul>
+<h2 id="-what-is-risk-reward-ratio"><a class="header" href="#-what-is-risk-reward-ratio">📖 What is Risk-Reward Ratio?</a></h2>
+<p><strong>Risk-Reward Ratio</strong> compares potential profit to potential loss.</p>
+<pre><code>Risk-Reward Ratio = Potential Profit / Potential Loss
+
+Example:
+Entry: $100
+Stop: $95 (risk $5)
+Target: $110 (reward $10)
+R:R = $10 / $5 = 2:1
+</code></pre>
+<h3 id="why-it-matters"><a class="header" href="#why-it-matters">Why It Matters</a></h3>
+<blockquote>
+<p>“You can be right 40% of the time and still make money with good risk-reward”</p>
+</blockquote>
+<h2 id="-calculating-risk-reward"><a class="header" href="#-calculating-risk-reward">📊 Calculating Risk-Reward</a></h2>
+<pre><code class="language-python">def calculate_risk_reward(entry, stop, target):
+    """
+    Calculate risk-reward ratio
+    """
+    risk = abs(entry - stop)
+    reward = abs(target - entry)
+    ratio = reward / risk
+
+    return {
+        'risk': risk,
+        'reward': reward,
+        'ratio': ratio,
+        'ratio_str': f"{ratio:.1f}:1"
+    }
+
+# Example
+entry = 150
+stop = 145
+target = 160
+
+rr = calculate_risk_reward(entry, stop, target)
+print(f"Risk: ${rr['risk']}")
+print(f"Reward: ${rr['reward']}")
+print(f"Ratio: {rr['ratio_str']}")
+</code></pre>
+<h2 id="-minimum-win-rate-required"><a class="header" href="#-minimum-win-rate-required">🎯 Minimum Win Rate Required</a></h2>
+<pre><code class="language-python">def minimum_win_rate(risk_reward_ratio):
+    """
+    Calculate breakeven win rate
+
+    Formula: Win Rate = 1 / (1 + R:R)
+    """
+    min_wr = 1 / (1 + risk_reward_ratio)
+    return min_wr
+
+# Examples
+for rr in [1, 1.5, 2, 3]:
+    min_wr = minimum_win_rate(rr)
+    print(f"{rr}:1 R:R requires {min_wr:.1%} win rate to break even")
+</code></pre>
+<p><strong>Output</strong>:</p>
+<pre><code>1:1 R:R requires 50.0% win rate
+1.5:1 R:R requires 40.0% win rate
+2:1 R:R requires 33.3% win rate
+3:1 R:R requires 25.0% win rate
+</code></pre>
+<h2 id="-expectancy-formula"><a class="header" href="#-expectancy-formula">💰 Expectancy Formula</a></h2>
+<pre><code class="language-python">def calculate_expectancy(win_rate, avg_win, avg_loss):
+    """
+    Calculate system expectancy
+
+    Expectancy = (Win Rate × Avg Win) - (Loss Rate × Avg Loss)
+    """
+    loss_rate = 1 - win_rate
+    expectancy = (win_rate * avg_win) - (loss_rate * abs(avg_loss))
+
+    return expectancy
+
+# Example
+win_rate = 0.45  # 45%
+avg_win = 1000
+avg_loss = -500
+
+exp = calculate_expectancy(win_rate, avg_win, avg_loss)
+print(f"Expectancy: ${exp:.2f} per trade")
+
+if exp &gt; 0:
+    print("✓ Positive expectancy system")
+else:
+    print("✗ Negative expectancy system")
+</code></pre>
+<h2 id="-setting-profit-targets"><a class="header" href="#-setting-profit-targets">🎯 Setting Profit Targets</a></h2>
+<h3 id="method-1-fixed-r-multiple"><a class="header" href="#method-1-fixed-r-multiple">Method 1: Fixed R-Multiple</a></h3>
+<pre><code class="language-python">def set_target_by_r_multiple(entry, stop, r_multiple=2):
+    """
+    Set target at R-multiple of risk
+
+    Common: 2R (2:1), 3R (3:1)
+    """
+    risk = abs(entry - stop)
+    target = entry + (risk * r_multiple)
+
+    return target
+
+# Example
+entry = 150
+stop = 145
+target = set_target_by_r_multiple(entry, stop, r_multiple=2)
+print(f"2R target: ${target}")
+</code></pre>
+<h3 id="method-2-supportresistance"><a class="header" href="#method-2-supportresistance">Method 2: Support/Resistance</a></h3>
+<pre><code class="language-python">def set_target_at_resistance(entry, stop, resistance):
+    """
+    Use next resistance as target
+    """
+    risk = abs(entry - stop)
+    reward = abs(resistance - entry)
+    rr_ratio = reward / risk
+
+    if rr_ratio &lt; 1.5:
+        print(f"⚠️  Poor R:R ({rr_ratio:.1f}:1), consider skipping trade")
+
+    return resistance, rr_ratio
+</code></pre>
+<h3 id="method-3-atr-based"><a class="header" href="#method-3-atr-based">Method 3: ATR-Based</a></h3>
+<pre><code class="language-python">def set_target_by_atr(entry, atr, atr_multiple=3):
+    """
+    Set target at ATR multiple from entry
+    """
+    target = entry + (atr * atr_multiple)
+    return target
+</code></pre>
+<h2 id="-r-multiples"><a class="header" href="#-r-multiples">📊 R-Multiples</a></h2>
+<p><strong>R-Multiple</strong> = Actual Profit or Loss / Initial Risk</p>
+<pre><code class="language-python">def calculate_r_multiple(entry, stop, exit_price):
+    """
+    Calculate R-multiple for closed trade
+    """
+    initial_risk = abs(entry - stop)
+    actual_pnl = exit_price - entry
+    r_multiple = actual_pnl / initial_risk
+
+    return r_multiple
+
+# Examples
+entry = 150
+stop = 145  # Risk = $5
+
+exits = [160, 155, 152, 145, 140]
+
+for exit_price in exits:
+    r = calculate_r_multiple(entry, stop, exit_price)
+    pnl = exit_price - entry
+    print(f"Exit ${exit_price}: P&amp;L ${pnl:+.0f}, R-multiple: {r:+.1f}R")
+</code></pre>
+<h2 id="-complete-risk-reward-system"><a class="header" href="#-complete-risk-reward-system">🎯 Complete Risk-Reward System</a></h2>
+<pre><code class="language-python">class RiskRewardManager:
+    """
+    Manage risk-reward for trades
+    """
+    def __init__(self, min_rr_ratio=1.5):
+        self.min_rr_ratio = min_rr_ratio
+        self.trades = []
+
+    def evaluate_trade(self, entry, stop, target):
+        """
+        Evaluate if trade meets R:R criteria
+        """
+        rr = calculate_risk_reward(entry, stop, target)
+
+        if rr['ratio'] &lt; self.min_rr_ratio:
+            return False, f"R:R too low: {rr['ratio']:.1f}:1 &lt; {self.min_rr_ratio}:1"
+
+        return True, f"Good R:R: {rr['ratio']:.1f}:1"
+
+    def record_trade(self, entry, stop, exit_price):
+        """
+        Record completed trade
+        """
+        r_mult = calculate_r_multiple(entry, stop, exit_price)
+        self.trades.append(r_mult)
+
+        return r_mult
+
+    def calculate_system_expectancy(self):
+        """
+        Calculate overall system expectancy in R
+        """
+        if not self.trades:
+            return 0
+
+        avg_r = sum(self.trades) / len(self.trades)
+        return avg_r
+
+# Example
+manager = RiskRewardManager(min_rr_ratio=2.0)
+
+# Evaluate potential trade
+entry = 150
+stop = 145
+target = 160
+
+valid, msg = manager.evaluate_trade(entry, stop, target)
+print(f"Trade valid: {valid}, {msg}")
+
+# Record trades
+exits = [160, 155, 145, 165, 140]
+for exit_price in exits:
+    r = manager.record_trade(entry, stop, exit_price)
+    print(f"Trade closed at ${exit_price}: {r:+.1f}R")
+
+# System expectancy
+exp = manager.calculate_system_expectancy()
+print(f"\nSystem expectancy: {exp:+.2f}R per trade")
+</code></pre>
+<h2 id="-scaling-out-strategy"><a class="header" href="#-scaling-out-strategy">📊 Scaling Out Strategy</a></h2>
+<pre><code class="language-python">def scaling_out_plan(entry, stop, risk_reward_ratios=[1.5, 2.5, 3.5]):
+    """
+    Create scaling out plan with multiple targets
+    """
+    risk = abs(entry - stop)
+    targets = []
+
+    for rr in risk_reward_ratios:
+        target = entry + (risk * rr)
+        targets.append({
+            'target': target,
+            'rr_ratio': rr,
+            'percent_to_sell': 33.3  # Sell 1/3 at each target
+        })
+
+    return targets
+
+# Example
+entry = 150
+stop = 145
+
+plan = scaling_out_plan(entry, stop)
+print("Scaling Out Plan:")
+for i, level in enumerate(plan, 1):
+    print(f"Target {i}: ${level['target']:.2f} ({level['rr_ratio']}:1) - Sell {level['percent_to_sell']:.0f}%")
+</code></pre>
+<h2 id="-common-mistakes"><a class="header" href="#-common-mistakes">⚠️ Common Mistakes</a></h2>
+<ol>
+<li><strong>Chasing High R:R</strong>: Unrealistic targets that never hit</li>
+<li><strong>Ignoring Win Rate</strong>: 5:1 R:R useless with 10% win rate</li>
+<li><strong>Moving Targets</strong>: Greed prevents taking profits</li>
+<li><strong>No Minimum R:R</strong>: Taking 1:1 or worse trades</li>
+<li><strong>Forgetting Costs</strong>: Not accounting for commissions/slippage</li>
+</ol>
+<h2 id="-check-your-understanding"><a class="header" href="#-check-your-understanding">🎓 Check Your Understanding</a></h2>
+<ol>
+<li>What is a 2:1 risk-reward ratio?</li>
+<li>What win rate is needed for 2:1 R:R to break even?</li>
+<li>What is expectancy?</li>
+<li>What is an R-multiple?</li>
+<li>Why set minimum R:R requirements?</li>
+</ol>
+<h2 id="-exercise"><a class="header" href="#-exercise">💻 Exercise</a></h2>
+<pre><code class="language-python"># Analyze your trading system
+trades = [
+    {'entry': 100, 'stop': 95, 'exit': 110},  # Win
+    {'entry': 150, 'stop': 145, 'exit': 145}, # Loss
+    {'entry': 200, 'stop': 195, 'exit': 215}, # Win
+    {'entry': 50, 'stop': 48, 'exit': 48},    # Loss
+    {'entry': 75, 'stop': 72, 'exit': 84},    # Win
+]
+
+r_multiples = []
+for trade in trades:
+    r = calculate_r_multiple(trade['entry'], trade['stop'], trade['exit'])
+    r_multiples.append(r)
+    print(f"Trade: {r:+.1f}R")
+
+avg_r = sum(r_multiples) / len(r_multiples)
+print(f"\nAverage R: {avg_r:+.2f}R")
+print(f"Expectancy: {'Positive' if avg_r &gt; 0 else 'Negative'}")
+</code></pre>
+<h2 id="-exercise-53"><a class="header" href="#-exercise-53">📝 Exercise 5.3</a></h2>
+<p>Create: <code>exercises/module-05/exercise-5.3-risk-reward.md</code></p>
+<ol>
+<li>Calculate R:R for 10 historical trades</li>
+<li>Determine your system’s average R-multiple</li>
+<li>Calculate minimum win rate needed</li>
+<li>Test different R:R requirements (1.5:1, 2:1, 3:1)</li>
+<li>Document optimal R:R for your strategy</li>
+</ol>
+<h2 id="-resources"><a class="header" href="#-resources">📚 Resources</a></h2>
+<ul>
+<li><a href="https://www.amazon.com/Trade-Your-Way-Financial-Freedom/dp/007147871X">Van Tharp: Trade Your Way to Financial Freedom</a></li>
+<li><a href="https://www.investopedia.com/terms/r/riskrewardratio.asp">Investopedia: Risk-Reward Ratio</a></li>
+</ul>
+<h2 id="-solutions"><a class="header" href="#-solutions">✅ Solutions</a></h2>
+<ol>
+<li>
+<p><strong>2:1 R:R</strong>: For every $1 risked, target $2 profit; if risk $5, target $10 profit</p>
+</li>
+<li>
+<p><strong>Win rate for 2:1</strong>: 33.3% breakeven; above 33.3% = profitable system</p>
+</li>
+<li>
+<p><strong>Expectancy</strong>: Average amount won/lost per trade; (Win% × AvgWin) - (Loss% × AvgLoss)</p>
+</li>
+<li>
+<p><strong>R-multiple</strong>: Profit or loss expressed as multiple of initial risk; +2R = made 2× risk, -1R = lost full risk</p>
+</li>
+<li>
+<p><strong>Minimum R:R</strong>: Ensures favorable odds; filters low-quality setups; allows profitability with lower win rates; protects against small wins/big losses</p>
+</li>
+</ol>
+<hr>
+<p><strong>Next</strong>: <a href="lesson-04-diversification.html">Lesson 5.4: Portfolio Diversification</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../module-05/lesson-02-stop-loss.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../module-05/lesson-04-diversification.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../module-05/lesson-02-stop-loss.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../module-05/lesson-04-diversification.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

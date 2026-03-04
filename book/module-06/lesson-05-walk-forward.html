@@ -1,0 +1,836 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>6.5 Walk-Forward Analysis - Trading Academy: From Beginner to Professional</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A comprehensive guide to automated trading, from fundamentals to professional-level strategies">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-6775557f.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-bd3756ef.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Trading Academy: From Beginner to Professional</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy/edit/main/src/en/module-06/lesson-05-walk-forward.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="lesson-65-walk-forward-analysis"><a class="header" href="#lesson-65-walk-forward-analysis">Lesson 6.5: Walk-Forward Analysis</a></h1>
+<h2 id="learning-objectives"><a class="header" href="#learning-objectives">Learning Objectives</a></h2>
+<p>By the end of this lesson, you will be able to:</p>
+<ul>
+<li>Understand the concept and benefits of walk-forward analysis</li>
+<li>Implement walk-forward optimization and testing</li>
+<li>Interpret walk-forward analysis results</li>
+<li>Identify robust vs overfit strategies using walk-forward testing</li>
+<li>Apply walk-forward analysis to real trading strategies</li>
+</ul>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>Walk-forward analysis (WFA) is one of the most powerful techniques for validating trading strategies and avoiding overfitting. Unlike simple train/test splits, WFA simulates how a strategy would actually be traded—periodically reoptimizing parameters and testing on unseen future data.</p>
+<p>This approach provides a realistic estimate of how a strategy will perform in live trading, where you continuously adapt to changing market conditions while trading on new, unseen data.</p>
+<h2 id="what-is-walk-forward-analysis"><a class="header" href="#what-is-walk-forward-analysis">What is Walk-Forward Analysis?</a></h2>
+<p>Walk-forward analysis divides historical data into multiple periods and follows this process:</p>
+<ol>
+<li><strong>Optimize</strong> on in-sample (IS) period</li>
+<li><strong>Test</strong> on out-of-sample (OOS) period</li>
+<li><strong>Roll forward</strong> to next period</li>
+<li><strong>Repeat</strong> until all data is covered</li>
+</ol>
+<pre><code>Data: |----IS----|--OOS--|----IS----|--OOS--|----IS----|--OOS--|
+      Optimize 1  Test 1  Optimize 2  Test 2  Optimize 3  Test 3
+</code></pre>
+<h3 id="key-concepts"><a class="header" href="#key-concepts">Key Concepts</a></h3>
+<ul>
+<li><strong>In-Sample Period</strong>: Training data for optimization</li>
+<li><strong>Out-of-Sample Period</strong>: Testing data (never seen during optimization)</li>
+<li><strong>Anchored vs Rolling</strong>: Whether IS window grows or stays fixed</li>
+<li><strong>Reoptimization Frequency</strong>: How often to reoptimize parameters</li>
+</ul>
+<h2 id="python-implementation"><a class="header" href="#python-implementation">Python Implementation</a></h2>
+<p>Let’s build a comprehensive walk-forward analysis framework:</p>
+<pre><code class="language-python">import numpy as np
+import pandas as pd
+from typing import Dict, List, Tuple, Callable
+from dataclasses import dataclass
+import matplotlib.pyplot as plt
+
+@dataclass
+class WFAResult:
+    """Results from a single walk-forward period."""
+    period: int
+    is_start: str
+    is_end: str
+    oos_start: str
+    oos_end: str
+    best_params: Dict
+    is_performance: float
+    oos_performance: float
+    degradation: float
+
+
+class WalkForwardAnalyzer:
+    """
+    Walk-forward analysis framework.
+    """
+
+    def __init__(self,
+                 data: pd.DataFrame,
+                 strategy_func: Callable,
+                 optimizer_func: Callable,
+                 param_grid: Dict,
+                 is_period_days: int = 252,
+                 oos_period_days: int = 63,
+                 anchored: bool = False,
+                 metric: str = 'sharpe_ratio'):
+        """
+        Initialize walk-forward analyzer.
+
+        Parameters:
+        -----------
+        data : pd.DataFrame
+            Historical price data
+        strategy_func : Callable
+            Strategy function to test
+        optimizer_func : Callable
+            Optimization function
+        param_grid : Dict
+            Parameter grid for optimization
+        is_period_days : int
+            In-sample period length in days
+        oos_period_days : int
+            Out-of-sample period length in days
+        anchored : bool
+            If True, IS window grows; if False, it rolls
+        metric : str
+            Performance metric to optimize
+        """
+        self.data = data
+        self.strategy_func = strategy_func
+        self.optimizer_func = optimizer_func
+        self.param_grid = param_grid
+        self.is_period_days = is_period_days
+        self.oos_period_days = oos_period_days
+        self.anchored = anchored
+        self.metric = metric
+
+        self.results: List[WFAResult] = []
+
+    def run(self) -&gt; List[WFAResult]:
+        """
+        Run walk-forward analysis.
+
+        Returns:
+        --------
+        List[WFAResult] : Results for each period
+        """
+        print("Starting Walk-Forward Analysis")
+        print("=" * 70)
+        print(f"IS Period: {self.is_period_days} days")
+        print(f"OOS Period: {self.oos_period_days} days")
+        print(f"Mode: {'Anchored' if self.anchored else 'Rolling'}")
+        print("=" * 70)
+
+        # Calculate number of periods
+        total_days = len(self.data)
+        start_idx = self.is_period_days
+
+        period = 1
+
+        while start_idx + self.oos_period_days &lt;= total_days:
+            print(f"\nPeriod {period}")
+            print("-" * 70)
+
+            # Define IS period
+            if self.anchored:
+                is_start_idx = 0
+            else:
+                is_start_idx = start_idx - self.is_period_days
+
+            is_end_idx = start_idx
+            is_data = self.data.iloc[is_start_idx:is_end_idx]
+
+            # Define OOS period
+            oos_start_idx = start_idx
+            oos_end_idx = min(start_idx + self.oos_period_days, total_days)
+            oos_data = self.data.iloc[oos_start_idx:oos_end_idx]
+
+            print(f"IS:  {is_data.index[0].date()} to {is_data.index[-1].date()} ({len(is_data)} days)")
+            print(f"OOS: {oos_data.index[0].date()} to {oos_data.index[-1].date()} ({len(oos_data)} days)")
+
+            # Optimize on IS data
+            print("Optimizing...")
+            opt_result = self.optimizer_func(
+                is_data,
+                self.strategy_func,
+                self.param_grid,
+                self.metric
+            )
+
+            best_params = opt_result['best_params']
+            is_performance = opt_result['best_score']
+
+            print(f"Best Parameters: {best_params}")
+            print(f"IS Performance: {is_performance:.3f}")
+
+            # Test on OOS data
+            print("Testing on OOS data...")
+            oos_result = self.strategy_func(oos_data, **best_params)
+            oos_performance = oos_result.get(self.metric, 0)
+
+            degradation = is_performance - oos_performance
+
+            print(f"OOS Performance: {oos_performance:.3f}")
+            print(f"Degradation: {degradation:.3f} ({degradation/is_performance*100:.1f}%)")
+
+            # Store results
+            wfa_result = WFAResult(
+                period=period,
+                is_start=str(is_data.index[0].date()),
+                is_end=str(is_data.index[-1].date()),
+                oos_start=str(oos_data.index[0].date()),
+                oos_end=str(oos_data.index[-1].date()),
+                best_params=best_params,
+                is_performance=is_performance,
+                oos_performance=oos_performance,
+                degradation=degradation
+            )
+
+            self.results.append(wfa_result)
+
+            # Move to next period
+            start_idx += self.oos_period_days
+            period += 1
+
+        print("\n" + "=" * 70)
+        print("Walk-Forward Analysis Complete")
+        print("=" * 70)
+
+        return self.results
+
+    def calculate_summary_statistics(self) -&gt; Dict:
+        """
+        Calculate summary statistics from WFA results.
+
+        Returns:
+        --------
+        Dict : Summary statistics
+        """
+        if not self.results:
+            return {}
+
+        is_scores = [r.is_performance for r in self.results]
+        oos_scores = [r.oos_performance for r in self.results]
+        degradations = [r.degradation for r in self.results]
+
+        # Calculate efficiency (OOS / IS)
+        efficiencies = [oos / is_perf if is_perf != 0 else 0
+                       for oos, is_perf in zip(oos_scores, is_scores)]
+
+        summary = {
+            'num_periods': len(self.results),
+            'avg_is_performance': np.mean(is_scores),
+            'avg_oos_performance': np.mean(oos_scores),
+            'avg_degradation': np.mean(degradations),
+            'avg_efficiency': np.mean(efficiencies),
+            'std_oos_performance': np.std(oos_scores),
+            'min_oos_performance': np.min(oos_scores),
+            'max_oos_performance': np.max(oos_scores),
+            'positive_oos_periods': sum(1 for s in oos_scores if s &gt; 0),
+            'negative_oos_periods': sum(1 for s in oos_scores if s &lt;= 0)
+        }
+
+        return summary
+
+    def print_summary(self):
+        """Print summary of WFA results."""
+        summary = self.calculate_summary_statistics()
+
+        print("\n" + "=" * 70)
+        print("WALK-FORWARD ANALYSIS SUMMARY")
+        print("=" * 70)
+
+        print(f"\nNumber of Periods: {summary['num_periods']}")
+        print(f"\nAverage IS Performance:  {summary['avg_is_performance']:.3f}")
+        print(f"Average OOS Performance: {summary['avg_oos_performance']:.3f}")
+        print(f"Average Degradation:     {summary['avg_degradation']:.3f}")
+        print(f"Average Efficiency:      {summary['avg_efficiency']:.2%}")
+
+        print(f"\nOOS Performance Statistics:")
+        print(f"  Std Dev:  {summary['std_oos_performance']:.3f}")
+        print(f"  Min:      {summary['min_oos_performance']:.3f}")
+        print(f"  Max:      {summary['max_oos_performance']:.3f}")
+
+        print(f"\nOOS Period Results:")
+        print(f"  Positive: {summary['positive_oos_periods']}")
+        print(f"  Negative: {summary['negative_oos_periods']}")
+        print(f"  Win Rate: {summary['positive_oos_periods']/summary['num_periods']:.1%}")
+
+        print("\n" + "=" * 70)
+
+        # Interpretation
+        print("\nINTERPRETATION:")
+        if summary['avg_efficiency'] &gt; 0.7:
+            print("✓ Good: Strategy shows robust performance (efficiency &gt; 70%)")
+        elif summary['avg_efficiency'] &gt; 0.5:
+            print("⚠ Moderate: Some performance degradation (efficiency 50-70%)")
+        else:
+            print("✗ Poor: Significant overfitting detected (efficiency &lt; 50%)")
+
+        if summary['positive_oos_periods'] / summary['num_periods'] &gt; 0.7:
+            print("✓ Good: Consistent positive OOS performance")
+        else:
+            print("⚠ Warning: Inconsistent OOS performance")
+
+    def plot_results(self):
+        """Plot walk-forward analysis results."""
+        if not self.results:
+            print("No results to plot")
+            return
+
+        fig, axes = plt.subplots(3, 1, figsize=(14, 10))
+
+        periods = [r.period for r in self.results]
+        is_scores = [r.is_performance for r in self.results]
+        oos_scores = [r.oos_performance for r in self.results]
+        degradations = [r.degradation for r in self.results]
+
+        # Plot 1: IS vs OOS Performance
+        ax1 = axes[0]
+        ax1.plot(periods, is_scores, 'o-', label='In-Sample', linewidth=2, markersize=8)
+        ax1.plot(periods, oos_scores, 's-', label='Out-of-Sample', linewidth=2, markersize=8)
+        ax1.axhline(y=0, color='red', linestyle='--', alpha=0.5)
+        ax1.set_ylabel('Performance (Sharpe Ratio)')
+        ax1.set_title('Walk-Forward Analysis: IS vs OOS Performance', fontsize=14, fontweight='bold')
+        ax1.legend()
+        ax1.grid(True, alpha=0.3)
+
+        # Plot 2: Degradation
+        ax2 = axes[1]
+        colors = ['red' if d &gt; 0 else 'green' for d in degradations]
+        ax2.bar(periods, degradations, color=colors, alpha=0.6)
+        ax2.axhline(y=0, color='black', linestyle='-', linewidth=1)
+        ax2.set_ylabel('Degradation')
+        ax2.set_title('Performance Degradation (IS - OOS)', fontsize=14, fontweight='bold')
+        ax2.grid(True, alpha=0.3, axis='y')
+
+        # Plot 3: Efficiency
+        ax3 = axes[2]
+        efficiencies = [oos / is_perf * 100 if is_perf != 0 else 0
+                       for oos, is_perf in zip(oos_scores, is_scores)]
+        ax3.bar(periods, efficiencies, alpha=0.6, color='steelblue')
+        ax3.axhline(y=100, color='green', linestyle='--', label='100% Efficiency')
+        ax3.axhline(y=70, color='orange', linestyle='--', label='70% Threshold')
+        ax3.set_xlabel('Period')
+        ax3.set_ylabel('Efficiency (%)')
+        ax3.set_title('OOS Efficiency (OOS / IS * 100%)', fontsize=14, fontweight='bold')
+        ax3.legend()
+        ax3.grid(True, alpha=0.3, axis='y')
+
+        plt.tight_layout()
+        plt.show()
+
+    def plot_parameter_evolution(self, param_name: str):
+        """
+        Plot how a specific parameter evolves over time.
+
+        Parameters:
+        -----------
+        param_name : str
+            Name of parameter to plot
+        """
+        if not self.results:
+            print("No results to plot")
+            return
+
+        periods = [r.period for r in self.results]
+        param_values = [r.best_params.get(param_name, np.nan) for r in self.results]
+
+        plt.figure(figsize=(12, 6))
+        plt.plot(periods, param_values, 'o-', linewidth=2, markersize=10)
+        plt.xlabel('Period')
+        plt.ylabel(f'{param_name} Value')
+        plt.title(f'Parameter Evolution: {param_name}', fontsize=14, fontweight='bold')
+        plt.grid(True, alpha=0.3)
+        plt.show()
+
+
+# Example usage
+def example_walk_forward():
+    """
+    Demonstrate walk-forward analysis.
+    """
+    import yfinance as yf
+
+    print("Walk-Forward Analysis Example")
+    print("=" * 70)
+
+    # Download data
+    data = yf.download('AAPL', start='2018-01-01', end='2023-12-31', progress=False)
+
+    # Define strategy function
+    def ma_crossover_strategy(data, ma_short, ma_long):
+        """Simple MA crossover strategy."""
+        data = data.copy()
+        data['MA_Short'] = data['Close'].rolling(int(ma_short)).mean()
+        data['MA_Long'] = data['Close'].rolling(int(ma_long)).mean()
+
+        # Generate signals
+        signals = data['MA_Short'] &gt; data['MA_Long']
+
+        # Calculate returns
+        returns = data['Close'].pct_change()
+        strategy_returns = returns * signals.shift(1)
+
+        # Calculate Sharpe ratio
+        if strategy_returns.std() == 0:
+            sharpe = 0
+        else:
+            sharpe = np.sqrt(252) * (strategy_returns.mean() / strategy_returns.std())
+
+        return {'sharpe_ratio': sharpe, 'returns': strategy_returns}
+
+    # Define simple grid search optimizer
+    def simple_optimizer(data, strategy_func, param_grid, metric):
+        """Simple grid search optimizer."""
+        from itertools import product
+
+        param_names = list(param_grid.keys())
+        param_values = list(param_grid.values())
+        combinations = list(product(*param_values))
+
+        best_score = -np.inf
+        best_params = None
+
+        for combo in combinations:
+            params = dict(zip(param_names, combo))
+
+            # Skip invalid combinations
+            if params['ma_short'] &gt;= params['ma_long']:
+                continue
+
+            try:
+                result = strategy_func(data, **params)
+                score = result.get(metric, -np.inf)
+
+                if score &gt; best_score:
+                    best_score = score
+                    best_params = params
+            except:
+                continue
+
+        return {'best_params': best_params, 'best_score': best_score}
+
+    # Define parameter grid
+    param_grid = {
+        'ma_short': [10, 20, 30, 40],
+        'ma_long': [50, 100, 150, 200]
+    }
+
+    # Run walk-forward analysis
+    wfa = WalkForwardAnalyzer(
+        data=data,
+        strategy_func=ma_crossover_strategy,
+        optimizer_func=simple_optimizer,
+        param_grid=param_grid,
+        is_period_days=504,  # 2 years
+        oos_period_days=126,  # 6 months
+        anchored=False,
+        metric='sharpe_ratio'
+    )
+
+    results = wfa.run()
+
+    # Print summary
+    wfa.print_summary()
+
+    # Plot results
+    wfa.plot_results()
+
+    # Plot parameter evolution
+    wfa.plot_parameter_evolution('ma_short')
+    wfa.plot_parameter_evolution('ma_long')
+
+
+if __name__ == "__main__":
+    example_walk_forward()
+</code></pre>
+<h2 id="interpreting-wfa-results"><a class="header" href="#interpreting-wfa-results">Interpreting WFA Results</a></h2>
+<h3 id="key-metrics"><a class="header" href="#key-metrics">Key Metrics</a></h3>
+<ol>
+<li><strong>Average OOS Performance</strong>: Expected live trading performance</li>
+<li><strong>Efficiency Ratio</strong>: OOS / IS performance (should be &gt; 70%)</li>
+<li><strong>OOS Consistency</strong>: Percentage of positive OOS periods</li>
+<li><strong>Degradation</strong>: How much performance drops from IS to OOS</li>
+</ol>
+<h3 id="red-flags"><a class="header" href="#red-flags">Red Flags</a></h3>
+<ul>
+<li><strong>High Degradation</strong>: IS performance much better than OOS (overfitting)</li>
+<li><strong>Low Efficiency</strong>: OOS &lt; 50% of IS performance</li>
+<li><strong>Inconsistent OOS</strong>: Many negative OOS periods</li>
+<li><strong>Unstable Parameters</strong>: Parameters change dramatically between periods</li>
+</ul>
+<h3 id="good-signs"><a class="header" href="#good-signs">Good Signs</a></h3>
+<ul>
+<li><strong>Consistent OOS</strong>: Most periods show positive performance</li>
+<li><strong>High Efficiency</strong>: OOS &gt; 70% of IS performance</li>
+<li><strong>Stable Parameters</strong>: Parameters don’t vary wildly</li>
+<li><strong>Robust Across Regimes</strong>: Works in different market conditions</li>
+</ul>
+<h2 id="anchored-vs-rolling-windows"><a class="header" href="#anchored-vs-rolling-windows">Anchored vs Rolling Windows</a></h2>
+<h3 id="anchored-walk-forward"><a class="header" href="#anchored-walk-forward">Anchored Walk-Forward</a></h3>
+<p>IS window grows over time:</p>
+<pre><code>Period 1: |----IS----|--OOS--|
+Period 2: |--------IS--------|--OOS--|
+Period 3: |------------IS------------|--OOS--|
+</code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>More data for optimization</li>
+<li>Captures long-term patterns</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Slower to adapt to regime changes</li>
+<li>Old data may not be relevant</li>
+</ul>
+<h3 id="rolling-walk-forward"><a class="header" href="#rolling-walk-forward">Rolling Walk-Forward</a></h3>
+<p>IS window stays fixed:</p>
+<pre><code>Period 1: |----IS----|--OOS--|
+Period 2:       |----IS----|--OOS--|
+Period 3:             |----IS----|--OOS--|
+</code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Adapts to recent market conditions</li>
+<li>Discards old, irrelevant data</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Less data for optimization</li>
+<li>May miss long-term patterns</li>
+</ul>
+<h2 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h2>
+<ol>
+<li>
+<p><strong>Choose Appropriate Periods</strong>:</p>
+<ul>
+<li>IS: 1-3 years of data</li>
+<li>OOS: 3-6 months</li>
+<li>Reoptimize quarterly or semi-annually</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Realistic Costs</strong>:</p>
+<ul>
+<li>Include commissions and slippage</li>
+<li>Account for reoptimization costs</li>
+</ul>
+</li>
+<li>
+<p><strong>Test Multiple Configurations</strong>:</p>
+<ul>
+<li>Try different IS/OOS ratios</li>
+<li>Test both anchored and rolling</li>
+<li>Compare results</li>
+</ul>
+</li>
+<li>
+<p><strong>Monitor Parameter Stability</strong>:</p>
+<ul>
+<li>Parameters shouldn’t change drastically</li>
+<li>Stable parameters indicate robustness</li>
+</ul>
+</li>
+<li>
+<p><strong>Require Minimum Performance</strong>:</p>
+<ul>
+<li>Set minimum OOS performance threshold</li>
+<li>Reject strategies that fail consistently</li>
+</ul>
+</li>
+<li>
+<p><strong>Consider Transaction Costs</strong>:</p>
+<ul>
+<li>Frequent reoptimization may change parameters</li>
+<li>Parameter changes may require rebalancing</li>
+</ul>
+</li>
+</ol>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<h3 id="exercise-1-basic-wfa"><a class="header" href="#exercise-1-basic-wfa">Exercise 1: Basic WFA</a></h3>
+<p>Implement walk-forward analysis for a simple RSI strategy:</p>
+<ul>
+<li>IS period: 1 year</li>
+<li>OOS period: 3 months</li>
+<li>Test on SPY 2018-2023</li>
+</ul>
+<p>Calculate efficiency ratio and OOS consistency.</p>
+<h3 id="exercise-2-anchored-vs-rolling"><a class="header" href="#exercise-2-anchored-vs-rolling">Exercise 2: Anchored vs Rolling</a></h3>
+<p>Compare anchored vs rolling walk-forward on the same strategy. Which performs better? Why?</p>
+<h3 id="exercise-3-parameter-stability"><a class="header" href="#exercise-3-parameter-stability">Exercise 3: Parameter Stability</a></h3>
+<p>Analyze how parameters evolve over time in your WFA. Are they stable or erratic? What does this tell you about the strategy?</p>
+<h3 id="exercise-4-regime-analysis"><a class="header" href="#exercise-4-regime-analysis">Exercise 4: Regime Analysis</a></h3>
+<p>Perform WFA and identify which market regimes (bull/bear/sideways) produce best/worst OOS results.</p>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>Walk-forward analysis is the gold standard for strategy validation:</p>
+<ul>
+<li><strong>Simulates Real Trading</strong>: Periodic reoptimization on new data</li>
+<li><strong>Detects Overfitting</strong>: Poor OOS performance reveals overfit strategies</li>
+<li><strong>Provides Realistic Expectations</strong>: OOS results estimate live performance</li>
+<li><strong>Tests Adaptability</strong>: Shows if strategy adapts to changing markets</li>
+</ul>
+<p>Key metrics to evaluate:</p>
+<ul>
+<li>Average OOS performance</li>
+<li>Efficiency ratio (OOS/IS)</li>
+<li>OOS consistency</li>
+<li>Parameter stability</li>
+</ul>
+<p>A good strategy should show:</p>
+<ul>
+<li>Efficiency &gt; 70%</li>
+<li>Consistent positive OOS periods</li>
+<li>Stable parameters</li>
+<li>Reasonable degradation</li>
+</ul>
+<h2 id="next-steps"><a class="header" href="#next-steps">Next Steps</a></h2>
+<p>In the next lesson, we’ll explore Monte Carlo simulation, a powerful technique for understanding the range of possible outcomes and assessing strategy robustness under uncertainty.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../module-06/lesson-04-optimization.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../module-06/lesson-06-monte-carlo.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../module-06/lesson-04-optimization.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../module-06/lesson-06-monte-carlo.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

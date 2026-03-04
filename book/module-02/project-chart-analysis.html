@@ -1,0 +1,742 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hands-On Project: Chart Analysis - Trading Academy: From Beginner to Professional</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A comprehensive guide to automated trading, from fundamentals to professional-level strategies">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-6775557f.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-bd3756ef.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Trading Academy: From Beginner to Professional</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/wjhou/trading-academy/edit/main/src/en/module-02/project-chart-analysis.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <span class=fa-svg id="git-edit-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M421.7 220.3l-11.3 11.3-22.6 22.6-205 205c-6.6 6.6-14.8 11.5-23.8 14.1L30.8 511c-8.4 2.5-17.5 .2-23.7-6.1S-1.5 489.7 1 481.2L38.7 353.1c2.6-9 7.5-17.2 14.1-23.8l205-205 22.6-22.6 11.3-11.3 33.9 33.9 62.1 62.1 33.9 33.9zM96 353.9l-9.3 9.3c-.9 .9-1.6 2.1-2 3.4l-25.3 86 86-25.3c1.3-.4 2.5-1.1 3.4-2l9.3-9.3H112c-8.8 0-16-7.2-16-16V353.9zM453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-14.5 14.5-22.6 22.6-11.3 11.3-33.9-33.9-62.1-62.1L314.3 67.7l11.3-11.3 22.6-22.6 14.5-14.5c25-25 65.5-25 90.5 0z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="hands-on-project-chart-analysis"><a class="header" href="#hands-on-project-chart-analysis">Hands-On Project: Chart Analysis</a></h1>
+<p><strong>Module</strong>: 2 - Technical Analysis Basics
+<strong>Estimated Time</strong>: 2-3 hours
+<strong>Difficulty</strong>: Beginner to Intermediate</p>
+<h2 id="-project-objectives"><a class="header" href="#-project-objectives">🎯 Project Objectives</a></h2>
+<p>Apply all Module 2 concepts to analyze real stocks:</p>
+<ul>
+<li>Identify candlestick patterns</li>
+<li>Draw support and resistance levels</li>
+<li>Determine trend direction and strength</li>
+<li>Analyze moving averages</li>
+<li>Evaluate volume confirmation</li>
+<li>Create a complete trading plan</li>
+</ul>
+<h2 id="-project-overview"><a class="header" href="#-project-overview">📋 Project Overview</a></h2>
+<p>You will perform a comprehensive technical analysis on 3 stocks and create detailed trading plans for each.</p>
+<h3 id="deliverables"><a class="header" href="#deliverables">Deliverables</a></h3>
+<ol>
+<li><strong>Chart Analysis Report</strong> for each stock</li>
+<li><strong>Trading Plan</strong> with entry, exit, and risk management</li>
+<li><strong>Python Analysis Script</strong> automating the analysis</li>
+<li><strong>Presentation</strong> of your findings</li>
+</ol>
+<h2 id="-part-1-stock-selection"><a class="header" href="#-part-1-stock-selection">🔍 Part 1: Stock Selection</a></h2>
+<h3 id="choose-3-stocks"><a class="header" href="#choose-3-stocks">Choose 3 Stocks</a></h3>
+<p>Select stocks from different categories:</p>
+<ol>
+<li><strong>Large Cap Tech</strong> (e.g., AAPL, MSFT, GOOGL, NVDA)</li>
+<li><strong>Financial</strong> (e.g., JPM, BAC, GS, V)</li>
+<li><strong>Consumer</strong> (e.g., AMZN, WMT, NKE, SBUX)</li>
+</ol>
+<h3 id="why-different-sectors"><a class="header" href="#why-different-sectors">Why Different Sectors?</a></h3>
+<ul>
+<li>Different volatility characteristics</li>
+<li>Different volume patterns</li>
+<li>Practice adapting analysis to various stocks</li>
+</ul>
+<h2 id="-part-2-technical-analysis-checklist"><a class="header" href="#-part-2-technical-analysis-checklist">📊 Part 2: Technical Analysis Checklist</a></h2>
+<p>For each stock, complete this analysis:</p>
+<h3 id="1-candlestick-analysis"><a class="header" href="#1-candlestick-analysis">1. Candlestick Analysis</a></h3>
+<pre><code class="language-markdown">## Candlestick Patterns
+
+### Recent Patterns (Last 20 Days)
+- [ ] Identify any single-candle patterns (doji, hammer, shooting star, etc.)
+- [ ] Identify any multi-candle patterns (engulfing, morning/evening star, etc.)
+- [ ] Note the context (trend before pattern)
+- [ ] Assess pattern reliability
+
+### Example Format:
+**Pattern Found**: Bullish Engulfing
+**Date**: March 1, 2026
+**Context**: After 5-day downtrend
+**Reliability**: High (confirmed by volume)
+**Outcome**: Price rose 3% next day
+</code></pre>
+<h3 id="2-support-and-resistance"><a class="header" href="#2-support-and-resistance">2. Support and Resistance</a></h3>
+<pre><code class="language-markdown">## Support and Resistance Levels
+
+### Resistance Levels
+1. **$XXX.XX** - Reason: Previous high (Date), tested 3 times
+2. **$XXX.XX** - Reason: Round number + 200-day MA
+3. **$XXX.XX** - Reason: Recent swing high
+
+### Support Levels
+1. **$XXX.XX** - Reason: Previous low (Date), strong bounce
+2. **$XXX.XX** - Reason: 50-day MA + trendline
+3. **$XXX.XX** - Reason: Volume profile peak
+
+### Current Price Position
+- Price: $XXX.XX
+- Nearest Support: $XXX.XX (X.X% below)
+- Nearest Resistance: $XXX.XX (X.X% above)
+</code></pre>
+<h3 id="3-trend-analysis"><a class="header" href="#3-trend-analysis">3. Trend Analysis</a></h3>
+<pre><code class="language-markdown">## Trend Identification
+
+### Primary Trend (Daily Chart)
+- **Direction**: Uptrend / Downtrend / Sideways
+- **Strength**: Strong / Moderate / Weak
+- **Evidence**:
+  - Higher highs and higher lows (or opposite)
+  - Trendline: [Draw and describe]
+  - MA alignment: Price vs 20/50/200-day MAs
+
+### Secondary Trend (Weekly Chart)
+- **Direction**: [Same analysis on weekly timeframe]
+- **Alignment**: Does daily trend align with weekly?
+
+### Trend Quality
+- [ ] Clean trend with few whipsaws
+- [ ] Consistent higher highs/lows
+- [ ] Volume confirms trend direction
+- [ ] MAs properly aligned
+</code></pre>
+<h3 id="4-moving-average-analysis"><a class="header" href="#4-moving-average-analysis">4. Moving Average Analysis</a></h3>
+<pre><code class="language-markdown">## Moving Averages
+
+### Current MA Values
+- **20-day SMA**: $XXX.XX
+- **50-day SMA**: $XXX.XX
+- **200-day SMA**: $XXX.XX
+- **Current Price**: $XXX.XX
+
+### MA Alignment
+- Price position: Above/Below all MAs
+- MA order: [e.g., Price &gt; 20 &gt; 50 &gt; 200 = Strong uptrend]
+- Slope: All rising / All falling / Mixed
+
+### Recent Crossovers
+- **Golden Cross**: [Date if occurred in last 6 months]
+- **Death Cross**: [Date if occurred in last 6 months]
+- **Fast/Slow Cross**: [Any recent 20/50 crosses]
+
+### MA as Support/Resistance
+- Which MA is price respecting? [e.g., bouncing off 50-day]
+- Recent tests: [Dates when price touched MA]
+</code></pre>
+<h3 id="5-volume-analysis"><a class="header" href="#5-volume-analysis">5. Volume Analysis</a></h3>
+<pre><code class="language-markdown">## Volume Analysis
+
+### Average Volume
+- **20-day Average**: XXX,XXX shares
+- **Today's Volume**: XXX,XXX shares
+- **Ratio**: X.Xx (Today / Average)
+
+### Volume Patterns
+- [ ] Higher volume on up days (bullish)
+- [ ] Higher volume on down days (bearish)
+- [ ] Volume declining (divergence warning)
+- [ ] Volume spike (climax or breakout)
+
+### Recent Volume Events
+- **Date**: [Recent high volume day]
+- **Volume**: XXX,XXX (X.Xx average)
+- **Price Action**: [What happened to price]
+- **Interpretation**: [Breakout / Climax / etc.]
+
+### Volume Confirmation
+- Does volume confirm current trend? Yes / No
+- Any divergences? [Describe if present]
+</code></pre>
+<h2 id="-part-3-python-analysis-script"><a class="header" href="#-part-3-python-analysis-script">💻 Part 3: Python Analysis Script</a></h2>
+<p>Create a script that automates the analysis:</p>
+<pre><code class="language-python">import yfinance as yf
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from datetime import datetime, timedelta
+
+class TechnicalAnalyzer:
+    def __init__(self, ticker, period="1y"):
+        self.ticker = ticker
+        self.df = yf.Ticker(ticker).history(period=period)
+        self.prepare_data()
+
+    def prepare_data(self):
+        """Calculate all technical indicators"""
+        # Moving averages
+        self.df['SMA_20'] = self.df['Close'].rolling(20).mean()
+        self.df['SMA_50'] = self.df['Close'].rolling(50).mean()
+        self.df['SMA_200'] = self.df['Close'].rolling(200).mean()
+
+        # Volume
+        self.df['Avg_Volume'] = self.df['Volume'].rolling(20).mean()
+        self.df['Volume_Ratio'] = self.df['Volume'] / self.df['Avg_Volume']
+
+    def identify_trend(self):
+        """Identify current trend"""
+        price = self.df['Close'].iloc[-1]
+        sma20 = self.df['SMA_20'].iloc[-1]
+        sma50 = self.df['SMA_50'].iloc[-1]
+        sma200 = self.df['SMA_200'].iloc[-1]
+
+        if price &gt; sma20 &gt; sma50 &gt; sma200:
+            return "STRONG UPTREND"
+        elif price &gt; sma20 and price &gt; sma50 and price &gt; sma200:
+            return "UPTREND"
+        elif price &lt; sma20 &lt; sma50 &lt; sma200:
+            return "STRONG DOWNTREND"
+        elif price &lt; sma20 and price &lt; sma50 and price &lt; sma200:
+            return "DOWNTREND"
+        else:
+            return "SIDEWAYS"
+
+    def find_support_resistance(self, lookback=60):
+        """Find key support and resistance levels"""
+        recent_data = self.df.tail(lookback)
+
+        # Find local maxima (resistance)
+        resistance_levels = []
+        for i in range(1, len(recent_data) - 1):
+            if (recent_data['High'].iloc[i] &gt; recent_data['High'].iloc[i-1] and
+                recent_data['High'].iloc[i] &gt; recent_data['High'].iloc[i+1]):
+                resistance_levels.append(recent_data['High'].iloc[i])
+
+        # Find local minima (support)
+        support_levels = []
+        for i in range(1, len(recent_data) - 1):
+            if (recent_data['Low'].iloc[i] &lt; recent_data['Low'].iloc[i-1] and
+                recent_data['Low'].iloc[i] &lt; recent_data['Low'].iloc[i+1]):
+                support_levels.append(recent_data['Low'].iloc[i])
+
+        # Cluster nearby levels
+        def cluster(levels, tolerance=0.02):
+            if not levels:
+                return []
+            sorted_levels = sorted(levels)
+            clusters = [sorted_levels[0]]
+            for level in sorted_levels[1:]:
+                if level &gt; clusters[-1] * (1 + tolerance):
+                    clusters.append(level)
+                else:
+                    clusters[-1] = (clusters[-1] + level) / 2
+            return clusters
+
+        return {
+            'support': cluster(support_levels)[-3:],  # Top 3
+            'resistance': cluster(resistance_levels)[-3:]  # Top 3
+        }
+
+    def analyze_volume(self):
+        """Analyze recent volume patterns"""
+        current_volume = self.df['Volume'].iloc[-1]
+        avg_volume = self.df['Avg_Volume'].iloc[-1]
+        ratio = current_volume / avg_volume
+
+        if ratio &gt; 2.0:
+            classification = "EXTREMELY HIGH"
+        elif ratio &gt; 1.5:
+            classification = "HIGH"
+        elif ratio &gt; 0.8:
+            classification = "NORMAL"
+        else:
+            classification = "LOW"
+
+        return {
+            'current': current_volume,
+            'average': avg_volume,
+            'ratio': ratio,
+            'classification': classification
+        }
+
+    def generate_report(self):
+        """Generate complete analysis report"""
+        current_price = self.df['Close'].iloc[-1]
+        trend = self.identify_trend()
+        sr_levels = self.find_support_resistance()
+        volume_analysis = self.analyze_volume()
+
+        report = f"""
+{'='*60}
+TECHNICAL ANALYSIS REPORT: {self.ticker}
+{'='*60}
+Date: {datetime.now().strftime('%Y-%m-%d')}
+
+CURRENT PRICE: ${current_price:.2f}
+
+TREND ANALYSIS:
+- Trend: {trend}
+- 20-day SMA: ${self.df['SMA_20'].iloc[-1]:.2f}
+- 50-day SMA: ${self.df['SMA_50'].iloc[-1]:.2f}
+- 200-day SMA: ${self.df['SMA_200'].iloc[-1]:.2f}
+
+SUPPORT LEVELS:
+"""
+        for i, level in enumerate(sr_levels['support'], 1):
+            distance = ((current_price - level) / level) * 100
+            report += f"  {i}. ${level:.2f} ({distance:+.2f}% from current)\n"
+
+        report += "\nRESISTANCE LEVELS:\n"
+        for i, level in enumerate(sr_levels['resistance'], 1):
+            distance = ((level - current_price) / current_price) * 100
+            report += f"  {i}. ${level:.2f} ({distance:+.2f}% from current)\n"
+
+        report += f"""
+VOLUME ANALYSIS:
+- Current Volume: {volume_analysis['current']:,.0f}
+- Average Volume: {volume_analysis['average']:,.0f}
+- Ratio: {volume_analysis['ratio']:.2f}x
+- Classification: {volume_analysis['classification']}
+
+{'='*60}
+"""
+        return report
+
+    def plot_analysis(self):
+        """Create comprehensive chart"""
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 10),
+                                        gridspec_kw={'height_ratios': [3, 1]})
+
+        # Price and MAs
+        ax1.plot(self.df.index, self.df['Close'], label='Price', linewidth=2)
+        ax1.plot(self.df.index, self.df['SMA_20'], label='20-day SMA', alpha=0.7)
+        ax1.plot(self.df.index, self.df['SMA_50'], label='50-day SMA', alpha=0.7)
+        ax1.plot(self.df.index, self.df['SMA_200'], label='200-day SMA', alpha=0.7)
+
+        # Support and Resistance
+        sr_levels = self.find_support_resistance()
+        for level in sr_levels['support']:
+            ax1.axhline(y=level, color='green', linestyle='--', alpha=0.5)
+        for level in sr_levels['resistance']:
+            ax1.axhline(y=level, color='red', linestyle='--', alpha=0.5)
+
+        ax1.set_title(f'{self.ticker} - Technical Analysis')
+        ax1.set_ylabel('Price ($)')
+        ax1.legend()
+        ax1.grid(True, alpha=0.3)
+
+        # Volume
+        colors = ['green' if self.df['Close'].iloc[i] &gt; self.df['Open'].iloc[i]
+                  else 'red' for i in range(len(self.df))]
+        ax2.bar(self.df.index, self.df['Volume'], color=colors, alpha=0.5)
+        ax2.plot(self.df.index, self.df['Avg_Volume'], color='blue',
+                 label='20-day Avg', linewidth=2)
+        ax2.set_ylabel('Volume')
+        ax2.legend()
+        ax2.grid(True, alpha=0.3)
+
+        plt.tight_layout()
+        plt.savefig(f'{self.ticker}_analysis.png', dpi=300, bbox_inches='tight')
+        plt.show()
+
+# Usage
+if __name__ == "__main__":
+    # Analyze your 3 stocks
+    tickers = ["AAPL", "JPM", "AMZN"]  # Replace with your choices
+
+    for ticker in tickers:
+        print(f"\nAnalyzing {ticker}...")
+        analyzer = TechnicalAnalyzer(ticker)
+        print(analyzer.generate_report())
+        analyzer.plot_analysis()
+</code></pre>
+<h2 id="-part-4-trading-plan"><a class="header" href="#-part-4-trading-plan">📝 Part 4: Trading Plan</a></h2>
+<p>For each stock, create a detailed trading plan:</p>
+<pre><code class="language-markdown"># Trading Plan: [TICKER]
+
+## Analysis Summary
+- **Trend**: [Uptrend/Downtrend/Sideways]
+- **Strength**: [Strong/Moderate/Weak]
+- **Key Levels**: Support at $XXX, Resistance at $XXX
+- **Volume**: [Confirming/Diverging]
+
+## Trade Setup
+
+### Entry Strategy
+- **Type**: Long / Short
+- **Entry Price**: $XXX.XX
+- **Entry Trigger**: [e.g., Break above $XXX with volume]
+- **Confirmation**: [e.g., Close above resistance, volume &gt; 1.5x avg]
+
+### Risk Management
+- **Stop Loss**: $XXX.XX
+- **Stop Reason**: [e.g., Below support level]
+- **Risk per Share**: $X.XX
+- **Position Size**: XXX shares (based on 1-2% account risk)
+
+### Profit Targets
+- **Target 1**: $XXX.XX (X% gain) - Take 50% profit
+- **Target 2**: $XXX.XX (X% gain) - Take 30% profit
+- **Target 3**: $XXX.XX (X% gain) - Let 20% run with trailing stop
+
+### Risk-Reward Ratio
+- **Risk**: $X.XX per share
+- **Reward**: $X.XX per share (to Target 1)
+- **Ratio**: 1:X.X
+
+## Trade Management
+- [ ] Set stop loss immediately after entry
+- [ ] Move stop to breakeven after Target 1
+- [ ] Trail stop under recent lows after Target 2
+- [ ] Review daily for pattern changes
+
+## Alternative Scenarios
+
+### If Price Drops Before Entry
+- Wait for support test
+- Look for bullish reversal pattern
+- Re-evaluate if breaks support
+
+### If Price Gaps Up
+- Don't chase
+- Wait for pullback to entry level
+- Consider smaller position if must enter
+
+## Notes
+[Any additional observations or concerns]
+</code></pre>
+<h2 id="-part-5-presentation"><a class="header" href="#-part-5-presentation">🎯 Part 5: Presentation</a></h2>
+<p>Create a summary presentation (slides or document):</p>
+<h3 id="slide-1-overview"><a class="header" href="#slide-1-overview">Slide 1: Overview</a></h3>
+<ul>
+<li>3 stocks analyzed</li>
+<li>Date range</li>
+<li>Key findings summary</li>
+</ul>
+<h3 id="slide-2-4-individual-stock-analysis"><a class="header" href="#slide-2-4-individual-stock-analysis">Slide 2-4: Individual Stock Analysis</a></h3>
+<p>For each stock:</p>
+<ul>
+<li>Chart with annotations</li>
+<li>Key patterns identified</li>
+<li>S/R levels marked</li>
+<li>Trend assessment</li>
+<li>Volume analysis</li>
+</ul>
+<h3 id="slide-5-7-trading-plans"><a class="header" href="#slide-5-7-trading-plans">Slide 5-7: Trading Plans</a></h3>
+<p>For each stock:</p>
+<ul>
+<li>Entry/exit strategy</li>
+<li>Risk management</li>
+<li>Expected outcomes</li>
+</ul>
+<h3 id="slide-8-lessons-learned"><a class="header" href="#slide-8-lessons-learned">Slide 8: Lessons Learned</a></h3>
+<ul>
+<li>What worked well in analysis</li>
+<li>Challenges faced</li>
+<li>Skills improved</li>
+</ul>
+<h2 id="-submission-checklist"><a class="header" href="#-submission-checklist">✅ Submission Checklist</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"> 3 stocks analyzed from different sectors</li>
+<li><input disabled="" type="checkbox"> Complete technical analysis for each (candlesticks, S/R, trend, MA, volume)</li>
+<li><input disabled="" type="checkbox"> Python script runs without errors</li>
+<li><input disabled="" type="checkbox"> Charts generated and saved</li>
+<li><input disabled="" type="checkbox"> Trading plans completed with all sections</li>
+<li><input disabled="" type="checkbox"> Risk-reward ratios calculated</li>
+<li><input disabled="" type="checkbox"> Presentation created</li>
+<li><input disabled="" type="checkbox"> All files organized in project folder</li>
+</ul>
+<h2 id="-project-structure"><a class="header" href="#-project-structure">📁 Project Structure</a></h2>
+<pre><code>module-02-project/
+├── analysis/
+│   ├── AAPL_analysis.md
+│   ├── JPM_analysis.md
+│   └── AMZN_analysis.md
+├── trading_plans/
+│   ├── AAPL_plan.md
+│   ├── JPM_plan.md
+│   └── AMZN_plan.md
+├── charts/
+│   ├── AAPL_analysis.png
+│   ├── JPM_analysis.png
+│   └── AMZN_analysis.png
+├── scripts/
+│   └── technical_analyzer.py
+├── presentation/
+│   └── module_02_project.pdf
+└── README.md
+</code></pre>
+<h2 id="-evaluation-criteria"><a class="header" href="#-evaluation-criteria">🎓 Evaluation Criteria</a></h2>
+<p>Your project will be evaluated on:</p>
+<ol>
+<li><strong>Completeness</strong> (30%): All sections filled out</li>
+<li><strong>Accuracy</strong> (25%): Correct identification of patterns and levels</li>
+<li><strong>Analysis Quality</strong> (20%): Depth of insights</li>
+<li><strong>Code Quality</strong> (15%): Script works and is well-organized</li>
+<li><strong>Trading Plan</strong> (10%): Realistic and well-thought-out</li>
+</ol>
+<h2 id="-next-steps"><a class="header" href="#-next-steps">🚀 Next Steps</a></h2>
+<p>After completing this project:</p>
+<ol>
+<li><strong>Track Your Predictions</strong>: Monitor the stocks for 2-4 weeks</li>
+<li><strong>Compare Results</strong>: Did price move as you predicted?</li>
+<li><strong>Learn</strong>: What worked? What didn’t?</li>
+<li><strong>Iterate</strong>: Refine your analysis process</li>
+</ol>
+<h2 id="-tips-for-success"><a class="header" href="#-tips-for-success">💡 Tips for Success</a></h2>
+<ul>
+<li><strong>Take Your Time</strong>: Quality over speed</li>
+<li><strong>Be Objective</strong>: Don’t force patterns that aren’t there</li>
+<li><strong>Use Multiple Timeframes</strong>: Check weekly and daily charts</li>
+<li><strong>Document Everything</strong>: Write down your reasoning</li>
+<li><strong>Stay Organized</strong>: Keep files well-structured</li>
+<li><strong>Ask Questions</strong>: If stuck, review lessons or research</li>
+</ul>
+<h2 id="-resources"><a class="header" href="#-resources">📚 Resources</a></h2>
+<ul>
+<li>Module 2 Lessons (review as needed)</li>
+<li><a href="https://www.tradingview.com">TradingView</a> for charting</li>
+<li><a href="https://finance.yahoo.com">Yahoo Finance</a> for data</li>
+<li><a href="https://www.investopedia.com">Investopedia</a> for concepts</li>
+</ul>
+<hr>
+<p><strong>Ready to start?</strong> Create your project folder and begin with stock selection!</p>
+<p><strong>Questions?</strong> Review the relevant lessons or check the FAQ in resources.</p>
+<p><strong>Completed the project?</strong> ✓ Mark Module 2 complete and move to <a href="../module-03/lesson-01-momentum.html">Module 3: Technical Indicators</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../module-02/lesson-05-volume-analysis.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../module-03/lesson-01-momentum.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../module-02/lesson-05-volume-analysis.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../module-03/lesson-01-momentum.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
