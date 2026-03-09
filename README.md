@@ -5,9 +5,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Book Status](https://img.shields.io/badge/book-in%20progress-blue)](https://github.com/wjhou/trading-academy)
 
+English | [简体中文](README.zh.md)
+
 ## 📖 Read the Book
 
-**Online**: [https://wjhou.github.io/trading-academy](https://wjhou.github.io/trading-academy)
+**Online**:
+- English: [https://wjhou.github.io/trading-academy](https://wjhou.github.io/trading-academy)
+- 中文: [https://wjhou.github.io/trading-academy/zh](https://wjhou.github.io/trading-academy/zh)
 
 **Locally**:
 ```bash
@@ -16,9 +20,12 @@ cargo install mdbook
 # Or on macOS:
 brew install mdbook
 
-# Serve the book
+# Serve the English version
 cd trading-academy
 mdbook serve --open
+
+# Serve the Chinese version
+MDBOOK_BOOK__SRC=src/zh MDBOOK_BUILD__BUILD_DIR=book/zh mdbook serve --open
 ```
 
 ## 🎯 What You'll Learn
@@ -129,6 +136,7 @@ This book is designed to work seamlessly with [stock-agent-system](https://githu
 - ✅ **Searchable** - Full-text search across all content
 - ✅ **Mobile-friendly** - Read on any device
 - ✅ **Open source** - Free forever, community-driven
+- ✅ **Bilingual** - Available in English and Simplified Chinese
 
 ## 🤝 Contributing
 
@@ -209,7 +217,8 @@ See [LICENSE](LICENSE) for details.
 
 ## 🙏 Acknowledgments
 
-- **Content Creation**: All educational content, lessons, exercises, and resources were created with the assistance of [Claude Code](https://claude.ai/code) (Claude Opus 4.5) by Anthropic
+- **Content Creation**: All educational content, lessons, exercises, and resources were created with the assistance of [Claude Code](https://claude.ai/code) (Claude Opus 4.5/4.6) by Anthropic
+- **Chinese Translation**: Complete translation to Simplified Chinese completed with Claude Opus 4.6
 - Built with [mdBook](https://rust-lang.github.io/mdBook/)
 - Integrates with [stock-agent-system](https://github.com/wjhou/stock-agent-system)
 - Inspired by the open-source education community
