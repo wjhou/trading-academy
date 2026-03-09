@@ -35,13 +35,222 @@
 
 ### 第1部分：核心回测引擎
 
+完整的Python代码实现请参考英文版本。该项目包含以下核心组件的完整实现：
+
+- **数据类**：Order（订单）、Fill（成交）、Position（仓位）
+- **DataHandler**：处理历史数据并防止前瞻偏差
+- **ExecutionEngine**：模拟现实的订单执行（包括佣金和滑点）
+- **PortfolioManager**：管理投资组合状态和仓位
+- **Strategy基类**：交易策略的抽象基类
+- **MovingAverageCrossover**：示例策略实现
+- **Backtest类**：主回测引擎
+
+## 第2部分：参数优化
+
+集成网格搜索优化：
+
 ```python
-import numpy as np
-import pandas as pd
-from typing import Dict, List, Tuple, Optional, Callable
-from dataclasses import dataclass
-from datetime import datetime
-import yfinance as yf
-import matplotlib.pyplot as plt
-import seaborn as sns
-from abc import ABC, abstractmethod
+from itertools import product
+
+def optimize_strategy(data: pd.DataFrame,
+                     param_grid: Dict[str, List],
+                     initial_capital: float = 100000) -> Dict:
+    """
+    优化策略参数。
+
+    参数：
+    -----------
+    data : pd.DataFrame
+        历史数据
+    param_grid : Dict[str, List]
+        参数网格
+    initial_capital : float
+        起始资本
+
+    返回：
+    --------
+    Dict : 优化结果
+    """
+    # 实现网格搜索优化
+    # 详细代码请参考英文版本
+    pass
+```
+
+## 第3部分：前进分析
+
+实现前进验证：
+
+```python
+def walk_forward_analysis(data: pd.DataFrame,
+                         param_grid: Dict[str, List],
+                         is_period: int = 504,
+                         oos_period: int = 126) -> List[Dict]:
+    """
+    执行前进分析。
+
+    参数：
+    -----------
+    data : pd.DataFrame
+        历史数据
+    param_grid : Dict[str, List]
+        参数网格
+    is_period : int
+        样本内时期（天）
+    oos_period : int
+        样本外时期（天）
+
+    返回：
+    --------
+    List[Dict] : WFA结果
+    """
+    # 实现前进分析
+    # 详细代码请参考英文版本
+    pass
+```
+
+## 第4部分：蒙特卡洛模拟
+
+添加蒙特卡洛分析：
+
+```python
+def monte_carlo_analysis(trades: List[Dict],
+                        initial_capital: float = 100000,
+                        n_simulations: int = 1000) -> Dict:
+    """
+    执行蒙特卡洛模拟。
+
+    参数：
+    -----------
+    trades : List[Dict]
+        历史交易
+    initial_capital : float
+        起始资本
+    n_simulations : int
+        模拟次数
+
+    返回：
+    --------
+    Dict : 蒙特卡洛结果
+    """
+    # 实现蒙特卡洛模拟
+    # 详细代码请参考英文版本
+    pass
+```
+
+## 项目任务
+
+### 任务1：构建核心框架
+实现完整的回测框架，包括：
+- DataHandler用于无偏差数据访问
+- ExecutionEngine具有现实成本
+- PortfolioManager用于仓位跟踪
+- Strategy基类和示例策略
+
+### 任务2：添加性能分析
+实现全面的性能指标：
+- 收益指标（总收益、年化收益、CAGR）
+- 风险指标（波动率、最大回撤、VaR）
+- 风险调整指标（夏普、索提诺、卡玛）
+- 交易级指标（胜率、利润因子）
+
+### 任务3：实现优化
+添加参数优化功能：
+- 网格搜索
+- 样本外验证
+- 过拟合检测
+- 参数稳定性分析
+
+### 任务4：前进分析
+实现前进验证：
+- 滚动或锚定窗口
+- 效率比率计算
+- 参数演化跟踪
+- 结果可视化
+
+### 任务5：蒙特卡洛模拟
+添加蒙特卡洛分析：
+- 交易重采样
+- 置信区间
+- 概率指标
+- 风险评估
+
+### 任务6：创建报告
+生成全面的报告，包括：
+- 性能摘要
+- 权益曲线和回撤图
+- 参数优化结果
+- 前进分析图表
+- 蒙特卡洛分布
+
+## 评估标准
+
+你的项目将根据以下标准评估：
+
+1. **正确性**（25%）：框架产生准确的结果
+2. **完整性**（20%）：所有组件都已实现
+3. **偏差预防**（20%）：正确处理前瞻和其他偏差
+4. **性能**（15%）：高效执行
+5. **代码质量**（10%）：清晰、有文档、可维护的代码
+6. **报告**（10%）：清晰、专业的可视化和报告
+
+## 提交指南
+
+提交以下内容：
+
+1. 回测框架的完整Python实现
+2. 示例策略的完整分析，包括：
+   - 基本回测结果
+   - 参数优化
+   - 前进分析
+   - 蒙特卡洛模拟
+3. 带可视化的性能报告
+4. 文档说明：
+   - 框架架构
+   - 如何添加新策略
+   - 结果解释
+   - 已知限制
+
+## 额外挑战
+
+1. 添加对多资产和投资组合策略的支持
+2. 实现额外的优化方法（贝叶斯、PSO）
+3. 添加交易成本分析
+4. 使用Plotly或Streamlit创建交互式仪表板
+5. 实现制度检测和特定制度分析
+6. 添加对期权和衍生品的支持
+7. 创建策略比较框架
+8. 实现实盘交易集成
+
+## 测试你的框架
+
+在多个策略和资产上测试你的框架：
+
+1. **移动平均交叉**在SPY、AAPL、MSFT上
+2. **RSI均值回归**在QQQ上
+3. **布林带突破**在个股上
+4. **多资产轮动**策略
+
+对于每个策略：
+- 运行基本回测
+- 优化参数
+- 使用前进验证
+- 使用蒙特卡洛评估风险
+- 比较跨资产的结果
+
+## 要避免的常见陷阱
+
+1. **前瞻偏差**：确保指标仅使用过去的数据
+2. **幸存者偏差**：如果使用有偏差的数据，请承认
+3. **过拟合**：使用前进检测
+4. **不现实的执行**：模拟滑点和佣金
+5. **数据窥探**：保留留出数据
+6. **忽略成本**：包括所有交易成本
+7. **挑选结果**：报告所有结果，而不仅仅是最好的
+
+## 结论
+
+这个项目将所有回测概念整合到一个专业框架中。完成它后，你将拥有一个稳健的工具来评估交易策略，以及正确解释结果的知识。
+
+你在这里构建的框架将作为所有未来策略开发的基础，帮助你避免常见陷阱并开发在实盘交易中真正有效的策略。
+
+记住：一个好的回测不能保证实盘交易成功，但一个糟糕的回测几乎肯定预示着失败。使用这个框架在冒真实资本风险之前建立对你的策略的信心。
